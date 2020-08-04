@@ -37,7 +37,7 @@ class Application
     /**
      * @ORM\Column(type="boolean", nullable=true)
      */
-    private $Invited;
+    private $invited;
 
     public function getId(): ?int
     {
@@ -82,12 +82,12 @@ class Application
 
     public function getInvited(): ?bool
     {
-        return $this->Invited;
+        return $this->invited;
     }
 
     public function setInvited(?bool $Invited): self
     {
-        $this->Invited = $Invited;
+        $this->invited = $invited;
 
         return $this;
     }

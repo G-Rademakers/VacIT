@@ -5,7 +5,7 @@ namespace App\Repository;
 use App\Entity\Platform;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
-use Symfony\Bridge\Dcotrine\RegistryInterface;
+use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
  * @method Platform|null find($id, $lockMode = null, $lockVersion = null)
@@ -55,6 +55,18 @@ class PlatformRepository extends ServiceEntityRepository
             return(true);
         }
         return(false);
+    }
+
+    public function FindAllPlatforms()
+    {
+        $platforms = $this->findAll();
+        return($platforms);
+    }
+
+    public function FindPlatformById($id)
+    {
+        $platform = $this->find($id);
+        return($platform);
     }
 
     // /**

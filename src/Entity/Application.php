@@ -30,7 +30,7 @@ class Application
     private $vacancy;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="string", length=20, nullable = true)
      */
     private $application_date;
 
@@ -68,12 +68,12 @@ class Application
         return $this;
     }
 
-    public function getApplicationDate(): ?\DateTimeInterface
+    public function getApplicationDate(): ?string
     {
         return $this->application_date;
     }
 
-    public function setApplicationDate(\DateTimeInterface $application_date): self
+    public function setApplicationDate(string $application_date): self
     {
         $this->application_date = $application_date;
 

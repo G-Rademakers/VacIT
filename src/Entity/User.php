@@ -1,13 +1,14 @@
 <?php
 
 namespace App\Entity;
+use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass=UserRepository::class)
  * @ORM\Table(name="user")
  */
 
@@ -56,7 +57,7 @@ class User extends BaseUser
     private $phone_number;
 
     /**
-    * @ORM\Column(type="datetime", nullable=true)
+    * @ORM\Column(type="string", length=20, nullable = true)
     */
     private $date_of_birth;
 
@@ -85,6 +86,12 @@ class User extends BaseUser
      */
     private $applications;
 
+    /**
+     * @ORM\Column(type="string", length=5, nullable=true)
+     */
+    private $type;
+    
+
     public function __construct()
     {
         parent::__construct();
@@ -93,7 +100,7 @@ class User extends BaseUser
         $this->applications = new ArrayCollection();
     }
 
-    public function getID(): ?intdiv
+    public function getID(): ?int
     {
         return $this->id;
     }
@@ -182,12 +189,12 @@ class User extends BaseUser
         return $this;
     }
 
-    public function getDateOfBirth(): ?\DateTimeInterface
+    public function getDateOfBirth(): ?string
     {
         return $this->date_of_birth;
     }
 
-    public function setDateOfBirth(?\DateTimeInterface $date_of_birth): self
+    public function setDateOfBirth(string $date_of_birth): self
     {
         $this->date_of_birth = $date_of_birth;
 
@@ -226,6 +233,18 @@ class User extends BaseUser
     public function setCV(string $cv_url): self
     {
         $this->cv_url = $cv_url;
+        
+        return $this;
+    }
+
+    public function getType(): ?string 
+    {
+        return $this->type;
+    }
+
+    public function setType(string $type): self
+    {
+        $this->type = $type;
         
         return $this;
     }

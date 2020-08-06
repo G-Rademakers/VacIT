@@ -5,14 +5,14 @@ namespace App\Repository;
 use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
-use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
- * @method Platform|null find($id, $lockMode = null, $lockVersion = null)
- * @method Platform|null findOneBy(array $criteria, array $orderBy = null)
- * @method Platform[]    findAll()
- * @method Platform[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method User|null    find($id, $lockMode = null, $lockVersion = null)
+ * @method User|null    findOneBy(array $criteria, array $orderBy = null)
+ * @method User[]       findAll()
+ * @method User[]       findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
+
 class UserRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
@@ -20,15 +20,67 @@ class UserRepository extends ServiceEntityRepository
         parent::__construct($registry, User::class);
     }
 
-//     public function FindAllUsers()
-//     {
-//         $users = $this->findAll();
-//         return($users);
-//     }
+    public function SaveUser($params)
+    {
+        if(isset($params["id"]))
+        {
+            $user = $this->find($params["id"]);
+        } 
 
-//     public function FindUserById($id)
-//     {
-//         $user = $this->find($id);
-//         return($user);
-//     }
+        else
+        {
+            $user = new User();
+        } 
+
+        $user->setFirstName($params["first_name"]);
+        $user->setLastName($params["last_name"]);
+        $user->setCompanyName($params["company_name"]);
+        $user->setAddress($params["address"]);
+        $user->setZipcode($params["zipcode"]);
+        $user->setCity($params["city"]);
+        $user->setPhoneNumber($params["phone_number"]);
+        $user->setDateOfBirth($params["date_of_birth"]);
+        $user->setDescription($params["description"]);
+        $user->setProfilePictureURL($params["profile_picture_url"]);
+        $user->setCV($params["cv_url"]);
+        $user->setType($params["type"]);
+
+        $em = $this->getEntityManager();
+        $em->persist($user);
+        $em->flush();
+
+        return($user);
+    }
+
+    public function RemoveUser($id)
+    { 
+        $user = $this->find($id);
+        if($user) 
+        {
+            $em = $this->getEntityManager();
+            $em->remove($user);
+            $em->flush();
+
+            return(true);
+        }
+        return(false);
+    }
+
+    public function FindAllUsers()
+    {
+        $users = $this->findAll();
+        return($users);
+    }
+
+    public function FindUserByID($id)
+    {
+        $user = $this->find($id);
+        return($user);
+    }
+
+    public function FindUsersByType($type)
+    {
+        $users = $this->findBy(array("type"=>$type));
+        return($users);
+    }
 }

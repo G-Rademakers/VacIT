@@ -2,7 +2,13 @@
 
 namespace App\Repository;
 
+use App\Repository\UserRepository;
+use App\Repository\VacancyRepository;
+
 use App\Entity\Application;
+use App\Entity\User;
+use App\Entity\Vacancy;
+
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -17,6 +23,55 @@ class ApplicationRepository extends ServiceEntityRepository
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Application::class);
+    }
+
+    public function SaveApplication($params)
+    {
+        if(isset($params["id"]))
+        {
+            $application = $this->find($params["id"]);
+        }
+        
+        else
+        {
+            $application = new Application;
+
+            $em = $this->getEntityManager();
+
+            $userRepository = $em->getRepository(User::class);
+            $vacancyRepository = $em->getRepository(Vacancy::class);
+
+            $user = $userRepository->find($params["user_id"]);
+            $vacancy = $vacancyRepository->find($params["vacancy_id"]);
+
+            $application = setUser($user);
+            $application = setVacancy($vacancy);
+            $application = setApplicationDate($params["application_date"]);
+            $application = setInvited($params["invited"]);
+
+            $em->persist($application);
+            $em->flush();
+
+            return($application);
+        }
+    }
+
+    public function GetAllApplications()
+    { 
+        $applications = $this->findAll();
+        return($applications);
+    }
+
+    public function GetApplicationByID($id)
+    {
+        $application = $this->find($id);
+        return($application);
+    }
+
+    public function GetApplicationsByUser($user)
+    {
+        $applications = $this->findBy(array("user"=>$users));
+        return($applications);
     }
 
     // /**

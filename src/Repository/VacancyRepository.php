@@ -2,9 +2,12 @@
 
 namespace App\Repository;
 
-use App\Repository\VacancyRepository;
 use App\Repository\UserRepository;
+
 use App\Entity\Vacancy;
+use App\Entity\User;
+use App\Entity\Platform;
+
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -49,16 +52,30 @@ class VacancyRepository extends ServiceEntityRepository
         $vacancy->setJobDescription($params["job_description"]);
         $vacancy->setLogo($params["logo"]);
 
-        $em->persist($platform);
+        $em->persist($vacancy);
         $em->flush();
 
         return($vacancy);
     }
+
+    public function RemoveVacancy($id)
+    { 
+        $vacancy = $this->find($id);
+        if($vacancy) 
+        {
+            $em = $this->getEntityManager();
+            $em->remove($vacancy);
+            $em->flush();
+
+            return(true);
+        }
+        return(false);
+    }
     
     public function FindAllVacancies()
     {
-        $vacansies = $this->findAll();
-        return($vacansies);
+        $vacancies = $this->findAll();
+        return($vacancies);
     }
 
     public function FindVacancyByID($id)
@@ -67,7 +84,12 @@ class VacancyRepository extends ServiceEntityRepository
         return($vacancy);
     }
 
-   
+    public function FindVacanciesByUser($user)
+    {
+        $vacancies = $this->findBy(array("user"=>$user));
+        return($vacancies); 
+    }
+  
 
     // /**
     //  * @return Vacancy[] Returns an array of Vacancy objects

@@ -85,7 +85,7 @@ class Application
         return $this->invited;
     }
 
-    public function setInvited(?bool $Invited): self
+    public function setInvited(?bool $invited): self
     {
         $this->invited = $invited;
 

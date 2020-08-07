@@ -2,8 +2,6 @@
 
 namespace App\Repository;
 
-use App\Repository\UserRepository;
-
 use App\Entity\Vacancy;
 use App\Entity\User;
 use App\Entity\Platform;
@@ -24,7 +22,7 @@ class VacancyRepository extends ServiceEntityRepository
         parent::__construct($registry, Vacancy::class);
     }
 
-    public function SaveVacancy($params)
+    public function saveVacancy($params)
     {
         if(isset($params["id"]))
         {
@@ -58,7 +56,7 @@ class VacancyRepository extends ServiceEntityRepository
         return($vacancy);
     }
 
-    public function RemoveVacancy($id)
+    public function removeVacancy($id)
     { 
         $vacancy = $this->find($id);
         if($vacancy) 
@@ -72,19 +70,19 @@ class VacancyRepository extends ServiceEntityRepository
         return(false);
     }
     
-    public function FindAllVacancies()
+    public function getAllVacancies()
     {
         $vacancies = $this->findAll();
         return($vacancies);
     }
 
-    public function FindVacancyByID($id)
+    public function getVacancyByID($id)
     {
         $vacancy = $this->find($id);
         return($vacancy);
     }
 
-    public function FindVacanciesByUser($user)
+    public function getVacanciesByUser($user)
     {
         $vacancies = $this->findBy(array("user"=>$user));
         return($vacancies); 

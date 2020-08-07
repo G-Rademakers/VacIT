@@ -20,7 +20,7 @@ class PlatformRepository extends ServiceEntityRepository
         parent::__construct($registry, Platform::class);
     }
 
-    public function SavePlatform($params)
+    public function savePlatform($params)
     {
         if(isset($params["id"]))
         {
@@ -43,7 +43,7 @@ class PlatformRepository extends ServiceEntityRepository
         return($platform);
     }
 
-    public function RemovePlatform($id)
+    public function removePlatform($id)
     { 
         $platform = $this->find($id);
         if($platform) 
@@ -57,13 +57,13 @@ class PlatformRepository extends ServiceEntityRepository
         return(false);
     }
 
-    public function FindAllPlatforms()
+    public function getAllPlatforms()
     {
         $platforms = $this->findAll();
         return($platforms);
     }
 
-    public function FindPlatformById($id)
+    public function getPlatformById($id)
     {
         $platform = $this->find($id);
         return($platform);

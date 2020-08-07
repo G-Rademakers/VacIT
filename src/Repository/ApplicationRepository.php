@@ -2,9 +2,6 @@
 
 namespace App\Repository;
 
-use App\Repository\UserRepository;
-use App\Repository\VacancyRepository;
-
 use App\Entity\Application;
 use App\Entity\User;
 use App\Entity\Vacancy;
@@ -18,6 +15,7 @@ use Doctrine\Persistence\ManagerRegistry;
  * @method Application[]    findAll()
  * @method Application[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
+
 class ApplicationRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
@@ -25,16 +23,16 @@ class ApplicationRepository extends ServiceEntityRepository
         parent::__construct($registry, Application::class);
     }
 
-    public function SaveApplication($params)
+    public function saveApplication($params)
     {
         if(isset($params["id"]))
         {
             $application = $this->find($params["id"]);
         }
-        
+
         else
         {
-            $application = new Application;
+            $application = new Application();
 
             $em = $this->getEntityManager();
 
@@ -44,10 +42,10 @@ class ApplicationRepository extends ServiceEntityRepository
             $user = $userRepository->find($params["user_id"]);
             $vacancy = $vacancyRepository->find($params["vacancy_id"]);
 
-            $application = setUser($user);
-            $application = setVacancy($vacancy);
-            $application = setApplicationDate($params["application_date"]);
-            $application = setInvited($params["invited"]);
+            $application->setUser($user);
+            $application->setVacancy($vacancy);
+            $application->setApplicationDate($params["application_date"]);
+            $application->setInvited($params["invited"]);
 
             $em->persist($application);
             $em->flush();
@@ -56,24 +54,38 @@ class ApplicationRepository extends ServiceEntityRepository
         }
     }
 
-    public function GetAllApplications()
-    { 
-        $applications = $this->findAll();
+    public function removeApplication($id)
+    {
+        $application = $this->find($id);
+        if($application) 
+        {
+            $em = $this->getEntityManager();
+            $em->remove($application);
+            $em->flush();
+
+            return(true);
+        }
+        return(false);
+    }
+
+    public function getAllApplications()
+    {
+        $applications = $this->FindAll();
         return($applications);
     }
 
-    public function GetApplicationByID($id)
+    public function getApplicationByID($id)
     {
         $application = $this->find($id);
         return($application);
     }
 
-    public function GetApplicationsByUser($user)
+    public function getApplicationsByUser($user)
     {
-        $applications = $this->findBy(array("user"=>$users));
+        $applications = $this->findBy(array("user"=>$user));
         return($applications);
     }
-
+}
     // /**
     //  * @return Application[] Returns an array of Application objects
     //  */
@@ -102,4 +114,4 @@ class ApplicationRepository extends ServiceEntityRepository
         ;
     }
     */
-}
+

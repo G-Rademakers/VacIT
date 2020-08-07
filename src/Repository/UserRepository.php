@@ -20,7 +20,7 @@ class UserRepository extends ServiceEntityRepository
         parent::__construct($registry, User::class);
     }
 
-    public function SaveUser($params)
+    public function saveUser($params)
     {
         if(isset($params["id"]))
         {
@@ -52,7 +52,7 @@ class UserRepository extends ServiceEntityRepository
         return($user);
     }
 
-    public function RemoveUser($id)
+    public function removeUser($id)
     { 
         $user = $this->find($id);
         if($user) 
@@ -66,19 +66,19 @@ class UserRepository extends ServiceEntityRepository
         return(false);
     }
 
-    public function FindAllUsers()
+    public function getAllUsers()
     {
         $users = $this->findAll();
         return($users);
     }
 
-    public function FindUserByID($id)
+    public function getUserByID($id)
     {
         $user = $this->find($id);
         return($user);
     }
 
-    public function FindUsersByType($type)
+    public function getUsersByType($type)
     {
         $users = $this->findBy(array("type"=>$type));
         return($users);

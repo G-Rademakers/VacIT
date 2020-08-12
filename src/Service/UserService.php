@@ -24,15 +24,41 @@ class UserService
 
     }
 
-    public function updateUser($params)
+    public function saveUser($params)
     {
-    
+        $user = $this->um->findUserBy(array('id' => $params["id"]));
+        
+        if(isset($user))
+        {
+            $user->setFirstName($params["first_name"]);
+            $user->setLastName($params["last_name"]);
+            $user->setCompanyName($params["company_name"]);
+            $user->setAddress($params["address"]);
+            $user->setZipcode($params["zipcode"]);
+            $user->setCity($params["city"]);
+            $user->setPhoneNumber($params["phone_number"]);
+            $user->setDateOfBirth($params["date_of_birth"]);
+            $user->setDescription($params["description"]);
+            $user->setProfilePictureURL($params["profile_picture_url"]);
+            $user->setCV($params["cv_url"]);
+            $user->setType($params["type"]);
+
+            $this->um->UpdateUser($user);
+
+            return($user);
+        }
+
+        else
+        {
+            return("User does not exist");
+        }
+
     }
 
     public function createUser($params)
     {
-        $u = $this->um->findUserByEmail($params["email"]);
-        if(!$u)
+        $user = $this->um->findUserByEmail($params["email"]);
+        if($user == false)
         {
             $user = $this->um->createUser();
             $user->setUsername($params["username"]);
@@ -51,5 +77,21 @@ class UserService
             return("User already exists");
         }    
 
+    }
+
+    public function deleteUser($params)
+    {
+        $id = (array($params["id"]));
+        $user = $this->um->findUserBy($id);
+        if(isset($user))
+        {
+            $user->deleteUser($user);
+            return($user);
+        }
+
+        else
+        {
+            return("User does not exist");
+        }
     }
 }

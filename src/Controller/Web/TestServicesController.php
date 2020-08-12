@@ -186,7 +186,7 @@ class TestServicesController extends AbstractController
         $params = array(
             "username" => "AngryJoe",
             "password" => "Iamalwaysangry",
-            "roles" => "ROLE_EMPLOYEE",
+            "roles" => "ROLE_CANDIDATE",
             "email" => "angryjoe@test.nl"
         );
 
@@ -195,4 +195,39 @@ class TestServicesController extends AbstractController
         die();
     }
 
+     /**
+     * @Route("/test/services/user/save", name="test_services_saveUser")
+     */
+    public function saveUser(UserService $us)
+    {
+        $params = array(
+            "id" => 7,
+            "first_name" => "Angry",
+            "last_name" => "Joe",
+            "company_name" => "",
+            "address" => "Amerikalaan 43",
+            "zipcode" => "1854 DC",
+            "city" => "Nightcity",
+            "phone_number" => "0455058509",
+            "date_of_birth" => "05-05-1974",
+            "description" => "American moved to Netherlands looking for new IT job",
+            "profile_picture_url" => "",
+            "cv_url" => "",
+            "type" => "C"
+        );
+
+        $user = $us->saveUser($params);
+        dump($user);
+        die();           
+    }
+
+    /**
+     * @Route("/test/services/user/delete/{id}", name="test_services_removeUser")
+     */
+    public function deleteUser(UserService $us, $id)
+    {
+        $user = $us->deleteUser($id);
+        dump($user);
+        die();
+    }
 }

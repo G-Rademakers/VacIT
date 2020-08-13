@@ -230,4 +230,34 @@ class TestServicesController extends AbstractController
         dump($user);
         die();
     }
+        
+    /**
+     * @Route("/test/services/user/get/{id}", name="test_services_getUser")
+     */
+    public function findUser(UserService $us, $id)
+    {
+        $user = $us->findUser($id);
+        dump($user);
+        die();
+    }   
+
+     /**
+     * @Route("/test/services/users/get", name="test_services_getUser")
+     */
+    public function findAllUsers(UserService $us)
+    {
+        $users = $us->findAllUsers();
+        dump($users);
+        die();
+    }
+
+    // /**
+    //  * @Route("/test/services/user/get/{role}", name="test_services_getUser")
+    //  */
+    // public function findAllUsersByRole(UserService $us, $roles)
+    // {
+    //     $users = $us->findUsersByRole($roles);
+    //     dump($users);
+    //     die();
+    // }
 }

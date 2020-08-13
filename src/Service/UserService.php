@@ -79,19 +79,52 @@ class UserService
 
     }
 
-    public function deleteUser($params)
-    {
-        $id = (array($params["id"]));
-        $user = $this->um->findUserBy($id);
-        if(isset($user))
+   public function deleteUser($id)
+   {
+       $userfind = $this->um->findUserBy(array('id'=>$id));
+       if($userfind)
+       {   
+            $user = $this->um->deleteUser($userfind);
+            return($user);
+       }
+
+       else
+       {
+           return("User does not exist");
+       }
+   }
+
+   public function findUser($id)
+   {
+        $user = $this->um->findUserBy(array('id'=>$id));
+        if($user)
         {
-            $user->deleteUser($user);
             return($user);
         }
 
         else
         {
-            return("User does not exist");
+            return("No User Found");
         }
-    }
+   }
+
+   public function findAllUsers()
+   {
+       $users= $this->um->findUsers();
+       return($users);
+   }
+
+//    public function findUsersByRole($roles)
+//    {
+//        $userfind = $this->um->FindUserBy(array('roles' => $roles));
+//        if($userfind)
+//        {
+//            return($userfind);
+//        }
+       
+//        else
+//        {
+//            return(null);
+//        }
+//    }
 }

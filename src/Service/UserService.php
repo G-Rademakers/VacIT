@@ -117,14 +117,6 @@ class UserService
        return($users);
    }
 
-   public function ImportSpreadsheet($name)
-    {
-        $users = $this->um->findUserBy(array('last_name'=>$name));
-        if(!$users)
-        {
-                $user = $this->um->createUser($params);
-        }
-    }
 
 //    public function findUsersByRole($roles)
 //    {

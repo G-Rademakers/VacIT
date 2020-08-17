@@ -7,7 +7,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\ArrayInput;
-use App\Service\UserService;
+use App\Service\ImportSpreadsheetService;
 
 use PhpOffice\PhpSpreadsheet\Reader\xlsx;
 use PhpOffice\PhpSpreadsheet\IOFactory;
@@ -16,10 +16,10 @@ class ImportSpreadsheetCommand extends Command
 {
     private $spreadsheet;
 
-    public function __construct(UserService $us)
+    public function __construct(ImportSpreadsheetService $spreadsheet)
     {
         parent::__construct();
-        $this->us = $us;
+        $this->spreadsheet = $spreadsheet;
     }
 
     protected function configure()
@@ -62,7 +62,6 @@ class ImportSpreadsheetCommand extends Command
 
         }
 
-        $users = $this->us->ImportSpreadsheet($params);
-        $output->writeln([$users]);
+        $users = $this->spreadsheet->ImportSpreadsheet($params);
     }
 }

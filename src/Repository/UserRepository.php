@@ -35,6 +35,7 @@ class UserRepository extends ServiceEntityRepository
         $user->setFirstName($params["first_name"]);
         $user->setLastName($params["last_name"]);
         $user->setCompanyName($params["company_name"]);
+        $user->setEmail($params["email"]);
         $user->setAddress($params["address"]);
         $user->setZipcode($params["zipcode"]);
         $user->setCity($params["city"]);
@@ -82,5 +83,15 @@ class UserRepository extends ServiceEntityRepository
     {
         $users = $this->findBy(array("type"=>$type));
         return($users);
+    }
+
+    public function getUserByEmail($email)
+    {
+        $user = $this->findOneBy(["email" => $email]);
+        if($email == true)
+        {
+            return($user);
+        }
+        return(false);
     }
 }

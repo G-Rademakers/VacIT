@@ -29,7 +29,10 @@ class UserService
         $user = $this->um->findUserBy(array('id' => $params["id"]));
         
         if(isset($user))
-        {
+        {   
+            $user->setUsername($params["username"]);
+            $user->setEmail($params["email"]);
+            $user->setPassword($params["password"]);
             $user->setFirstName($params["first_name"]);
             $user->setLastName($params["last_name"]);
             $user->setCompanyName($params["company_name"]);
@@ -113,6 +116,15 @@ class UserService
        $users= $this->um->findUsers();
        return($users);
    }
+
+   public function ImportSpreadsheet($name)
+    {
+        $users = $this->um->findUserBy(array('last_name'=>$name));
+        if(!$users)
+        {
+                $user = $this->um->createUser($params);
+        }
+    }
 
 //    public function findUsersByRole($roles)
 //    {

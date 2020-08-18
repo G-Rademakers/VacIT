@@ -5,15 +5,15 @@ namespace App\Controller\Web;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
-class WebController extends AbstractController
+class ApplicationController extends AbstractController
 {
     /**
-     * @Route("/homepage", name="homepage")
+     * @Route("/application", name="application")
      */
     public function index()
     {
-        return $this->render('web/index.html.twig', [
-            'controller_name' => 'WebController',
+        return $this->render('application/index.html.twig', [
+            'controller_name' => 'ApplicationController',
         ]);
     }
 }

@@ -5,6 +5,7 @@ namespace App\Service;
 use App\Entity\Vacancy;
 
 use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\EntityManager;
 
 class VacancyService
 {
@@ -47,6 +48,13 @@ class VacancyService
     {
         $vacancy = $this->em->getRepository(Vacancy::class);
         $result = $vacancy->removeVacancy($id);
+        return($result);
+    }
+
+    public function getRecentVacancies()
+    {
+        $vacancies = $this->em->getRepository(Vacancy::class);
+        $result = $vacancies->getRecentVacancies();
         return($result);
     }
 }

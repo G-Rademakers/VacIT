@@ -87,6 +87,20 @@ class VacancyRepository extends ServiceEntityRepository
         $vacancies = $this->findBy(array("user"=>$user));
         return($vacancies); 
     }
+
+   public function getRecentVacancies()
+   {
+        $data = $this->createQueryBuilder('v')
+            ->andWhere('v.id >= :val')
+            ->setParameter('val', 0)
+            ->orderBy('v.vacancy_date', 'DESC')
+            ->setMaxResults(5)
+            ->getQuery()
+            ->getResult();
+
+        return($data);
+   }
+
   
 
     // /**

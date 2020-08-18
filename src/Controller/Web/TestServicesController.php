@@ -81,6 +81,16 @@ class TestServicesController extends AbstractController
         die();
     }
 
+      /**
+    * @Route("/test/services/vacancies/findmostrecent/", name="test/vacancies")
+    */
+    public function getRecentVacancies(VacancyService $vs)
+    {
+        $vacancies = $vs->getRecentVacancies();
+        dump($vacancies);
+        die();
+    }
+
 ### PLATFORMS - SERVICE FUNCTIONS
 
     /**

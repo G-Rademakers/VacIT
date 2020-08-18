@@ -61,6 +61,11 @@ class Vacancy
      */
     private $applications;
 
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $vacancy_date;
+
     public function __construct()
     {
         $this->applications = new ArrayCollection();
@@ -151,6 +156,18 @@ class Vacancy
     public function setLogo(?string $Logo): self
     {
         $this->Logo = $Logo;
+
+        return $this;
+    }
+
+    public function getVacancyDate(): ?datetime
+    {
+        return $this->vacancy_date;
+    }
+
+    public function setVacancyDate(?string $vacancy_date): self
+    {
+        $this->vacancy_date = $vacancy_date;
 
         return $this;
     }

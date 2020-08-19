@@ -271,9 +271,9 @@ class TestServicesController extends AbstractController
         die();
     }
 
-    // /**
-    //  * @Route("/test/services/user/get/{role}", name="test_services_getUser")
-    //  */
+    //  /**
+    //   * @Route("/test/services/user/get/{role}", name="test_services_getUser")
+    //   */
     // public function findAllUsersByRole(UserService $us, $roles)
     // {
     //     $users = $us->findUsersByRole($roles);

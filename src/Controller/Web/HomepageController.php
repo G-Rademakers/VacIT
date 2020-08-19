@@ -14,7 +14,7 @@ class HomepageController extends AbstractController
      */
     public function index(VacancyService $vs)
     {
-        $vacancies = $vs->getAllVacancies();
+        $vacancies = $vs->getRecentVacancies();
         dump($vacancies);
         die();
         return $this->render('homepage/index.html.twig', [

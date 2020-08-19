@@ -97,7 +97,7 @@ class UserService
        }
    }
 
-   public function findUser($id)
+   public function findUserByID($id)
    {
         $user = $this->um->findUserBy(array('id'=>$id));
         if($user)

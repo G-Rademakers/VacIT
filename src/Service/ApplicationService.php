@@ -49,5 +49,12 @@ class ApplicationService
         $result = $application->removeApplication($id);
         return($result);
     }
+
+    public function getApplicationsByVacancy($vacancy)
+    {
+        $applications = $this->em->getRepository(Application::class);
+        $result = $applications->getApplicationsByVacancy($vacancy);
+        return($result);
+    }
 }
 

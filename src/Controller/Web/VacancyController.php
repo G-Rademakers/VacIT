@@ -12,15 +12,17 @@ class VacancyController extends AbstractController
     /**
      * @Route("/vacancy/showvacancy/{id}", name="vacancy")
      */
-    public function index(VacancyService $vs, $id)
+    public function showVacancy(VacancyService $vs, $id)
     {
         $vacancy = $vs->getVacancyByID($id);
         dump($vacancy);
         die();
        
         return $this->render('vacancy/index.html.twig', [
-            'controller_name' => 'VacancyController',
+            'controller_name' => 'VacancyController', 'vacancy'=>$vacancy
         ]);
     }
+
+
 
 }

@@ -30,9 +30,9 @@ class UserService
         
         if(isset($user))
         {   
-            $user->setUsername($params["username"]);
-            $user->setEmail($params["email"]);
-            $user->setPassword($params["password"]);
+            // $user->setUsername($params["username"]);
+            // $user->setEmail($params["email"]);
+            // $user->setPassword($params["password"]);
             $user->setFirstName($params["first_name"]);
             $user->setLastName($params["last_name"]);
             $user->setCompanyName($params["company_name"]);
@@ -118,9 +118,9 @@ class UserService
    }
 
 
-//    public function findUsersByRole($roles)
+//    public function findUsersByRole($type)
 //    {
-//        $userfind = $this->um->FindUserBy(array('roles' => $roles));
+//        $userfind = $this->um->FindUserBy(array('type' => $type));
 //        if($userfind)
 //        {
 //            return($userfind);

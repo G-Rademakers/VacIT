@@ -246,10 +246,11 @@ class TestController extends AbstractController
     */
     public function saveApplication()
     {
+        $date = new \DateTime('@'.strtotime('now'));
         $params = array(
-            "user_id" => 5,
-            "vacancy_id" => 3,
-            "application_date" => "2020-08-03",
+            "user_id" => 8,
+            "vacancy_id" => 7,
+            "application_date" =>$date,
             "invited" => false
         );
 
@@ -300,6 +301,17 @@ class TestController extends AbstractController
         $rep = $this->getDoctrine()->getRepository(Application::class);
         $application = $rep->getApplicationsByUser($user);
         dump($application);
+        die();
+    }
+
+    /**
+    * @Route("/test/applications/vacancy/{vacancy}", name="test/application/findvacancy")
+    */
+    public function getApplicationsByVacancy($vacancy)
+    {
+        $rep = $this->getDoctrine()->getRepository(Application::class);
+        $applications = $rep->getApplicationsByVacancy($vacancy);
+        dump($applications);
         die();
     }
 

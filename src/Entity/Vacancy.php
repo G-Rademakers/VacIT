@@ -160,12 +160,12 @@ class Vacancy
         return $this;
     }
 
-    public function getVacancyDate(): ?datetime
+    public function getVacancyDate(): ?\DateTimeInterface
     {
         return $this->vacancy_date;
     }
 
-    public function setVacancyDate(?string $vacancy_date): self
+    public function setVacancyDate(\DateTimeInterface $vacancy_date): self
     {
         $this->vacancy_date = $vacancy_date;
 

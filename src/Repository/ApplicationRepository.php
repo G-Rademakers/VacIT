@@ -85,6 +85,12 @@ class ApplicationRepository extends ServiceEntityRepository
         $applications = $this->findBy(array("user"=>$user));
         return($applications);
     }
+
+    public function getApplicationsByVacancy($vacancy)
+    {
+        $applications = $this->findBy(array("vacancy"=>$vacancy));
+        return($applications);
+    }
 }
     // /**
     //  * @return Application[] Returns an array of Application objects

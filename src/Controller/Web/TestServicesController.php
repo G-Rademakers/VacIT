@@ -185,6 +185,16 @@ class TestServicesController extends AbstractController
         die();
     }
 
+     /**
+     * @Route("/test/services/application/vacancy/{vacancy}", name="test_services_VacancyApplication")
+     */
+    public function getApplicationsByVacancyID(ApplicationService $as, $vacancy)
+    {
+        $applications = $as->getApplicationsByVacancy($vacancy);
+        dump($applications);
+        die();
+    }
+
 
 ### USERS - SERVICE FUNCTIONS
 
@@ -211,19 +221,19 @@ class TestServicesController extends AbstractController
     public function saveUser(UserService $us)
     {
         $params = array(
-            "id" => 7,
-            "first_name" => "Angry",
-            "last_name" => "Joe",
+            "id" => 8,
+            "first_name" => "Glenn",
+            "last_name" => "Rademakers",
             "company_name" => "",
-            "address" => "Amerikalaan 43",
-            "zipcode" => "1854 DC",
-            "city" => "Nightcity",
-            "phone_number" => "0455058509",
-            "date_of_birth" => "05-05-1974",
-            "description" => "American moved to Netherlands looking for new IT job",
+            "address" => "Beekstraat 2",
+            "zipcode" => "6451 CC",
+            "city" => "Schinveld",
+            "phone_number" => "0654617099",
+            "date_of_birth" => "02-08-1991",
+            "description" => "Ambitious scientist looking to expand his skills within the IT sector",
             "profile_picture_url" => "",
             "cv_url" => "",
-            "type" => "C"
+            "type" => "A"
         );
 
         $user = $us->saveUser($params);
@@ -272,11 +282,11 @@ class TestServicesController extends AbstractController
     }
 
     //  /**
-    //   * @Route("/test/services/user/get/{role}", name="test_services_getUser")
+    //   * @Route("/test/services/user/get/{type}", name="test_services_getUser")
     //   */
-    // public function findAllUsersByRole(UserService $us, $roles)
+    // public function findAllUsersByRole(UserService $us, $type)
     // {
-    //     $users = $us->findUsersByRole($roles);
+    //     $users = $us->findUsersByRole($type);
     //     dump($users);
     //     die();
     // }

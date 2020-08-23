@@ -163,7 +163,7 @@ class TestController extends AbstractController
     /**
      * @Route("/test/vacancy", name="test/vacancy")
      */
-    public function saveVacancy()
+    public function saveVacancy($params)
     {
         $date = new \DateTime('@'.strtotime('now'));
         $params = array(

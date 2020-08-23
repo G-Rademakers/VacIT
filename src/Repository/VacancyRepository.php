@@ -49,6 +49,7 @@ class VacancyRepository extends ServiceEntityRepository
         $vacancy->setLocation($params["location"]);
         $vacancy->setJobDescription($params["job_description"]);
         $vacancy->setLogo($params["logo"]);
+        $vacancy->setVacancyDate(new \DateTime('@'.strtotime('now')));
 
         $em->persist($vacancy);
         $em->flush();
@@ -100,6 +101,8 @@ class VacancyRepository extends ServiceEntityRepository
 
         return($data);
    }
+
+
 
   
 

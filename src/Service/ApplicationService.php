@@ -56,5 +56,12 @@ class ApplicationService
         $result = $applications->getApplicationsByVacancy($vacancy);
         return($result);
     }
+
+    public function switchInterest($id)
+    {
+        $application = $this->em->getRepository(Application::class);
+        $result = $application->switchInterest($id);
+        return($result);
+    }
 }
 

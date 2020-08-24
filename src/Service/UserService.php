@@ -30,9 +30,6 @@ class UserService
         
         if(isset($user))
         {   
-            // $user->setUsername($params["username"]);
-            // $user->setEmail($params["email"]);
-            // $user->setPassword($params["password"]);
             $user->setFirstName($params["first_name"]);
             $user->setLastName($params["last_name"]);
             $user->setCompanyName($params["company_name"]);
@@ -60,30 +57,33 @@ class UserService
 
     public function createUser($params)
     {
-        $user = $this->um->findUserByEmail($params["email"]);
-        if($user == false)
+        foreach($params as $param)
         {
-            $user = $this->um->createUser();
-            $user->setUsername($params["username"]);
-            $user->setEmail($params["email"]);
-            $user->setEnabled(true);
-            $user->addRole($params["roles"]);
-            $password = $this->encoder->encodePassword($user, $params["password"]);
-            $user->setPassword($password);
+            $user = $this->um->findUserBy(array('email' => $param["email"]));
+            if($user == false)
+            {
+                $user = $this->um->createUser();
+                $user->setUsername($param["username"]);
+                $user->setEmail($param["email"]);
+                $user->setEnabled(true);
+                $user->addRole($param["roles"]);
+                $password = $this->encoder->encodePassword($user, $param["password"]);
+                $user->setPassword($password);
 
-            $this->um->updateUser($user);
+                $this->um->updateUser($user);
 
-            return($user);
+                return($user);
+            }
+            
+            else
+            {
+                return("User already exists");
+            }    
         }
-        else
-        {
-            return("User already exists");
-        }    
-
     }
 
-   public function deleteUser($id)
-   {
+    public function deleteUser($id)
+    {
        $userfind = $this->um->findUserBy(array('id'=>$id));
        if($userfind)
        {   
@@ -95,10 +95,10 @@ class UserService
        {
            return("User does not exist");
        }
-   }
+    }
 
-   public function findUserByID($id)
-   {
+    public function findUserByID($id)
+    {
         $user = $this->um->findUserBy(array('id'=>$id));
         if($user)
         {
@@ -109,26 +109,11 @@ class UserService
         {
             return("No User Found");
         }
-   }
+    }
 
-   public function findAllUsers()
-   {
+    public function findAllUsers()
+    {
        $users= $this->um->findUsers();
        return($users);
-   }
-
-
-//    public function findUsersByRole($type)
-//    {
-//        $userfind = $this->um->FindUserBy(array('type' => $type));
-//        if($userfind)
-//        {
-//            return($userfind);
-//        }
-       
-//        else
-//        {
-//            return(null);
-//        }
-//    }
+    }
 }

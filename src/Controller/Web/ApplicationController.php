@@ -69,4 +69,28 @@ class ApplicationController extends AbstractController
             return new response('You have no outgoing applications');
         }
     }
+
+     /**
+     * @Route("/application/interest/{id}", name="application_interest")
+     */
+    public function switchInterest(ApplicationService $as, $id)
+    {
+        $user = $this->getUser();
+
+        if($user)
+        {
+            if(in_array('ROLE_EMPLOYER', $user->getRoles()) or in_array('ROLE_ADMIN', $user->getRoles()))
+            {
+                $application = $as->switchInterest($id);
+                dump($application);
+                die(); 
+            }
+
+            else
+            {
+                return new response('You do not have access to this function');
+            }
+        }
+
+    }
 }

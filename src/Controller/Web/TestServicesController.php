@@ -195,6 +195,16 @@ class TestServicesController extends AbstractController
         die();
     }
 
+    
+     /**
+     * @Route("/test/services/application/interest/{id}", name="test_services_InterestApplication")
+     */
+    public function switchInterest(ApplicationService $as, $id)
+    {
+        $application = $as->switchInterest($id);
+        dump($application);
+        die();
+    }
 
 ### USERS - SERVICE FUNCTIONS
 
@@ -204,10 +214,10 @@ class TestServicesController extends AbstractController
     public function CreateUser(UserService $us)
     {
         $params = array(
-            "username" => "AngryJoe",
-            "password" => "Iamalwaysangry",
+            "username" => "Testen",
+            "password" => "Testen",
             "roles" => "ROLE_CANDIDATE",
-            "email" => "angryjoe@test.nl"
+            "email" => "testen@test.nl"
         );
 
         $user = $us->createUser($params);

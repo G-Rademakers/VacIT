@@ -163,16 +163,16 @@ class TestController extends AbstractController
     /**
      * @Route("/test/vacancy", name="test/vacancy")
      */
-    public function saveVacancy($params)
+    public function saveVacancy()
     {
         $date = new \DateTime('@'.strtotime('now'));
         $params = array(
-            "user_id" => 2,
+            "user_id" => 9,
             "platform_id" => 3,
-            "function" => "Data Scientist",
-            "level" => "Medior",
-            "location" => "Amsterdam",
-            "job_description" => "Data Scientist",
+            "function" => "Tester",
+            "level" => "Junior",
+            "location" => "Amstelveen",
+            "job_description" => "Tester",
             "logo" => null, 
         );
 
@@ -312,6 +312,17 @@ class TestController extends AbstractController
         $rep = $this->getDoctrine()->getRepository(Application::class);
         $applications = $rep->getApplicationsByVacancy($vacancy);
         dump($applications);
+        die();
+    }
+
+    /**
+    * @Route("/test/application/switchinterest/{id}", name="test/application/switchinterest")
+    */
+    public function switchInterest($id)
+    {
+        $rep = $this->getDoctrine()->getRepository(Application::class);
+        $application = $rep->switchInterest($id);
+        dump($application);
         die();
     }
 

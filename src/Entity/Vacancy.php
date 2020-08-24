@@ -57,7 +57,7 @@ class Vacancy
     private $Logo;
 
     /**
-     * @ORM\OneToMany(targetEntity=Application::class, mappedBy="vacancy")
+     * @ORM\OneToMany(targetEntity=Application::class, mappedBy="vacancy", cascade={"remove"})
      */
     private $applications;
 

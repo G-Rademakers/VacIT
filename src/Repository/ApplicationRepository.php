@@ -91,6 +91,32 @@ class ApplicationRepository extends ServiceEntityRepository
         $applications = $this->findBy(array("vacancy"=>$vacancy));
         return($applications);
     }
+
+    public function switchInterest($id)
+    {
+        $application = $this->find($id);
+        
+        if($application->getInvited() == false)
+        {
+            $application->setInvited(true);
+
+        }
+
+        else
+        {
+            if($application->getInvited() == true)
+            {
+                $application->setInvited(false);
+            }
+        }
+
+        $em = $this->getEntityManager();
+        $em->persist($application);
+        $em->flush();
+
+        return($application);
+    
+    }
 }
     // /**
     //  * @return Application[] Returns an array of Application objects

@@ -10,6 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity(repositoryClass=PlatformRepository::class)
  */
+
 class Platform
 {
     /**
@@ -82,7 +83,6 @@ class Platform
             $this->vacancies[] = $vacancy;
             $vacancy->setPlatform($this);
         }
-
         return $this;
     }
 
@@ -95,7 +95,6 @@ class Platform
                 $vacancy->setPlatform(null);
             }
         }
-
         return $this;
     }
 }

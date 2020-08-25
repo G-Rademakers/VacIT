@@ -19,7 +19,6 @@ class ApplicationController extends AbstractController
     {
         $applications = $as->getAllApplications();
     
-
         return $this->render('application/index.html.twig', [
             'controller_name' => 'ApplicationController',
         ]);
@@ -40,16 +39,12 @@ class ApplicationController extends AbstractController
             { 
                 $applications = $as->getApplicationsByUser($user);
 
-                // dump($applications);
-                // die();
-
                 return $this->render('application/myapplications.html.twig', [
                     'controller_name' => 'MyApplicationsController',
                     'applications' => $applications,
-                    'user' => $user,
-                ]);
-
+                    'user' => $user]);
             }
+
             else
             {
                 $vacancies = $vs->getVacanciesByUser($user);
@@ -59,38 +54,32 @@ class ApplicationController extends AbstractController
                     'controller_name' => 'MyApplicantsController',
                     'vacancies' => $vacancies,
                     'user' => $user,
-                    'applicants' => $applicants,
-                ]);
-            }
-                
+                    'applicants' => $applicants]);
+            }       
         }
-        else
-        {
-            return new response('You have no outgoing applications');
-        }
+        return new response('false');
     }
 
      /**
      * @Route("/application/interest/{id}", name="application_interest")
      */
-    public function switchInterest(ApplicationService $as, $id)
+    public function switchInterest(ApplicationService $as, 
+                                   VacancyService $vs, $id)
     {
         $user = $this->getUser();
+        $vacancy = $vs->getVacancyByID($id);
+        $applicants = $as->getApplicationsByVacancy($vacancy);
 
-        if($user)
+        if($user == $vacancy->getUser() or in_array('ROLE_ADMIN', $user->getRoles()))
         {
-            if(in_array('ROLE_EMPLOYER', $user->getRoles()) or in_array('ROLE_ADMIN', $user->getRoles()))
-            {
-                $application = $as->switchInterest($id);
-                dump($application);
-                die(); 
-            }
+            $application = $as->switchInterest($id);
 
-            else
-            {
-                return new response('You do not have access to this function');
-            }
+            return $this->render('application/myapplicants.html.twig', [
+                'controller_name' => 'MyApplicantsController',
+                'user' => $user,
+                'vacancy' => $vacancy,
+                'applicants' => $applicants]);
         }
-
+        return new response('false');
     }
 }

@@ -72,13 +72,8 @@ class ImportSpreadsheetCommand extends Command
                 "description" => $description,
                 "profile_picture_url" => $profilepicture,
                 "type" => $type
-            ); 
-            
-            $users = $this->us->createUser($params);
-            dump($users);
-            die();
+            );   
         }
-      
-       
+        $users = $this->us->createUser($params);      
     }   
 }

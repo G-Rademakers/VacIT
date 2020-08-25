@@ -17,13 +17,10 @@ class VacancyController extends AbstractController
     public function index(VacancyService $vs, $id)
     {
         $vacancy = $vs->getVacancyByID($id);
-
-        // dump($vacancy);
-        // die();
        
         return $this->render('vacancy/index.html.twig', [
-            'controller_name' => 'VacancyController', 'vacancy'=>$vacancy
-        ]);
+            'controller_name' => 'VacancyController', 
+            'vacancy'=>$vacancy]);
     }
 
     /**
@@ -33,9 +30,6 @@ class VacancyController extends AbstractController
     {
         $user = $this->getUser();
         $vacancy = $vs->getVacancyByID($id);
-    
-        // dump($company);
-        // die();
 
         if($user)
         {
@@ -49,8 +43,7 @@ class VacancyController extends AbstractController
                     'user' => $user,
                     'vacancy' => $vacancy,
                     'company' => $company,
-                    'vacancies' => $vacancies,
-                ]);
+                    'vacancies' => $vacancies]);
             }
 
             else
@@ -62,8 +55,7 @@ class VacancyController extends AbstractController
                         'controller_name' => 'ShowVacancyController',
                         'user' => $user,
                         'vacancy' => $vacancy,
-                        'applicants' => $applicants,
-                    ]);
+                        'applicants' => $applicants]);
                 }
 
                 else
@@ -107,8 +99,7 @@ class VacancyController extends AbstractController
                     'controller_name' => 'EditVacancyController',
                     'user' => $user,
                     'vacancy' => $vacancy,
-                    'editvacancy' => $editvacancy,
-                ]);
+                    'editvacancy' => $editvacancy]);
                 
                 // dump($editvacancy);
                 // die();
@@ -143,10 +134,7 @@ class VacancyController extends AbstractController
                 'controller_name' => 'RemoveVacancyController',
                 'user' => $user,
                 'vacancy' => $vacancy,
-                'result' => $result,
-            ]);
-            // dump($result);
-            // die();
+                'result' => $result]);
         }
 
         else
@@ -181,10 +169,7 @@ class VacancyController extends AbstractController
                 'controller_name' => 'AddVacancyController',
                 'user' => $user,
                 'vacancy' => $vacancy,
-                'result' => $result,
-            ]);
-            //    dump($result);
-            //    die();
+                'result' => $result]);
             }
 
             else

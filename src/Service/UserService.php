@@ -28,7 +28,7 @@ class UserService
     {
         $user = $this->um->findUserBy(array('id' => $params["id"]));
         
-        if(isset($user))
+        if($user)
         {   
             $user->setFirstName($params["first_name"]);
             $user->setLastName($params["last_name"]);
@@ -47,12 +47,7 @@ class UserService
 
             return($user);
         }
-
-        else
-        {
-            return("User does not exist");
-        }
-
+        return(false);
     }
 
     public function createUser($params)
@@ -82,15 +77,9 @@ class UserService
     
 
                 $this->um->updateUser($user);
-
-                return($user);
             }
-            
-            else
-            {
-                return("User already exists");
-            }    
         }
+        return(true);
     }
 
     public function deleteUser($id)
@@ -101,11 +90,7 @@ class UserService
             $user = $this->um->deleteUser($userfind);
             return($user);
        }
-
-       else
-       {
-           return("User does not exist");
-       }
+       return(false);
     }
 
     public function findUserByID($id)
@@ -115,11 +100,7 @@ class UserService
         {
             return($user);
         }
-
-        else
-        {
-            return("No User Found");
-        }
+        return(false);
     }
 
     public function findAllUsers()

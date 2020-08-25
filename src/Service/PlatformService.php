@@ -5,7 +5,6 @@ namespace App\Service;
 use App\Entity\Platform;
 
 use Doctrine\ORM\EntityManagerInterface;
-use FOS\UserBundle\Model\UserManagerInterface;
 
 class PlatformService
 {

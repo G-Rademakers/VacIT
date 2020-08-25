@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\VacancyRepository;
+
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -10,6 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity(repositoryClass=VacancyRepository::class)
  */
+
 class Vacancy
 {
     /**
@@ -186,7 +188,6 @@ class Vacancy
             $this->applications[] = $application;
             $application->setVacancy($this);
         }
-
         return $this;
     }
 
@@ -199,7 +200,6 @@ class Vacancy
                 $application->setVacancy(null);
             }
         }
-
         return $this;
     }
 }

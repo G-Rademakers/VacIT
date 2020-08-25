@@ -24,16 +24,14 @@ class UserController extends AbstractController
                 
                 return $this->render('user/applicant.html.twig', [
                 'controller_name' => 'ApplicantController', 
-                "user"=>$user,
-                ]);
+                "user"=>$user]);
             }
         
             elseif(in_array('ROLE_EMPLOYER', $user->getRoles()) or in_array('ROLE_ADMIN', $user->getRoles()))
             {
                 return $this->render('user/employer.html.twig', [
                 'controller_name' => 'EmployerController', 
-                'user'=>$user,
-                ]);
+                'user'=>$user]);
             } 
             
             else 
@@ -61,8 +59,7 @@ class UserController extends AbstractController
                     return $this->render('user/employer.html.twig', [
                         'controller_name' => 'EmployerController', 
                         'user'=>$user,
-                        'company'=>$company,
-                    ]);
+                        'company'=>$company]);
                 }
 
                 else
@@ -80,8 +77,7 @@ class UserController extends AbstractController
                     return $this->render('user/employer.html.twig', [
                         'controller_name' => 'EmployerController', 
                         'user'=>$user,
-                        'profile'=>$profile,
-                    ]);
+                        'profile'=>$profile]);
                 }
 
                 elseif(in_array('ROLE_CANDIDATE', $profile->getRoles()))
@@ -89,8 +85,7 @@ class UserController extends AbstractController
                     return $this->render('user/applicant.html.twig', [
                         'controller_name' => 'ApplicantController', 
                         'user'=>$user,
-                        'profile'=>$profile,
-                    ]);
+                        'profile'=>$profile]);
                 }
             }
 
@@ -129,8 +124,9 @@ class UserController extends AbstractController
             if($id == $params['id'])
             {
                 $result = $us->saveUser($params);
-                dump($result);
-                die();
+                return $this->render('user/edit.html.twig', [
+                    'controller_name' => 'ApplicantController', 
+                    'user'=>$user]);
             }
         }
         
@@ -155,8 +151,7 @@ class UserController extends AbstractController
                 'controller_name' => 'DeleteController', 
                 'user'=>$user,
                 'user_confirmation'=>$user_confirmation,
-                'result'=>$result,
-            ]);
+                'result'=>$result]);
         }
 
         else

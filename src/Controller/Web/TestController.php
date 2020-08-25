@@ -239,6 +239,17 @@ class TestController extends AbstractController
         die();
     }
 
+    /**
+     * @Route("/test/vacancies/recentvacancies/newfunction", name="test/vacancies/recent")
+     */
+    public function getRecentVacanciesNew()
+    {
+        $rep = $this->getDoctrine()->getRepository(Vacancy::class);
+        $vacancies = $rep->getRecentVacancies();
+        dump($vacancies);
+        die();
+    }
+
     # APPLICATION FUNCTIONS TEST
     
     /**

@@ -36,27 +36,49 @@ class ImportSpreadsheetCommand extends Command
                                OutputInterface $output)
     {
         $inputFileName = $input->getArgument('file');
-        $spreadsheet = IOFactory::load($inputFileName);
+        $spreadsheet = IOFactory::load($inputFileName); 
+       
         
-        for($row=2; $row<5 ; $row++)
-        {  
+        for($row = 2; $row < 6 ; $row++)
+        {   
             $s = $spreadsheet->getActiveSheet();
-
             $username = $s->getCell('A' . $row)->getValue();
             $email = $s->getCell('B' . $row)->getValue();
             $password = $s->getCell('C' . $row)->getValue();
             $roles = $s->getCell('D' . $row)->getValue();
-                
+            $firstname = $s->getCell('E' . $row)->getValue();
+            $lastname = $s->getCell('F' .$row)->getValue();
+            $companyname = $s->getCell('G' . $row)->getValue();
+            $address = $s->getCell('H' . $row)->getValue();
+            $zipcode = $s->getCell('I' . $row)->getValue();
+            $city = $s->getCell('J' . $row)->getValue();
+            $phone = $s->getCell('K' . $row)->getValue();
+            $description = $s->getCell('L' . $row)->getValue();
+            $profilepicture = $s->getCell('M' . $row)->getValue();
+            $type = $s->getCell('N' . $row)->getValue();
+                           
             $params[] = array(
                 "username" => $username,
                 "email" => $email,
                 "password" => $password,
-                "roles" => $roles
-            );
+                "roles" => $roles,
+                "first_name" => $firstname,
+                "last_name" => $lastname,
+                "company_name" => $companyname,
+                "address" => $address,
+                "zipcode" => $zipcode,
+                "city" => $city,
+                "phone_number" => $phone,
+                "description" => $description,
+                "profile_picture_url" => $profilepicture,
+                "type" => $type
+            ); 
+            
+            $users = $this->us->createUser($params);
+            dump($users);
+            die();
         }
       
-        $users = $this->us->createUser($params);
-        dump($users);
-        die();
+       
     }   
 }

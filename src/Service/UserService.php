@@ -59,7 +59,7 @@ class UserService
     {
         foreach($params as $param)
         {
-            $user = $this->um->findUserBy(array('email' => $param["email"]));
+            $user = $this->um->findUserBy(array('username' => $param["username"]));
             if($user == false)
             {
                 $user = $this->um->createUser();
@@ -69,6 +69,17 @@ class UserService
                 $user->addRole($param["roles"]);
                 $password = $this->encoder->encodePassword($user, $param["password"]);
                 $user->setPassword($password);
+                $user->setFirstName($param["first_name"]);
+                $user->setLastName($param["last_name"]);
+                $user->setCompanyName($param["company_name"]);
+                $user->setAddress($param["address"]);
+                $user->setZipcode($param["zipcode"]);
+                $user->setCity($param["city"]);
+                $user->setPhoneNumber($param["phone_number"]);
+                $user->setDescription($param["description"]);
+                $user->setProfilePictureURL($param["profile_picture_url"]);
+                $user->setType($param["type"]);
+    
 
                 $this->um->updateUser($user);
 

@@ -18,9 +18,11 @@ class ApplicationRepository extends ServiceEntityRepository
 
     public function saveApplication($params)
     {
-        if(isset($params["id"]))
+        $retrieveddata = $this->findBy(array("user" => $params["user"], "vacancy" => $params["vacancy"]));
+        
+        if($retrieveddata)
         {
-            $application = $this->find($params["id"]);
+            return(false);
         }
 
         else
@@ -32,13 +34,13 @@ class ApplicationRepository extends ServiceEntityRepository
             $userRepository = $em->getRepository(User::class);
             $vacancyRepository = $em->getRepository(Vacancy::class);
 
-            $user = $userRepository->find($params["user_id"]);
-            $vacancy = $vacancyRepository->find($params["vacancy_id"]);
+            $user = $userRepository->find($params["user"]);
+            $vacancy = $vacancyRepository->find($params["vacancy"]);
 
-            $application->setUser($user);
-            $application->setVacancy($vacancy);
-            $application->setApplicationDate($params["application_date"]);
-            $application->setInvited($params["invited"]);
+            $application->setUser($params["user"]);
+            $application->setVacancy($params["vacancy"]);
+            $application->setInvited(false);
+            $application->setApplicationDate(new \DateTime('@'.strtotime('now')));
 
             $em->persist($application);
             $em->flush();

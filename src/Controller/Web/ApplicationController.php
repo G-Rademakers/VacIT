@@ -82,4 +82,27 @@ class ApplicationController extends AbstractController
         }
         return new response('false');
     }
+
+     /**
+     * @Route("/application/add/{id}", name="application_add")
+     */
+    public function addApplication(ApplicationService $as, 
+                                   VacancyService $vs, $id)
+    {
+        $keydata = array("user" => $this->getUser(),
+                         "vacancy" => $vs->getVacancyByID($id)); 
+
+        // dump($keydata);
+        // die();
+
+       if($this->getUser())
+       {
+           if(in_array('ROLE_CANDIDATE', $this->getUser()->getRoles()))
+           {
+           $application = $as->saveApplication($keydata);
+           dump($application);
+           die();
+           }
+       }
+    }
 }

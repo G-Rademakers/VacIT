@@ -16,9 +16,6 @@ class HomepageController extends AbstractController
     {
         $vacancies = $vs->getRecentVacancies();
 
-        // dump($vacancies);
-        // die();
-
         return $this->render('homepage/index.html.twig', [
             'controller_name' => 'Homepage Controller', 
             'vacancies'=>$vacancies,
@@ -31,9 +28,6 @@ class HomepageController extends AbstractController
     public function showAllVacancies(VacancyService $vs)
     {
         $vacancies = $vs->getAllVacancies();
-
-        // dump($vacancies);
-        // die();
 
         return $this->render('homepage/alternative/index.html.twig', [
             'controller_name' => 'Alternative Homepage Controller', 

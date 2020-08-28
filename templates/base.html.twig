@@ -5,20 +5,35 @@
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}
         
-        {# Hier moet dus iets van stylesheets komen --> invoegen van css files? --> check dit nog eens bij Verrukkuluk! #}
+        <link rel="stylesheet" href="{{ asset('assets/css/foundation.css')}}">
+        <link rel="stylesheet" href="{{ asset('assets/fonts/BebasNeue/stylesheet.css')}}">
+        <link rel="stylesheet" href="{{ asset('assets/fonts/RobotoCondensed/stylesheet.css')}}">
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/zf/dt-1.10.21/datatables.min.css"/>
+                            
+        <link rel="stylesheet" href="{{ asset('assets/css/main.css')}}">
         
+        <script type="text/javascript" src="https://cdn.datatables.net/v/zf/dt-1.10.21/datatables.min.js"></script>
+
         {% endblock %}
     </head>
     <body>
-        {% block body %}
-        
-        {# Basic body features  #}
-
-        {% endblock %}
+        <div id = "header">
+        {% include('global/header.html.twig') %}
+        </div>
+            
         {% block javascripts %}
-        
-        {# JS referenties? #}
-
         {% endblock %}
+        
+        {% block body %}
+        {% endblock %}
+
+     
+        
+        
+        
+        
+        <div id ="footer">
+        {% include('global/footer.html.twig') %}
+        </div>           
     </body>
 </html>

@@ -64,7 +64,7 @@ class Vacancy
     private $applications;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="string")
      */
     private $vacancy_date;
 
@@ -162,12 +162,12 @@ class Vacancy
         return $this;
     }
 
-    public function getVacancyDate(): ?\DateTimeInterface
+    public function getVacancyDate(): ?string
     {
         return $this->vacancy_date;
     }
 
-    public function setVacancyDate(\DateTimeInterface $vacancy_date): self
+    public function setVacancyDate(?string $vacancy_date): self
     {
         $this->vacancy_date = $vacancy_date;
 

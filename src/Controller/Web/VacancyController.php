@@ -11,17 +11,18 @@ use App\Service\ApplicationService;
 
 class VacancyController extends AbstractController
 {
-    /**
-     * @Route("/vacancy/{id}", name="vacancy")
-     */
-    public function index(VacancyService $vs, $id)
-    {
-        $vacancy = $vs->getVacancyByID($id);
+    // /**
+    //  * @Route("/vacancy/{id}", name="vacancy")
+    //  */
+    // public function index(VacancyService $vs, $id)
+    // {
+    //     $vacancy = $vs->getVacancyByID($id);
        
-        return $this->render('vacancy/index.html.twig', [
-            'controller_name' => 'VacancyController', 
-            'vacancy'=>$vacancy]);
-    }
+    //     return $this->render('vacancy/index.html.twig', [
+    //         'controller_name' => 'VacancyController', 
+    //         'vacancy'=>$vacancy,
+    //     ]);
+    // }
 
     /**
      * @Route("/vacancy/show/{id}", name="vacancy")
@@ -43,7 +44,8 @@ class VacancyController extends AbstractController
                     'user' => $user,
                     'vacancy' => $vacancy,
                     'company' => $company,
-                    'vacancies' => $vacancies]);
+                    'vacancies' => $vacancies,
+                ]);
             }
 
             else
@@ -55,7 +57,8 @@ class VacancyController extends AbstractController
                         'controller_name' => 'ShowVacancyController',
                         'user' => $user,
                         'vacancy' => $vacancy,
-                        'applicants' => $applicants]);
+                        'applicants' => $applicants,
+                    ]);
                 }
 
                 else

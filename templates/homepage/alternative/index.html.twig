@@ -1,8 +1,35 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}All Available Vacancies{% endblock %}
 
 {% block body %}
     
-    <div class="orange-body">
+    <table id="table_id" class="display">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Company</th>
+                <th>Function</th>
+                <th>Level</th>
+                <th>Location</th>
+                <th>Platform</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for vacancy in vacancies %}
+            <tr>
+                <td>{{ vacancy.vacancydate }}</td>
+                <td>{{ vacancy.user.companyname}}</td>
+                <td>{{ vacancy.function }}</td>
+                <td>{{ vacancy.level }}</td>
+                <td>{{ vacancy.location}}</td>
+                <td>{{ vacancy.platform.name}}</td>
+            </tr>
+        
+      
+        {% endfor %}
+        </tbody>
+    </table>
 
+                
 {% endblock %}

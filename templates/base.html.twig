@@ -2,38 +2,37 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}{% endblock %}</title>
         {% block stylesheets %}
         
         <link rel="stylesheet" href="{{ asset('assets/css/foundation.css')}}">
         <link rel="stylesheet" href="{{ asset('assets/fonts/BebasNeue/stylesheet.css')}}">
         <link rel="stylesheet" href="{{ asset('assets/fonts/RobotoCondensed/stylesheet.css')}}">
-        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/zf/dt-1.10.21/datatables.min.css"/>
-                            
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/zf/dt-1.10.21/datatables.min.css"/>                
         <link rel="stylesheet" href="{{ asset('assets/css/main.css')}}">
         
-        <script type="text/javascript" src="https://cdn.datatables.net/v/zf/dt-1.10.21/datatables.min.js"></script>
-
         {% endblock %}
+    
+        <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+        <script src="{{ asset('assets/js/foundation.js')}}"></script>
+        <script src="{{ asset('assets/js/vendor.js')}}"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/v/zf/dt-1.10.21/datatables.min.js"></script>
+        <script>$(document).ready(function(){$('#table_id').DataTable();});</script>
+
     </head>
     <body>
-        <div id = "header">
-        {% include('global/header.html.twig') %}
-        </div>
-            
-        {% block javascripts %}
-        {% endblock %}
-        
-        {% block body %}
-        {% endblock %}
+       <div id="header">
+            {% include('global/header.html.twig') %}
+       </div>
 
-     
         
-        
-        
-        
-        <div id ="footer">
-        {% include('global/footer.html.twig') %}
-        </div>           
-    </body>
+        {% block body %} {% endblock %}
+    
+        {% block javascripts %} {% endblock %}
+       
+
+        <div id="footer">
+            {% include('global/footer.html.twig') %}
+       </div>
+    </body>  
 </html>

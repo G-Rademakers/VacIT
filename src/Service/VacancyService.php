@@ -57,4 +57,11 @@ class VacancyService
         $result = $vacancies->getRecentVacancies();
         return($result);
     }
+    
+    public function getVacanciesByDate()
+    {
+        $vacancies = $this->em->getRepository(Vacancy::class);
+        $result = $vacancies->getVacanciesByDate();
+        return($result);
+    }
 }

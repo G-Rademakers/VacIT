@@ -88,4 +88,10 @@ class VacancyRepository extends ServiceEntityRepository
        $vacancies = $this->findBy(array(), array('vacancy_date' => 'DESC'), 5, 0);
        return($vacancies);
    }
+
+   public function getVacanciesByDate()
+   {
+       $vacancies = $this->findBy(array(), array('vacancy_date' => 'DESC'), 100, 0);
+       return($vacancies);
+   }
 }

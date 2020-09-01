@@ -4,8 +4,8 @@
 
 @font-face {
     font-family: 'bebas_neueregular';
-    src: url('assets/fonts/BebasNeue/bebasneue-webfont.woff2') format('woff2');
-    src: url('assets/fonts/BebasNeue/bebasneue-webfont.woff') format('woff');
+    src: url('bebasneue-webfont.woff2') format('woff2');
+    src: url('bebasneue-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 

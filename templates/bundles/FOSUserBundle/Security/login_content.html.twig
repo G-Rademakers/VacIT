@@ -1,0 +1,38 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% if error %}
+    <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+{% endif %}
+
+<form action="{{ path("fos_user_security_check") }}" method="post">
+    {% if csrf_token %}
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+    {% endif %}
+
+    <div class="grid-container grid-container-padding">
+        <div class="grid-x grid-x-padding">
+            <div class="small-1 medium-1 large-1">
+            </div>
+            <div class="small-3 medium-2 large-2">
+                <br>
+                <img src="{{ asset('assets/logo/warning-sign.png')}}">
+            </div>
+            <div class="small-3 medium-2 large-2">
+            </div>
+            <div class="small-5 medium-7 large-7 inputstyle">
+                <h2 style="font-family:bebas_neueregular">Login</h2>
+
+                <label>Email
+                    <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" autocomplete="username" />
+                </label>
+                <label>Password
+                    <input type="password" id="password" name="_password" required="required" autocomplete="current-password" />
+                </label>
+
+                <a href="{{ path('fos_user_resetting_request') }}">Wachtwoord vergeten?</a>
+
+                <input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
+            </div>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,14 @@
+.inputstyle input{
+    width: 525px;
+    font-family: 'robotocondensed';
+    box-shadow: none;
+    border: none;
+    border-bottom : 2px solid #F15A24;
+}
+
+.ForgetPasswordText{
+    color: #F15A24;
+    font: Arial;
+    font-size: 15px;
+}
+

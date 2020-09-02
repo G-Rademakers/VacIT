@@ -134,6 +134,8 @@ class UserController extends AbstractController
         {
             return new response('No access to this profile');
         }
+
+        return new response('Something went wrong');
     }
 
      /**

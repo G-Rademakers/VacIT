@@ -20,7 +20,7 @@
             <div class="small-3 medium-2 large-2">
             </div>
             <div class="small-5 medium-7 large-7 inputstyle">
-                <h2 style="font-family:bebas_neueregular">Login</h2>
+                <h2 style="font-family:bebas_neueregular; color: #F15A24">Login</h2>
 
                 <label>Email
                     <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" autocomplete="username" />
@@ -29,10 +29,16 @@
                     <input type="password" id="password" name="_password" required="required" autocomplete="current-password" />
                 </label>
 
-                <a href="{{ path('fos_user_resetting_request') }}">Wachtwoord vergeten?</a>
-
-                <input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
+                <a href="{{ path('fos_user_resetting_request') }}"><div class="ForgetPasswordText">Wachtwoord vergeten?</div></a>
             </div>
         </div>
+        <div class="grid-x grid-x-padding grid-x-margin">
+            <div class="small-10 medium-10 large-10">
+            </div>
+            <div class="small-2 medium-2 large-2">
+                <button type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" class="btn btn-succes" style="font-size: 3rem; color: #F15A24"><i class="fas fa-arrow-right"></i></button>
+            </div>
+        </div>  
+        <br></br>
     </div>
 </form>

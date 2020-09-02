@@ -3,57 +3,46 @@
 {% block title %}{{ vacancy.function }}{% endblock %}
 
 {% block body %}
-        <div class="grid-container">
-            <div class="grid-x grid-padding-x">
-                <div class="small-3 medium-2 large-2">
-                    {{ vacancy.platform.iconurl }}
+    <div class="grid-container grid-container-padding">
+        <div class="grid-x grid-padding-x">
+            <div class="small-2 medium-2 large-2">
+                <div class="small-12 medium-12 large-12">
+                    <br><img src="{{ vacancy.platform.iconurl }}">
                 </div>
-                <div class="small-9 medium-10 large-10">
-                    <span><h4>{{ vacancy.vacancydate }}</h4></span>
-                    <span><h1>{{ vacancy.function }} voor {{ vacancy.user.companyname }}</h1></span>
-                    <span><h3>Niveau: {{ vacancy.level }}{{ vacancy.location }}</h3></span> 
-                </div>
-            </div>
-            <div class="grid-x grid-padding-x">
-                <div class="small-3 medium-2 large-2">
-                    {{ vacancy.user.profilepictureurl }}
-                </div>
-                <div class="small-9 medium-10 large-10">
-                    <span><h5>{{ vacancy.jobdescription }}</h5></span>
+                <div class="small-12 medium-12 large-12">
+                    <img src="{{ vacancy.user.profilepictureurl }}">
                 </div>
             </div>
-            {# <div class="grid-x grid-padding-x">
-                <div class="small-3 medium-2 large-2">
-                    {# <span><h1><strong>PIJL</strong></h1></span> #}
-                {# </div>
-                <div class="small-9 medium-10 large-10">
-                    <span><h3><strong>SOLLICITEER DIRECT!</strong></h3></span>
-                <div> #}
-            {# <div class="grid-x grid-padding-x">
-                <div class="small-3 medium-2 large-2">
+
+            <div class="small-1 medium-1 large-1">
+            </div>
+
+            <div class="small-9 medium-9 large-9">
+                <br><span><h5>{{ vacancy.vacancydate }}</h5></span>
+                <span><h2>{{ vacancy.function }} voor {{ vacancy.user.companyname }}</h2></span>
+
+                <div class="grid-x">
+                    <div class="small-9 medium-9 large-9">
+                        <span class><h5>Niveau: {{ vacancy.level }}</h5></span>
+                    </div>
+                    <div class="small-3 medium-3 large-3">
+                        </span><span><h5>{{ vacancy.location }}</h5></span> 
+                    </div>
                 </div>
-                <div class="small-9 medium-10 large-10">
-                    <span><h4>MEER VACATURES VAN {{ vacancy.user.companyname }}</h4></span>
-                    <table id="table_id" class="display">
-                        <thead>
-                            <tr>
-                                <th>Date</th>
-                                <th>Vacancy</th>
-                                <th>Level</th>
-                            </tr>
-                        </thead> 
-                        <tbody>
-                            {% for vacancy in vacancies %}
-                                <tr>
-                                    <td>{{ vacancy.vacancydate }}</td>
-                                    <td>{{ vacancy.function }}</td>
-                                    <td>{{ vacancy.level }}</td>
-                                </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
-                </div>
-            </div> #}
+                
+                <span><h2>{{ vacancy.jobdescription }}</h2></span>
+
+                {# IF USER IS CANDIDATE DAN SOLLICITEER DIRECT - IF USER IS EMPLOYER + OWNER --> Edit vacancy! #}
+
+            </div>
+        </div>
+
+        <div class="grid-x grid-padding-x">
+            <div class="small-3 medium-3 large-3">
+            </div>
+
+            <div class="small-9 medium-9 large-9">
+
     </div>
-   
+     
 {% endblock %}

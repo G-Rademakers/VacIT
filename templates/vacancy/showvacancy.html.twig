@@ -18,22 +18,49 @@
             </div>
 
             <div class="small-9 medium-9 large-9">
-                <br><span><h5>{{ vacancy.vacancydate }}</h5></span>
+                <br><span><h6>{{ vacancy.vacancydate }}</h6></span>
                 <span><h2>{{ vacancy.function }} voor {{ vacancy.user.companyname }}</h2></span>
 
                 <div class="grid-x">
-                    <div class="small-9 medium-9 large-9">
-                        <span class><h5>Niveau: {{ vacancy.level }}</h5></span>
+                    <div class="small-10 medium-10 large-10">
+                        <div>
+                            <span class='leveltitle'>Niveau: </span><span class='levelstyle'>{{ vacancy.level }}</span>
+                        </div>
                     </div>
-                    <div class="small-3 medium-3 large-3">
-                        </span><span><h5>{{ vacancy.location }}</h5></span> 
+                    <div class="small-2 medium-2 large-2">
+                        <div>
+                            <i class="fas fa-map-marker-alt" style="font-size: 2rem; color: #F15A24"></i><span class="locationstyle"> {{ vacancy.location }} </span>
+                        </div>
                     </div>
                 </div>
                 
-                <span><h2>{{ vacancy.jobdescription }}</h2></span>
+                <br>
+                <div class="descriptionstyle">
+                    {{ vacancy.jobdescription }} 
+                    {# <textarea class="content" name="example"></textarea> #}
+                </div>
+            </div>
+        </div>
 
-                {# IF USER IS CANDIDATE DAN SOLLICITEER DIRECT - IF USER IS EMPLOYER + OWNER --> Edit vacancy! #}
+        <div class="grid-x grid-padding-x">
+            <div class="small-2 medium-2 large-2">
+            </div>
 
+            <div class="small-1 medium-1 large-1 ">
+                <button type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" class="btn btn-succes; right" style="font-size: 3rem; color: #F15A24; "><i class="fas fa-arrow-right"></i></button>
+            </div>
+
+            <div class="small-9 medium-9 large-9">
+                {% if is_granted('ROLE_CANDIDATE') %}
+                    <button type="submit" id="_submit" name="_submit" class="btn btn-succes" style="font-family: bebas_neueregular; font-size: 3rem; color: #F15A24">SOLLICITEER DIRECT</i></button>
+                
+                {% elseif is_granted('ROLE_EMPLOYER') and app.user == vacancy.user %}
+                    <button type="submit" id="_submit" name="_submit" class="btn btn-succes" style="font-family: bebas_neueregular; font-size: 3rem; color: #F15A24">Edit Vacancy</i></button>
+
+                {% else %}
+                    {# Dit zou in andere gevallen leeg blijven! #}
+                    
+                {% endif %}
             </div>
         </div>
 
@@ -42,7 +69,30 @@
             </div>
 
             <div class="small-9 medium-9 large-9">
-
-    </div>
-     
+                <div>
+                    <br><span class='vacanciesstyle'>Meer Vacatures Van </span><span class='company'>{{ vacancy.user.companyname }}</span>
+                </div>
+                <div>
+                    <br><table id="table_id" class="vacanciestable">
+                        <thead>
+                            <tr>
+                                <th>Datum</th>
+                                <th>Vacature</th>
+                                <th>Niveau</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for data in vacancies %}
+                                <tr>
+                                    <td>{{ data.vacancydate }}</td>
+                                    <td>{{ data.function}}</td>
+                                    <td>{{ data.level}}</td>
+                                </tr> 
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                 </div>
+            </div>
+        </div>
+    </div>   
 {% endblock %}

@@ -1,20 +1,47 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ApplicationController!{% endblock %}
+{% block title %}Mijn Sollicitaties{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    <div class="grid-container grid-container-padding">
+        <div class="grid-x grid-padding-x">
+            <div class="small-2 medium-2 large-2">
+                <br>
+                    <img src="{{ user.profilepictureurl }}">
+                </br>
+            </div>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+            <div class="small-1 medium-1 large-1">
+            </div>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/glenn/VacIT/src/Controller/ApplicationController.php'|file_link(0) }}">src/Controller/ApplicationController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/glenn/VacIT/templates/application/index.html.twig'|file_link(0) }}">templates/application/index.html.twig</a></code></li>
-    </ul>
-</div>
+            <div class="small-9 medium-9 large-9">
+                <br>
+                    <div class="titlestyle">Mijn Sollicitaties</div>
+                </br>
+                    <table id="table_id" class="myapplicationstable">
+                        <thead>
+                            <tr>
+                                <th>Datum</th>
+                                <th>Vacature</th>
+                                <th>Bedrijf</th>
+                                <th>Uitgenodigd</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for application in applications %}
+                                <tr>
+                                    <td>{{ application.vacancy.vacancydate|date("d/m/Y") }}</td>
+                                    <td>{{ application.vacancy.function}}</td>
+                                    <td>{{ application.vacancy.user.companyname}}</td>
+                                    <td>{% if application.invited == 1 %}
+                                        <i class="fas fa-check"></i></td>                             
+                                    {% endif %}
+                                </tr> 
+                            {% endfor %}
+                        </tbody>
+                    </table><br><br>
+            </div>
+        </div>
+    </div>
 {% endblock %}
+

@@ -57,10 +57,10 @@ class ApplicationService
         return($result);
     }
 
-    public function switchInterest($id)
+    public function switchInvitation($id)
     {
         $application = $this->em->getRepository(Application::class);
-        $result = $application->switchInterest($id);
+        $result = $application->switchInvitation($id);
         return($result);
     }
 }

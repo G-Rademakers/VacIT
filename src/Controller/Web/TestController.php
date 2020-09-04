@@ -257,11 +257,10 @@ class TestController extends AbstractController
     */
     public function saveApplication()
     {
-        $date = new \DateTime('@'.strtotime('now'));
         $params = array(
-            "user_id" => 8,
-            "vacancy_id" => 7,
-            "application_date" =>$date,
+            "user_id" => 5,
+            "vacancy_id" => 14,
+            "application_date" =>"2020-09-04",
             "invited" => false
         );
 

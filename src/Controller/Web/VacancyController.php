@@ -152,15 +152,16 @@ class VacancyController extends AbstractController
     public function addVacancy(VacancyService $vs)
     {
         $user = $this->getUser();  
-        $params = array(
-            "user_id" => 9,
-            "platform_id" => 1,
-            "function" => "Scrum Master",
-            "level" => "Medior",
-            "location" => "Eindhoven",
-            "job_description" => "Speaks for itself",
-            "logo" => null,
-        );
+        // $params = array(
+        //     "user_id" => 26,
+        //     "platform_id" => 1,
+        //     "function" => "Scrum Master",
+        //     "level" => "Medior",
+        //     "location" => "Sittard",
+        //     "job_description" => "Speaks for itself",
+        //     "logo" => null,
+        //     "vacancy_date" => "2020-09-04"
+        // );
 
         if($user)
         {

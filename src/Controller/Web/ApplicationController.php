@@ -38,7 +38,7 @@ class ApplicationController extends AbstractController
             if(in_array('ROLE_CANDIDATE', $user->getRoles()))
             { 
                 $applications = $as->getApplicationsByUser($user);
-
+                
                 return $this->render('application/myapplications.html.twig', [
                     'controller_name' => 'MyApplicationsController',
                     'applications' => $applications,
@@ -61,9 +61,9 @@ class ApplicationController extends AbstractController
     }
 
      /**
-     * @Route("/application/interest/{id}", name="application_interest")
+     * @Route("/application/invitation/{id}", name="application_invitation")
      */
-    public function switchInterest(ApplicationService $as, 
+    public function switchInvitation(ApplicationService $as, 
                                    VacancyService $vs, $id)
     {
         $user = $this->getUser();
@@ -72,7 +72,7 @@ class ApplicationController extends AbstractController
 
         if($user == $vacancy->getUser() or in_array('ROLE_ADMIN', $user->getRoles()))
         {
-            $application = $as->switchInterest($id);
+            $application = $as->switchInvitation($id);
 
             return $this->render('application/myapplicants.html.twig', [
                 'controller_name' => 'MyApplicantsController',
@@ -80,7 +80,7 @@ class ApplicationController extends AbstractController
                 'vacancy' => $vacancy,
                 'applicants' => $applicants]);
         }
-        return new response('false');
+        return new response('No Access');
     }
 
      /**

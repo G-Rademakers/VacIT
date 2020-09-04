@@ -15,6 +15,7 @@
         <link rel="stylesheet" href="{{ asset('assets/css/main.css')}}">
         <link rel="stylesheet" href="{{ asset('assets/css/loginregistration.css')}}">
         <link rel="stylesheet" href="{{ asset('assets/css/vacancypage.css')}}">
+        <link rel="stylesheet" href="{{ asset('assets/css/myapplicationspage.css')}}">
         
         {% endblock %}
     
@@ -24,7 +25,16 @@
         <script src="{{ asset('assets/js/all.js')}}"></script>
         <script src="{{ asset('assets/js/jquery.richtext.min.js')}}"></script>
         <script type="text/javascript" src="https://cdn.datatables.net/v/zf/dt-1.10.21/datatables.min.js"></script>
-        <script>$(document).ready(function(){$('#table_id').DataTable();});</script>
+        <script>$(document).ready(function(){$('#table_id').DataTable(
+            {
+                "paging": false,
+                "searching": false,
+                "info": false,
+                "ordering": false
+            });
+        });</script>
+    
+
 
     </head>
     <body>

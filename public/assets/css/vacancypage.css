@@ -1,3 +1,8 @@
+.datestyle{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+}
+
 .leveltitle{
     font-family: 'bebas_neueregular';
     font-size: 24px;
@@ -19,7 +24,7 @@
 
 .descriptionstyle{
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 16;
+    font-size: 4;
 }
 
 .right{
@@ -52,6 +57,7 @@
     border-left: solid white 1px;
     border-right: solid white 1px;
     border-top: solid white 1px;
+    text-align: left;
 }
 
 .vacanciestable tbody tr{
@@ -63,6 +69,7 @@
     border-left: solid white 1px;
     border-right: solid white 1px;
     border-top: solid white 1px;
+    text-align: left;
 }
 
 .vacanciestable tbody td:nth-of-type(odd){
@@ -71,4 +78,8 @@
 
 .vacanciestable tbody td:nth-of-type(even){
     color: #F15A24;
+}
+
+.dataTables_wrapper.dataTables_filter{
+    visibility: hidden;
 }

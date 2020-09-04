@@ -34,13 +34,13 @@ class ApplicationRepository extends ServiceEntityRepository
             $userRepository = $em->getRepository(User::class);
             $vacancyRepository = $em->getRepository(Vacancy::class);
 
-            $user = $userRepository->find($params["user"]);
-            $vacancy = $vacancyRepository->find($params["vacancy"]);
+            $user = $userRepository->find($params["user_id"]);
+            $vacancy = $vacancyRepository->find($params["vacancy_id"]);
 
-            $application->setUser($params["user"]);
-            $application->setVacancy($params["vacancy"]);
+            $application->setUser($user);
+            $application->setVacancy($vacancy);
             $application->setInvited(false);
-            $application->setApplicationDate(new \DateTime('@'.strtotime('now')));
+            $application->setApplicationDate($params["application_date"]);
 
             $em->persist($application);
             $em->flush();
@@ -87,7 +87,7 @@ class ApplicationRepository extends ServiceEntityRepository
         return($applications);
     }
 
-    public function switchInterest($id)
+    public function switchInvitation($id)
     {
         $application = $this->find($id);
         

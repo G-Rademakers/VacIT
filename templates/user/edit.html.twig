@@ -1,20 +1,30 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello UserController!{% endblock %}
+{% block title %}Mijn Profiel{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    <div class="grid-container grid-container-padding">
+        <div class="grid-x grid-padding-x">
+            <div class="small-2 medium-2 large-2">
+                <br><img src="{{ user.profilepictureurl }}">
+            </div>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+            <div class="small-1 medium-1 large-1">
+            </div>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/glenn/VacIT/src/Controller/UserController.php'|file_link(0) }}">src/Controller/UserController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/glenn/VacIT/templates/user/index.html.twig'|file_link(0) }}">templates/user/index.html.twig</a></code></li>
-    </ul>
-</div>
+            <div class="small-9 medium-9 large-9"> 
+                <br><h2 style="font-family:bebas_neueregular; color: #F15A24">Mijn Profiel</h2>
+
+                 <label>Company Name</label> 
+                <span class="display">{{ user.companyname }}</span><br>
+
+                 <br><label>Contactperson</label> 
+                <span class="display">{{ user.firstname }} {{ user.lastname }}</span><br>
+
+           
+
+
+            </div>
+        </div>
+    </div>
 {% endblock %}

@@ -73,14 +73,17 @@ class ApplicationController extends AbstractController
         if($user == $vacancy->getUser() or in_array('ROLE_ADMIN', $user->getRoles()))
         {
             $application = $as->switchInvitation($id);
+            dump($application);
+            die();
 
-            return $this->render('application/myapplicants.html.twig', [
-                'controller_name' => 'MyApplicantsController',
-                'user' => $user,
-                'vacancy' => $vacancy,
-                'applicants' => $applicants]);
+            // return $this->render('application/myapplicants.html.twig', [
+            //     'controller_name' => 'MyApplicantsController',
+            //     'user' => $user,
+            //     'vacancy' => $vacancy,
+            //     'applicants' => $applicants,
+            //     'application' => $application]);
         }
-        return new response('No Access');
+        // return new response('No Access');
     }
 
      /**

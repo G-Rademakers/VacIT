@@ -16,7 +16,7 @@
 
             <div class="small-9 medium-9 large-9">
                 <br>
-                <div class="titlestyle">Mijn Sollicitaties</div>
+                <div class="titlestyle">Mijn Sollicitanten</div>
                 </br>
                     <table id="table_id" class="myapplicationstable">
                         <thead>
@@ -30,19 +30,17 @@
                         <tbody>
                             {% for applicant in applicants|sort((a, b) => a.vacancy.function <=> b.vacancy.function) %}
                             <tr>
-                                <td>{{ applicant.applicationdate }}</td>
+                                <td>{{ applicant.applicationdate|date("d/m/Y") }}</td>
                                 <td>{{ applicant.vacancy.function }}</td>
                                 <td>{{ applicant.user.lastname}}, {{ applicant.user.firstname}}</td>
-                                <td>{% if applicant.invited == 0 %}
-                                <a type="text" class="btn btn-success" <a href="application/invitation/{{applicant.id}}">
-                                Invite 
+                                <td>{% if applicant.invited == false %}
+                                <a type="button" class="btn btn-success" <a href="application/invitation/{{applicant.id}}">
+                                Invite
 
                                 {% else %}
-                                <a type="text" class="btn btn-success" <a href="application/invitation/{{applicant.id}}">
+                                <a type="button" class="btn btn-success" <a href="application/invitation/{{applicant.id}}">
                                 Uninvite
-                                {% endif %}</td>
-
-                            
+                                {% endif %}
                             </tr>
                             {% endfor %}
                         </tbody>

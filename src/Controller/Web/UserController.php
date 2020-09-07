@@ -50,48 +50,22 @@ class UserController extends AbstractController
 
         if($user)
         {
-            if(in_array('ROLE_CANDIDATE', $user->getRoles()) or in_array('ROLE_ADMIN', $user->getRoles()))
+            $profile = $us->findUserByID($id);
+
+            if(in_array('ROLE_EMPLOYER', $profile->getRoles()))
             {
-                $company = $us->findUserByID($id);
-
-                if(in_array('ROLE_EMPLOYER', $company->getRoles()))
-                {
-                    return $this->render('user/employer.html.twig', [
-                        'controller_name' => 'EmployerController', 
-                        'user'=>$user,
-                        'company'=>$company]);
-                }
-
-                else
-                {
-                    return new response("No access to applicant profiles!");
-                }
-            }
-
-            elseif(in_array('ROLE_EMPLOYER', $user->getRoles()) or in_array('ROLE_ADMIN', $user->getRoles()))
-            {
-                $profile = $us->findUserByID($id);
-
-                if(in_array('ROLE_EMPLOYER', $profile->getRoles()))
-                {
-                    return $this->render('user/employer.html.twig', [
-                        'controller_name' => 'EmployerController', 
-                        'user'=>$user,
-                        'profile'=>$profile]);
-                }
-
-                elseif(in_array('ROLE_CANDIDATE', $profile->getRoles()))
-                {
-                    return $this->render('user/applicant.html.twig', [
-                        'controller_name' => 'ApplicantController', 
-                        'user'=>$user,
-                        'profile'=>$profile]);
-                }
+                return $this->render('user/employer.html.twig', [
+                    'controller_name' => 'EmployerController', 
+                    'user'=>$user,
+                    'profile'=>$profile]);
             }
 
             else
             {
-                return new response('User is not known');
+                return $this->render('user/applicant.html.twig', [
+                    'controller_name' => 'EmployerController', 
+                    'user'=>$user,
+                    'profile'=>$profile]);
             }
         }
     }
@@ -104,16 +78,16 @@ class UserController extends AbstractController
         $user = $this->getUser();
         $user_confirmation = $us->findUserByID($id);
         $params = array(
-            "id" => 15,
-            "first_name" => "Christel",
+            "id" => $id,
+            "first_name" => "Glenn",
             "last_name" => "Rademakers",
             "company_name" => "",
-            "address" => "Beekstraat 4",
-            "zipcode" => "6451CD",
+            "address" => "Beekstraat 2",
+            "zipcode" => "6451CC",
             "city" => "Schinveld",
-            "phone_number" => "032452313",
-            "date_of_birth" => "1959-03-10",
-            "description" => "Nieuwe Uitdaging etc",
+            "phone_number" => "0654617099",
+            "date_of_birth" => "1991-08-02",
+            "description" => "Hier komt wederom een lang verhaal over ideeen, dromen en toekomst",
             "profile_picture_url" => "",
             "cv_url" => "",
             "type" => "A"

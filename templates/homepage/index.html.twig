@@ -1,20 +1,46 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomepageController!{% endblock %}
+{% block title %}Welcome to VacIT!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    <div class="grid-container grid-container-padding">
+        <div class="grid-x grid-padding-x">
+            <div class="medium-2 large-2">
+            </div>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+            <div class="medium-1 large-1">
+            </div>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/glenn/VacIT/src/Controller/HomepageController.php'|file_link(0) }}">src/Controller/HomepageController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/glenn/VacIT/templates/homepage/index.html.twig'|file_link(0) }}">templates/homepage/index.html.twig</a></code></li>
-    </ul>
-</div>
+            <div class="small-12 medium-9 large-9"> 
+                {% for vacancy in vacancies %}
+                    <div class="grid-x grid-x-padding">
+                        <div class="small-3 medium-3 large-3">
+                            <br><img src="{{ vacancy.platform.iconurl }}"><br><br>
+                        </div>
+
+                        <div class="small-1 medium-1 large-1">
+                        </div>
+
+                        <div class="small-8 medium-6 large-6">
+                            <br><div class="vacancydatetext">{{ vacancy.vacancydate }}</div>
+                            <div class="functiontext">{{vacancy.function}} voor {{vacancy.user.companyname}}</div>
+                            <div class="descriptiontext">{{vacancy.jobdescription}}</div>
+                        </div>
+
+                        <div class="medium-1 large-1">
+                        </div>
+
+                        <div class="medium-1 large-1">
+                            <br><button type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" class="btn btn-succes; right" style="font-size: 3rem; color: #F15A24; "><i class="fas fa-arrow-right"></i></button>
+                        </div>
+
+
+
+                    </div>
+
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
 {% endblock %}

@@ -12,16 +12,118 @@
             <div class="small-1 medium-1 large-1">
             </div>
 
-            <div class="small-9 medium-9 large-9"> 
+            <div class="small-9 medium-9 large-9 profile-edit"> 
                 <br><h2 style="font-family:bebas_neueregular; color: #F15A24">Mijn Profiel</h2>
 
-                 <label>Company Name</label> 
-                <span class="display">{{ user.companyname }}</span><br>
+                {% if is_granted('ROLE_EMPLOYER') %}
+                    <label>Company Name</label> 
+                        <input type="text" id="companyname" name="companyname" value="{{ user.companyname }}"/>
 
-                 <br><label>Contactperson</label> 
-                <span class="display">{{ user.firstname }} {{ user.lastname }}</span><br>
+                    <br><label>Contactperson</label> 
+                        <input type="text" id="contactperson" name="contactperson" value="{{ user.lastname }}, {{ user.firstname}}"/>
 
-           
+                    <br><label>Email</label> 
+                        <input type="text" id="email" name="email" value="{{ user.email }}"/>
+
+                    <div class="grid-x grid-x-padding">
+                        <div class="small-3 medium-3 large-3"> 
+                            <br><label>Adres</label> 
+                                <input type="text" id="address" name="address" value="{{ user.address }}"/>
+                        </div>
+
+                        <div class="small-1 medium-1 large-1">
+                        </div>
+
+                        <div class="small-8 medium-8 large-8"> 
+                            <br><label>Telefoonnummer</label>
+                                <input type="text" id="phonenumber" name="phonenumber" value="{{ user.phonenumber }}"/>
+                        </div>
+                    </div>
+
+                    <div class="grid-x grid-x-padding">
+                        <div class="small-3 medium-3 large-3"> 
+                            <br><label>Postcode</label> 
+                                <input type="text" id="zipcode" name="zipcode" value="{{ user.zipcode }}"/>
+                        </div>
+
+                        <div class="small-1 medium-1 large-1">
+                        </div>
+
+                        <div class="small-8 medium-8 large-8"> 
+                            <br><label>Plaats</label>
+                                <input type="text" id="location" name="location" value="{{ user.city }}"/>
+                        </div>
+                    </div>
+
+                {% else %}
+                    <div class="grid-x grid-x-padding">
+                        <div class="small-3 medium-3 large-3"> 
+                            <label>Voornaam</label> 
+                                <input type="text" id="firstname" name="firstname" value="{{ user.firstname }}"/>
+                        </div>
+
+                        <div class="small-1 medium-1 large-1">
+                        </div>
+
+                        <div class="small-8 medium-8 large-8"> 
+                            <label>Achternaam</label>
+                                <input type="text" id="lastname" name="lastname" value="{{ user.lastname }}"/>
+                        </div>
+                    </div>
+
+                    <br><label>Email</label>
+                        <input type="text" id="email" name="email" value="{{ user.email }}"/>
+
+                    
+                    <div class="grid-x grid-x-padding">
+                        <div class="small-3 medium-3 large-3"> 
+                            <br><label>Geboortedatum</label> 
+                            <input type="text" id="dateofbirth" name="dateofbirth" value="{{ user.dateofbirth }}"/>
+                        </div>
+
+                        <div class="small-1 medium-1 large-1">
+                        </div>
+
+                        <div class="small-8 medium-8 large-8"> 
+                            <br><label>Telefoonnummer</label>
+                            <input type="text" id="phonenumber" name="phonenumber" value="{{ user.phonenumber }}"/>
+                        </div>
+                    </div>
+
+                    <br><label>Adres</label>
+                        <input type="text" id="address" name="address" value="{{ user.address }}"/>
+
+                    
+                    <br><div class="grid-x grid-x-padding">
+                        <div class="small-3 medium-3 large-3"> 
+                            <br><label>Postcode</label> 
+                                <input type="text" id="zipcode" name="zipcode" value="{{ user.zipcode }}"/>
+                        </div>
+
+                        <div class="small-1 medium-1 large-1">
+                        </div>
+
+                        <div class="small-8 medium-8 large-8"> 
+                            <br><label>Woonplaats</label>
+                                <input type="text" id="location" name="location" value="{{ user.city }}"/>
+                        </div>
+                    </div>
+                {% endif %}
+
+                    <br><h2 style="font-family:bebas_neueregular; color: #F15A24">Motivatie</h2>
+                    <span><textarea class="richtext" name="example">{{ profile.description }}</textarea></span> 
+                        {# See: https://github.com/webfashionist/RichText/blob/master/examples/fontawesome5.html #}
+
+                {% if is_granted('ROLE_CANDIDATE') %}
+                    <br><span><button type="submit" id="_submit" name="_submit" class="btn btn-succes" style="font-size: 2.5rem; color: #F15A24"><i class="fas fa-file-pdf"></i></span>
+                    <span style="font-size: 1rem; color: black">Upload CV</button></span>
+                {% endif %}
+
+                <span><button type="submit" id="_submit" name="_submit" class="btn btn-succes, right" style="font-family: bebas_neueregular; font-size: 3rem; color: #F15A24">Opslaan</i></button>
+                <button type="submit" id="_submit" name="_submit" class="btn btn-succes; right" style="font-size: 3rem; color: #F15A24; "><i class="fas fa-arrow-right"></i></button></span><br><br>
+
+
+
 
 
             </div>

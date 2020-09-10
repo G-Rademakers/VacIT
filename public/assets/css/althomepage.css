@@ -1,0 +1,38 @@
+.althomepagetable{
+    color: black;
+    border: transparent none; 
+}
+
+.althomepagetable thead tr{
+    font-family: 'bebas_neueregular';
+    font-size: 20px;
+    background-color: white;
+    border-left: solid white 1px;
+    border-right: solid white 1px;
+    border-top: solid white 1px;
+    text-align: left;
+}
+
+.althomepagetable tbody tr{
+    background-color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    font-weight: bold;
+    border-bottom: solid #333333 2px;
+    border-left: solid white 1px;
+    border-right: solid white 1px;
+    border-top: solid white 1px;
+    text-align: left;
+}
+
+.althomepagetable tbody td:nth-of-type(odd){
+    color: grey;
+}
+
+.althomepagetable tbody td:nth-of-type(even){
+    color: #F15A24;
+}
+
+.dataTables_wrapper.dataTables_filter{
+    visibility: hidden;
+}

@@ -4,32 +4,32 @@
 
 {% block body %}
     
-    <table id="table_id" class="display">
+    <table id="table_id" class="althomepagetable">
         <thead>
             <tr>
                 <th>Datum</th>
-                <th>Bedrijf</th>
                 <th>Functie</th>
-                <th>Niveau</th>
+                <th>Bedrijf</th>
                 <th>Locatie</th>
+                <th>Niveau</th>
                 <th>Platform</th>
             </tr>
         </thead>
         <tbody>
         {% for vacancy in vacancies %}
             <tr>
-                <td>{{ vacancy.vacancydate }}</td>
+                <td>{{ vacancy.vacancydate|date("d/m/Y") }}</td>
+                <td>{{ vacancy.function }}</td> 
                 <td>{{ vacancy.user.companyname}}</td>
-                <td>{{ vacancy.function }}</td>
-                <td>{{ vacancy.level }}</td>
                 <td>{{ vacancy.location}}</td>
+                <td>{{ vacancy.level }}</td>
                 <td>{{ vacancy.platform.name}}</td>
             </tr>
         
       
         {% endfor %}
         </tbody>
-    </table>
+    </table><br>
 
                 
 {% endblock %}

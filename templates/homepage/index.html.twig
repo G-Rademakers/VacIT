@@ -3,42 +3,49 @@
 {% block title %}Welcome to VacIT!{% endblock %}
 
 {% block body %}
-    <div class="grid-container grid-container-padding">
-        <div class="grid-x grid-padding-x">
-            <div class="medium-2 large-2">
-            </div>
+    <div class="orangebackground">
+        <div class="grid-container grid-container-padding">
+            <div class="grid-x grid-padding-x">
+                <div class="medium-2 large-2">
+                </div>
 
-            <div class="medium-1 large-1">
-            </div>
+                <div class="medium-1 large-1">
+                </div>
 
-            <div class="small-12 medium-9 large-9"> 
-                {% for vacancy in vacancies %}
-                    <div class="grid-x grid-x-padding">
-                        <div class="small-3 medium-3 large-3">
-                            <br><img src="{{ vacancy.platform.iconurl }}"><br><br>
+                <div class="small-12 medium-9 large-9"> 
+                    {% for vacancy in vacancies %}
+                        <div class="grid-x grid-x-padding">
+                            <div class="small-2 medium-2 large-2">
+                                <br><br><br><div class="part">
+                                    <div class="hexa">
+                                        <div class="hex1">
+                                            <div class="hex2">
+                                                <img src="{{ vacancy.platform.iconurl }}"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="small-1 medium-2 large-2">
+                            </div>
+
+                            <div class="small-10 medium-7 large-7">
+                                <br><br><br><div class="vacancydatetext">{{ vacancy.vacancydate }}</div>
+                                <div class="functiontext">{{vacancy.function}} voor {{vacancy.user.companyname}}</div>
+                                <div class="descriptiontext">{{ vacancy.jobdescription |striptags|length > 200 ? vacancy.jobdescription|striptags|slice(0, 200) ~ '...' : vacancy.jobdescription|striptags }}</div>
+                            </div>
+
+                            <div class="medium-1 large-1">
+                                <br><button type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" class="btn btn-succes; right" style="font-size: 3rem; color: white; "><i class="fas fa-arrow-right"></i></button>
+                            </div>
+
+
+
                         </div>
 
-                        <div class="small-1 medium-1 large-1">
-                        </div>
-
-                        <div class="small-8 medium-6 large-6">
-                            <br><div class="vacancydatetext">{{ vacancy.vacancydate }}</div>
-                            <div class="functiontext">{{vacancy.function}} voor {{vacancy.user.companyname}}</div>
-                            <div class="descriptiontext">{{vacancy.jobdescription}}</div>
-                        </div>
-
-                        <div class="medium-1 large-1">
-                        </div>
-
-                        <div class="medium-1 large-1">
-                            <br><button type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" class="btn btn-succes; right" style="font-size: 3rem; color: #F15A24; "><i class="fas fa-arrow-right"></i></button>
-                        </div>
-
-
-
-                    </div>
-
-                {% endfor %}
+                    {% endfor %}
+                </div>
             </div>
         </div>
     </div>

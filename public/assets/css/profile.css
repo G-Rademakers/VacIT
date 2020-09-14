@@ -26,7 +26,7 @@
 }
 
 .profile-edit input{
-    width: 525px;
+    width: 100%;
     font-family: 'robotocondensed';
     font-size: 32px;
     box-shadow: none;

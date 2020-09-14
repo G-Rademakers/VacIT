@@ -10,13 +10,9 @@
         <link rel="stylesheet" href="{{ asset('assets/css/all.css')}}">
         <link rel="stylesheet" href="{{ asset('assets/css/stylesheetBBN.css')}}">
         <link rel="stylesheet" href="{{ asset('assets/css/stylesheetRC.css')}}">
-        <link rel="stylesheet" href="{{ asset('assets/css/richtext.min.css')}}">
         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/zf/dt-1.10.21/datatables.min.css"/>                
         <link rel="stylesheet" href="{{ asset('assets/css/main.css')}}">
         <link rel="stylesheet" href="{{ asset('assets/css/loginregistration.css')}}">
-        <link rel="stylesheet" href="{{ asset('assets/css/vacancypage.css')}}">
-        <link rel="stylesheet" href="{{ asset('assets/css/myapplicationspage.css')}}">
-        <link rel="stylesheet" href="{{ asset('assets/css/profile.css')}}">
         <link rel="stylesheet" href="{{ asset('assets/css/althomepage.css')}}">
         <link rel="stylesheet" href="{{ asset('assets/css/homepage.css')}}">
         
@@ -26,7 +22,6 @@
         <script src="{{ asset('assets/js/foundation.js')}}"></script>
         <script src="{{ asset('assets/js/vendor.js')}}"></script>
         <script src="{{ asset('assets/js/all.js')}}"></script>
-        <script src="{{ asset('assets/js/jquery.richtext.js')}}"></script>
         <script type="text/javascript" src="https://cdn.datatables.net/v/zf/dt-1.10.21/datatables.min.js"></script>
         <script>$(document).ready(function(){$('#table_id').DataTable(
             {
@@ -53,11 +48,9 @@
 
         <div class="layout">
             <div class="grid-x grid-padding-x">
-                <div class="small-3 medium-3 large-3">
-                    {% block logo %}
-                    {% endblock %}
+                <div class="small-1 medium-1 large-1">
                 </div>
-                <div class="small-8 medium-8 large-8">
+                <div class="small-10 medium-10 large-10">
                     {% block content %}
                     {% endblock %}
                 </div>

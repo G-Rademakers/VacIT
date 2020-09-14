@@ -29,14 +29,24 @@
 
 .right{
     float: right;
-    margin-right: 10px;
-    
+    margin-right: 10px;    
+}
+
+.left{
+    float:left;
+    margin-left: -60px;
+}
+
+.lefttable{
+    float:left;
+    margin-left: 5px;
 }
 
 .vacanciesstyle{
     font-family: 'bebas_neueregular';
     font-size: 24px;
     color: black;
+    margin-left: 15px;
 }
 
 .company{
@@ -48,6 +58,7 @@
 .vacanciestable{
     color: black;
     border: transparent none; 
+    margin-left: 100px;
 }
 
 .vacanciestable thead tr{
@@ -57,7 +68,6 @@
     border-left: solid white 1px;
     border-right: solid white 1px;
     border-top: solid white 1px;
-    text-align: left;
 }
 
 .vacanciestable tbody tr{
@@ -69,7 +79,6 @@
     border-left: solid white 1px;
     border-right: solid white 1px;
     border-top: solid white 1px;
-    text-align: left;
 }
 
 .vacanciestable tbody td:nth-of-type(odd){
@@ -83,3 +92,6 @@
 .dataTables_wrapper.dataTables_filter{
     visibility: hidden;
 }
+
+
+

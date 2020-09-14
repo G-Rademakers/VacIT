@@ -2,46 +2,51 @@
 
 {% block title %}Mijn Sollicitaties{% endblock %}
 
-{% block body %}
-    <div class="grid-container grid-container-padding">
-        <div class="grid-x grid-padding-x">
-            <div class="small-2 medium-2 large-2">
-                <br>
-                    <img src="{{ user.profilepictureurl }}">
-                </br>
-            </div>
 
-            <div class="small-1 medium-1 large-1">
-            </div>
-
-            <div class="small-9 medium-9 large-9">
-                <br>
-                    <div class="titlestyle">Mijn Sollicitaties</div>
-                </br>
-                    <table id="table_id" class="myapplicationstable">
-                        <thead>
-                            <tr>
-                                <th>Datum</th>
-                                <th>Vacature</th>
-                                <th>Bedrijf</th>
-                                <th>Uitgenodigd</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {% for application in applications %}
-                                <tr>
-                                    <td>{{ application.vacancy.vacancydate|date("d/m/Y") }}</td>
-                                    <td>{{ application.vacancy.function}}</td>
-                                    <td>{{ application.vacancy.user.companyname}}</td>
-                                    <td>{% if application.invited == 1 %}
-                                        <i class="fas fa-check"></i></td>                             
-                                    {% endif %}
-                                </tr> 
-                            {% endfor %}
-                        </tbody>
-                    </table><br><br>
-            </div>
+{% block logo %}
+    <div class="grid-x">
+        <div class="small-3 medium-3 large-3"></div>
+        <div class="small-6 medium-6 large-6">
+            <br>
+                <img src="{{ user.profilepictureurl }}">
+            </br>
         </div>
+        <div class="small-3 medium-3 large-3"></div>
     </div>
+{% endblock %}
+
+
+{% block content %}
+    <div class="grid-x">
+        <div class="small-12 medium-12 large-12">
+            <br>
+                <div class="titlestyle">Mijn Sollicitaties</div>
+            </br>
+        </div>
+
+        <div class="small-12 medium-12 large-12">
+            <table id="table_id" class="myapplicationstable">
+                <thead>
+                    <tr>
+                        <th>Datum</th>
+                        <th>Vacature</th>
+                        <th>Bedrijf</th>
+                        <th>Uitgenodigd</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for application in applications|sort((a, b) => a.vacancydate <=> b.vacancydate) %}
+                        <tr>
+                            <td>{{ application.vacancy.vacancydate|date("d/m/Y") }}</td>
+                            <td>{{ application.vacancy.function}}</td>
+                            <td>{{ application.vacancy.user.companyname}}</td>
+                            <td>{% if application.invited == 1 %}
+                                <i class="fas fa-check" style=" font-size: 2rem"></i></td>                             
+                            {% endif %}
+                        </tr> 
+                    {% endfor %}
+                </tbody>
+            </table><br><br>
+        </div>
 {% endblock %}
 

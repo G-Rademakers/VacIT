@@ -2,73 +2,76 @@
 
 {% block title %}{{ vacancy.function }}{% endblock %}
 
-{% block body %}
-    <div class="grid-container grid-container-padding">
-        <div class="grid-x grid-padding-x">
-            <div class="small-2 medium-2 large-2">
-                <div class="small-12 medium-12 large-12">
-                    <br><img src="{{ vacancy.platform.iconurl }}">
-                </div>
-                <div class="small-12 medium-12 large-12">
-                    <img src="{{ vacancy.user.profilepictureurl }}">
-                </div>
-            </div>
+{% block logo %}
+    <div class="grid-x">
+        <div class="small-3 medium-3 large-3">
+        </div>
+        <div class="small-6 medium-6 large-6">
+            <br><img src="{{ vacancy.platform.iconurl }}">
+        </div>
+        <div class="small-3 medium-3 large-3">
+        </div>
+    </div>
+    <div class="grid-x">
+        <div class="small-3 medium-3 large-3">
+        </div>
+        <div class="small-6 medium-6 large-6">
+            <img src="{{ vacancy.user.profilepictureurl }}">
+        </div>
+        <div class="small-3 medium-3 large-3">
+        </div>
+    </div>
+{% endblock %}
 
-            <div class="small-1 medium-1 large-1">
-            </div>
+            
+{% block content %}
+    <div class="grid-x">
+        <div class="small-12 medium-12 large-12">
+            <br><span class="datestyle">{{ vacancy.vacancydate|date("d/m/Y") }}</span>
+            <span><h2>{{ vacancy.function }} voor {{ vacancy.user.companyname }}</h2></span>
+        </div>
+    </div>
 
-            <div class="small-9 medium-9 large-9">
-                <br><span class="datestyle">{{ vacancy.vacancydate }}</span>
-                <span><h2>{{ vacancy.function }} voor {{ vacancy.user.companyname }}</h2></span>
-
-                <div class="grid-x">
-                    <div class="small-10 medium-10 large-10">
-                        <div>
-                            <span class="leveltitle">Niveau: </span><span class='levelstyle'>{{ vacancy.level }}</span>
-                        </div>
-                    </div>
-                    <div class="small-2 medium-2 large-2">
-                        <div>
-                            <i class="fas fa-map-marker-alt" style="font-size: 2rem; color: #F15A24"></i><span class="locationstyle"> {{ vacancy.location }} </span>
-                        </div>
-                    </div>
-                </div>
-                
-                <br>
-                <div>
-                    <font size="2">{{ vacancy.jobdescription }}</font> 
-                    {# <textarea class="content" name="example"></textarea> #}
-                </div>
+    <div class="grid-x">
+        <div class="small-10 medium-10 large-10">
+            <div>
+                <span class="leveltitle">Niveau: </span><span class='levelstyle'>{{ vacancy.level }}</span>
             </div>
         </div>
-
-        <div class="grid-x grid-padding-x">
-            <div class="small-2 medium-2 large-2">
+        <div class="small-2 medium-2 large-2">
+            <div>
+                <span class="locationstyle right"><i class="fas fa-map-marker-alt" style="font-size: 2rem; color: #F15A24; right"></i> {{ vacancy.location }}</span>
             </div>
+        </div>
+            
+        <br>
 
-            <div class="small-1 medium-1 large-1 ">
-                <br><button type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" class="btn btn-succes; right" style="font-size: 3rem; color: #F15A24; "><i class="fas fa-arrow-right"></i></button>
-            </div>
+        <div>
+            <br><font size="2">{{ vacancy.jobdescription }}</font>
+        </div>
+    </div>
+          
+
+    <div class="grid-x">
+        <div class="small-1 medium-1 large-1 ">
+            <br><br><button type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" class="btn btn-succes; left" style="font-size: 3rem; color: #F15A24; "><i class="fas fa-arrow-right"></i></button>
+        </div>
  
-            <div class="small-9 medium-9 large-9">
-                {% if is_granted('ROLE_CANDIDATE') %}
-                    <br><button type="submit" id="_submit" name="_submit" class="btn btn-succes" style="font-family: bebas_neueregular; font-size: 3rem; color: #F15A24">SOLLICITEER DIRECT</i></button>
+        <div class="small-9 medium-9 large-9 left">
+            {% if is_granted('ROLE_CANDIDATE') %}
+                <br><br><button type="submit" id="_submit" name="_submit" class="btn btn-succes; left" style="font-family: bebas_neueregular; font-size: 3rem; color: #F15A24">SOLLICITEER DIRECT</i></button>
                 
-                {% elseif is_granted('ROLE_EMPLOYER') and app.user == vacancy.user %}
-                    <br><button type="submit" id="_submit" name="_submit" class="btn btn-succes" style="font-family: bebas_neueregular; font-size: 3rem; color: #F15A24">Edit Vacancy</i></button>
+            {% elseif is_granted('ROLE_EMPLOYER') and app.user == vacancy.user %}
+                <br><br><button type="submit" id="_submit" name="_submit" class="btn btn-succes; left" style="font-family: bebas_neueregular; font-size: 3rem; color: #F15A24">Edit Vacancy</i></button>
 
-                {% else %}
-                    {# Dit zou in andere gevallen leeg blijven! #}
+            {% else %}
                     
-                {% endif %}
-            </div>
+            {% endif %}
         </div>
+    </div>
 
         <div class="grid-x grid-padding-x">
-            <div class="small-3 medium-3 large-3">
-            </div>
-
-            <div class="small-9 medium-9 large-9">
+            <div class="small-12 medium-12 large-12">
                 <div>
                     <br><span class='vacanciesstyle'>Meer Vacatures Van </span><span class='company'>{{ vacancy.user.companyname }}</span>
                 </div>
@@ -76,7 +79,7 @@
                     <table id="table_id" class="vacanciestable">
                         <thead>
                             <tr>
-                                <th>Datum</th>
+                                <th class="lefttable">Datum</th>
                                 <th>Vacature</th>
                                 <th>Niveau</th>
                             </tr>
@@ -84,7 +87,7 @@
                         <tbody>
                             {% for data in vacancies %}
                                 <tr>
-                                    <td>{{ data.vacancydate }}</td>
+                                    <td class="lefttable">{{ data.vacancydate|date("d/m/Y") }}</td>
                                     <td>{{ data.function}}</td>
                                     <td>{{ data.level}}</td>
                                 </tr> 

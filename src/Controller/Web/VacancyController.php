@@ -58,6 +58,7 @@ class VacancyController extends AbstractController
                         'user' => $user,
                         'vacancy' => $vacancy,
                         'applicants' => $applicants,
+                        'vacancies' => $vacancies,
                     ]);
                 }
 

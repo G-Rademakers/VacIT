@@ -1,31 +1,21 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
 {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
-    <div class="grid-container grid-container-padding">
-        <div class="grid-x grid-x-padding">
-            <div class="small-1 medium-1 large-1">
-            </div>
-           
-            <div class="small-3 medium-2 large-2">
+        <div class="grid-x">
+            <div class="small-3 medium-3 large-3">
                 <br>
                 <img src="{{ asset('assets/logo/warning-sign.png')}}">
             </div>
-            
-            <div class="small-3 medium-2 large-2">
-            </div>
-           
-            <div class="small-5 medium-7 large-7 inputstyle">
+        
+            <div class="small-9 medium-9 large-9 inputstyle">
                 <h2 style="font-family:bebas_neueregular; color: #F15A24">Registratie</h2>
                 {{ form_widget(form) }}
             </div>
         </div>
 
-            <div class="grid-x grid-x-padding grid-x-margin">
-                <div class="small-10 medium-10 large-10">
-                </div>
-
-                <div class="small-2 medium-2 large-2">
-                <button type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" class="btn btn-succes" style="font-size: 3rem; color: #F15A24"><i class="fas fa-arrow-right"></i></button>
+            <div class="grid-x">
+                <div class="small-12 medium-12 large-12">
+                    <br><button type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" class="btn btn-succes right" style="font-size: 3rem; color: #F15A24"><i class="fas fa-arrow-right"></i></button>
                 </div>
             </div>  
         <br></br>

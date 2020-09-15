@@ -1,5 +1,5 @@
 .inputstyle input{
-    width: 525px;
+    width: 100%;
     font-family: 'robotocondensed';
     box-shadow: none;
     border: none;
@@ -11,4 +11,9 @@
     font: Arial;
     font-size: 15px;
 }
+
+.right{
+    float: right;
+}
+
 

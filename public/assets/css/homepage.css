@@ -49,49 +49,29 @@
     margin-left: -40px;
 }
 
-.hexa, .hexa div {
-    margin: 0 auto;
-    transform-origin: 50% 50%;
-    overflow: hidden;
-    width: 300px;
-    height: 300px;
-    text-align: center;
-    
-}
-.hexa {
-    width: 260px;
-    height: 184px;
-    
-}
-.hexa div {
-    width: 90%;
-    height: 100%;
-    
-}
-.hexa {
-    transform: rotate(120deg);
-    transform: rotate(120deg);
-    transform: rotate(120deg);
-}
-.hex1 {
-    transform: rotate(-60deg);
-    transform: rotate(-60deg);
-    transform: rotate(-60deg);
-}
-
-.hex2 {
-    transform: rotate(-60deg);
-    transform: rotate(-60deg);
-    transform: rotate(-60deg);
-    background: #333333;
-}
-
-.img {
-    width: 50%; 
-    height: 70%;
-    margin-left: auto;
-    margin-top: 25px;
-    margin-right: auto;
+.hexagon-homepage{
+    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+    width: 175px;
+    height: 175px;
     background-color: white;
-    color: white;
+}
+
+.icon-home{
+    width: 150px;
+    height: 150px;
+}
+
+.triangle-homepage {
+    width: 100%;
+    height: 30px;
+    background: rgb(241,90,36);
+    background: linear-gradient(179.5deg, rgba(241,90,36,1) 0%, rgba(241,90,36,1) 50%, rgba(171,65,27,1) 51%, rgba(241,90,36,1) 61%, rgba(241,90,36,1) 100%);
+}
+    
+.triangle-footer-homepage{
+    width: 100%;
+    height: 30px;
+    background: rgb(241,90,36);
+    background: linear-gradient(359.5deg, rgba(241,90,36,1) 0%, rgba(241,90,36,1) 50%, rgba(171,65,27,1) 51%, rgba(241,90,36,1) 61%, rgba(241,90,36,1) 100%);
+
 }

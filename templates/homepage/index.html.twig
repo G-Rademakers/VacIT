@@ -2,40 +2,51 @@
 
 {% block title %}Welcome to VacIT!{% endblock %}
 
-{% block logo %}
-    <div class="orangebackground">
-    </div>
-{% endblock %}
-
 {% block content %}
     <div class="orangebackground">
-        <div class="grid-x grid-x-margin">
+        <div class="grid-x">
             <div class="small-12 medium-12 large-12">
                 {% for vacancy in vacancies %}
-                    <div class="grid-x grid-x-margin">
-                        <div class="small-2 medium-3 large-3">  
-                            <br><br><img src="{{ vacancy.platform.iconurl }}"/>
-                        </div>
-
-                        <div class="small-1 medium-1 large-1">
-                        </div>
-
-                        <div class="small-7 medium-6 large-6">
-                            <br><br><div class="vacancydatetext">{{ vacancy.vacancydate }}</div>
-                            <a href="/vacancy/show/{{vacancy.id}}" class="functiontext">{{vacancy.function}} voor {{vacancy.user.companyname}}</a>
-                            <div class="descriptiontext">{{ vacancy.jobdescription |striptags|length > 300 ? vacancy.jobdescription|striptags|slice(0, 300) ~ '...' : vacancy.jobdescription|striptags }}</div>
-                        </div>
-
-                        <div class="small-2 medium-2 large-2">
+                    <div class="grid-x">
+                        <div class="medium-4 large-4">
                             <div class="grid-x">
-                                <div class="small-5 medium-5 large-5">
+                                <div class="medium-2 large-2">
                                 </div>
 
-                                <div class="small-6 medium-6 large-6">
+                                <div class="medium-8 large-8">
+                                </div>
+
+                                <div class="medium-2 large-2">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="small-12 medium-7 large-7">  
+                            <div class="grid-x">
+                                <div class="small-4 medium-3 large-3">
+                                    <br><br><div class="hexagon-homepage">
+                                        <img src="{{ vacancy.platform.iconurl }}"/>
+                                    </div>
+                                </div>
+
+                                <div class="small-8 medium-9 large-9">
+                                    <br><br><div class="vacancydatetext">{{ vacancy.vacancydate }}</div>
+                                    <a href="/vacancy/show/{{vacancy.id}}" class="functiontext">{{vacancy.function}} voor {{vacancy.user.companyname}}</a>
+                                    <div class="descriptiontext">{{ vacancy.jobdescription |striptags|length > 300 ? vacancy.jobdescription|striptags|slice(0, 300) ~ '...' : vacancy.jobdescription|striptags }}</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="small-12 medium-1 large-1">
+                             <div class="grid-x">
+                                <div class="small-4 medium-8 large-8">
+                                </div>
+
+                                <div class="small-4 medium-2 large-2">
                                     <br><br><br><a href="/vacancy/show/{{vacancy.id}}" class="arrowstyle"><i  class="fas fa-arrow-right"></i></a>
                                 </div>
 
-                                <div class="small-1 medium-1 large-1">
+                                <div class="small-4 medium-1 large-1">
                                 </div>
                             </div>
                         </div>
@@ -44,4 +55,5 @@
             </div>
         </div>
     </div>
+    <br>
 {% endblock %}

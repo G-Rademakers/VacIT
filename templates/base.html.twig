@@ -17,13 +17,15 @@
         <link rel="stylesheet" href="{{ asset('assets/css/vacancypage.css')}}">
         <link rel="stylesheet" href="{{ asset('assets/css/myapplicationspage.css')}}">
         <link rel="stylesheet" href="{{ asset('assets/css/profile.css')}}">
-        <link rel="stylesheet" href="{{ asset('assets/css/althomepage.css')}}">
-        <link rel="stylesheet" href="{{ asset('assets/css/homepage.css')}}">
         
         {% endblock %}
     
         <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-        <script src="{{ asset('assets/js/foundation.min.js')}}"></script>
+        <script src="{{ asset('assets/js/foundation.js')}}"></script>  
+        <script>$(document).ready(function(){
+                $(document).foundation();
+                });
+        </script>
         <script src="{{ asset('assets/js/vendor.js')}}"></script>
         <script src="{{ asset('assets/js/all.js')}}"></script>
         <script src="{{ asset('assets/js/jquery.richtext.js')}}"></script>
@@ -38,12 +40,7 @@
             });
         </script>
 
-        <script>
-            $(document).ready(function(){
-                $(document).foundation();
-            });
-        </script>
-    
+      
 
 
     </head>
@@ -60,11 +57,11 @@
 
         <div class="layout">
             <div class="grid-x grid-padding-x">
-                <div class="small-3 medium-3 large-3">
+                <div class="small-2 medium-2 large-2">
                     {% block logo %}
                     {% endblock %}
                 </div>
-                <div class="small-8 medium-8 large-8">
+                <div class="small-9 medium-9 large-9">
                     {% block content %}
                     {% endblock %}
                 </div>

@@ -57,3 +57,19 @@
 .dataTables_wrapper.dataTables_filter{
     visibility: hidden;
 }
+
+.orangetext{
+    color: #F15A24; 
+}
+
+.orangetext:hover{
+    color: red;
+}
+
+.greytext{
+    color: grey;
+}
+
+.greytext:hover{
+    color: black;
+}

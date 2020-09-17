@@ -64,17 +64,16 @@ class ApplicationController extends AbstractController
      * @Route("/application/invitation/{id}", name="application_invitation")
      */
     public function switchInvitation(ApplicationService $as, 
-                                   VacancyService $vs, $id)
+                                     VacancyService $vs, $id)
     {
         $user = $this->getUser();
-        $vacancy = $vs->getVacancyByID($id);
         $applicants = $as->getApplicationsByVacancy($vacancy);
 
-        if($user == $vacancy->getUser() or in_array('ROLE_ADMIN', $user->getRoles()))
+        if(in_array('ROLE_EMPLOYER', $user->getRoles()) or in_array('ROLE_ADMIN', $user->getRoles()))
         {
             $application = $as->switchInvitation($id);
-            dump($application);
-            die();
+
+            return $this->redirect("/myapplications");
 
             // return $this->render('application/myapplicants.html.twig', [
             //     'controller_name' => 'MyApplicantsController',
@@ -82,8 +81,10 @@ class ApplicationController extends AbstractController
             //     'vacancy' => $vacancy,
             //     'applicants' => $applicants,
             //     'application' => $application]);
+            
+            // $this->addFlash("Uitnodiging is gewijzigd");
         }
-        // return new response('No Access');
+        return new response('No Access');
     }
 
      /**

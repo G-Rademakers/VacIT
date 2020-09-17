@@ -51,8 +51,8 @@
 
 .hexagon-homepage{
     clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
-    width: 175px;
-    height: 175px;
+    width: 150px;
+    height: 150px;
     background-color: white;
 }
 

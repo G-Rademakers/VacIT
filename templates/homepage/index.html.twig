@@ -23,16 +23,26 @@
 
                         <div class="small-12 medium-7 large-7">  
                             <div class="grid-x">
-                                <div class="small-4 medium-3 large-3">
-                                    <br><br><div class="hexagon-homepage">
-                                        <img src="{{ vacancy.platform.iconurl }}"/>
+                                <div class="small-4 medium-4 large-4">
+                                    <div class="grid-x">
+                                        <div class="small-3 medium-3 large-3">
+                                        </div>
+
+                                        <div class="small-6 medium-6 large-6">
+                                            <br><br><br><div class="hexagon-homepage">
+                                                <img src="{{ vacancy.platform.iconurl }}"/>
+                                            </div>
+                                        </div>
+
+                                         <div class="small-3 medium-3 large-3">
+                                        </div>
                                     </div>
                                 </div>
 
-                                <div class="small-8 medium-9 large-9">
+                                <div class="small-8 medium-8 large-8">
                                     <br><br><div class="vacancydatetext">{{ vacancy.vacancydate }}</div>
                                     <a href="/vacancy/show/{{vacancy.id}}" class="functiontext">{{vacancy.function}} voor {{vacancy.user.companyname}}</a>
-                                    <div class="descriptiontext">{{ vacancy.jobdescription |striptags|length > 300 ? vacancy.jobdescription|striptags|slice(0, 300) ~ '...' : vacancy.jobdescription|striptags }}</div>
+                                    <div class="descriptiontext">{{ vacancy.jobdescription |striptags|length > 340 ? vacancy.jobdescription|striptags|slice(0, 340) ~ '...' : vacancy.jobdescription|striptags }}</div>
                                 </div>
                             </div>
                         </div>

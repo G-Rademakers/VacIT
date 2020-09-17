@@ -87,6 +87,13 @@ class ApplicationRepository extends ServiceEntityRepository
         return($applications);
     }
 
+    // public function getVacancyByApplicationID($id)
+    // {
+    //     $application = $this->find($id);
+    //     $vacancy = $this->getVacancy($application);
+    //     return($vacancy);
+    // }
+
     public function switchInvitation($id)
     {
         $application = $this->find($id);

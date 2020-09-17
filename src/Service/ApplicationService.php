@@ -63,5 +63,12 @@ class ApplicationService
         $result = $application->switchInvitation($id);
         return($result);
     }
+
+    public function getVacancyByApplication($id)
+    {   
+        $application = $this->em->getRepository(Application::class);
+        $result = $application->getVacancyByApplication($id);
+        return($result);
+    }
 }
 

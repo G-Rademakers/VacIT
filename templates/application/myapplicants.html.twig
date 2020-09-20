@@ -35,7 +35,7 @@
                 <tbody>
                     {% for applicant in applicants|sort((a, b) => a.applicationdate <=> b.applicationdate) %}
                         <tr>
-                            <td>{{ applicant.applicationdate|date("d/m/Y") }}</td>
+                            <td>{{ applicant.applicationdate|date("d-m-Y") }}</td>
                             <td><a href="/vacancy/show/{{applicant.vacancy.id}}" class="orangetext">{{ applicant.vacancy.function }}</a></td>
                             <td><a href="/userprofile/show/{{applicant.user.id}}" class="greytext">{{ applicant.user.lastname}}, {{ applicant.user.firstname}}</td>
                             <td>{% if applicant.invited == false %}

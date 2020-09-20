@@ -75,14 +75,6 @@ class ApplicationController extends AbstractController
 
             return $this->redirect("/myapplications");
 
-            // return $this->render('application/myapplicants.html.twig', [
-            //     'controller_name' => 'MyApplicantsController',
-            //     'user' => $user,
-            //     'vacancy' => $vacancy,
-            //     'applicants' => $applicants,
-            //     'application' => $application]);
-            
-            // $this->addFlash("Uitnodiging is gewijzigd");
         }
         return new response('No Access');
     }
@@ -96,17 +88,28 @@ class ApplicationController extends AbstractController
         $keydata = array("user" => $this->getUser(),
                          "vacancy" => $vs->getVacancyByID($id)); 
 
-        // dump($keydata);
-        // die();
-
-       if($this->getUser())
-       {
-           if(in_array('ROLE_CANDIDATE', $this->getUser()->getRoles()))
-           {
-           $application = $as->saveApplication($keydata);
-           dump($application);
-           die();
-           }
-       }
+        if($this->getUser())
+        {
+            $application = $as->saveApplication($keydata);
+            return $this->redirect("/myapplications");
+        }
+        return $this->redirect("/login");
     }
+
+    //  /**
+    //  * @Route("/application/remove/{id}", name="application_remove")
+    //  */
+    // public function removeApplication(ApplicationService $as, 
+    //                                   VacancyService $vs, $id)
+    // {
+    //     $keydata = array("user" => $this->getUser(),
+    //                      "vacancy" => $vs->getVacancyByID($id));       
+        
+    //     if($this->getUser())
+    //     {
+    //         $application = $as->removeApplication($keydata);
+    //         return $this->redirect("/myapplications");
+    //     }
+    //         return $this->redirect("/login");
+    // }
 }

@@ -18,7 +18,7 @@
         <div class="small-3 medium-3 large-3">
         </div>
         <div class="small-6 medium-6 large-6">
-           <br><img class="sizedimg" src="{{ vacancy.user.profilepictureurl }}">
+           <br><a href="/userprofile/show/{{vacancy.user.id}}"><img class="sizedimg" src="{{ vacancy.user.profilepictureurl }}"></a>
         </div>
         <div class="small-3 medium-3 large-3">
         </div>
@@ -53,50 +53,108 @@
         </div>
     </div>
           
-
     <div class="grid-x">
         <div class="small-1 medium-1 large-1 ">
-            <br><br><button type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" class="btn btn-succes; left" style="font-size: 3rem; color: #F15A24; "><i class="fas fa-arrow-right"></i></button>
+            {% if is_granted('ROLE_CANDIDATE') and applications != NULL %}
+                <br><br><button type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" class="btn btn-succes; left" style="font-size: 3rem; color: #F15A24">
+                    <a href="" class="orangetext">
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </button>
+
+            
+            {% elseif is_granted('ROLE_CANDIDATE') %}
+                <br><br><button type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" class="btn btn-succes; left" style="font-size: 3rem; color: #F15A24">
+                    <a href="/application/add/{{vacancy.id}}" class="orangetext">
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </button>
+
+            {% else %}
+                {% if is_granted('ROLE_EMPLOYER') and app.user == vacancy.user %}
+                    <br><br><button type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" class="btn btn-succes; left" style="font-size: 3rem; color: #F15A24">
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                {% endif %}
+            
+            {% endif %}        
         </div>
  
         <div class="small-9 medium-9 large-9 left">
-            {% if is_granted('ROLE_CANDIDATE') %}
-                <br><br><button type="submit" id="_submit" name="_submit" class="btn btn-succes; left" style="font-family: bebas_neueregular; font-size: 3rem; color: #F15A24">SOLLICITEER DIRECT</i></button>
-                
-            {% elseif is_granted('ROLE_EMPLOYER') and app.user == vacancy.user %}
-                <br><br><button type="submit" id="_submit" name="_submit" class="btn btn-succes; left" style="font-family: bebas_neueregular; font-size: 3rem; color: #F15A24">Edit Vacancy</i></button>
+            {% if is_granted('ROLE_CANDIDATE') and applications != NULL %}
+                <br><br><button type="submit" id="_submit" name="_submit" class="btn btn-succes; left" style="font-family: bebas_neueregular; font-size: 3rem; color: #F15A24">
+                    <a href="" class="orangetext">Verwijder Sollicitatie!</a>
+                </button>
 
+            {% elseif is_granted('ROLE_CANDIDATE') %}
+                <br><br><button type="submit" id="_submit" name="_submit" class="btn btn-succes; left" style="font-family: bebas_neueregular; font-size: 3rem; color: #F15A24">
+                    <a href="/application/add/{{vacancy.id}}" class="orangetext">Solliciteer Direct!</a>
+                </button>
+                
             {% else %}
-                    
+                {% if is_granted('ROLE_EMPLOYER') and app.user == vacancy.user %}
+                    <br><br><button type="submit" id="_submit" name="_submit" class="btn btn-succes; left" style="font-family: bebas_neueregular; font-size: 3rem; color: #F15A24">Edit Vacancy</button>
+                {% endif %}
+  
             {% endif %}
         </div>
     </div>
 
         <div class="grid-x grid-padding-x">
             <div class="small-12 medium-12 large-12">
-                <div>
-                    <br><span class='vacanciesstyle'>Meer Vacatures Van </span><span class='company'>{{ vacancy.user.companyname }}</span>
-                </div>
-                <div>
-                    <table id="table_id" class="vacanciestable">
-                        <thead>
-                            <tr>
-                                <th class="lefttable">Datum</th>
-                                <th>Vacature</th>
-                                <th>Niveau</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {% for data in vacancies %}
+                {% if is_granted('ROLE_EMPLOYER') and app.user == vacancy.user %}
+                    <div>
+                        <br><span class='vacanciesstyle'>Meer sollicitanten op deze <span class="company">functie</span></span>
+                    </div>
+                    <div>
+                        <table id="table_id" class="vacanciestable">
+                            <thead>
                                 <tr>
-                                    <td class="lefttable">{{ data.vacancydate|date("d/m/Y") }}</td>
-                                    <td>{{ data.function}}</td>
-                                    <td>{{ data.level}}</td>
-                                </tr> 
-                            {% endfor %}
-                        </tbody>
-                    </table><br><br>
-                 </div>
+                                    <th>Sollicitatiedatum</th>
+                                    <th>Sollicitant</th>
+                                    <th>Email</th>
+                                    <th>Uitgenodigd</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for applicant in applicants %}
+                                    <tr>
+                                        <td>{{ applicant.applicationdate|date("d/m/Y") }}</td>
+                                        <td><a href="/userprofile/show/{{applicant.user.id}}" class="orangetext">{{ applicant.user.lastname}}, {{ applicant.user.firstname}}</a></td>
+                                        <td>{{ applicant.user.email }}</td>
+                                        <td class="centertable">{% if applicant.invited == true %}
+                                            <i class="fas fa-check" style="font-size: 2rem"></i></td>
+                                        {% endif %}
+                                    </tr> 
+                                {% endfor %}
+                            </tbody>
+                        </table><br><br>
+                    </div>
+                {% else %}
+                    <div>
+                        <br><span class='vacanciesstyle'>Meer Vacatures Van </span><a href="/userprofile/show/{{vacancy.user.id}}"><span class='company'>{{ vacancy.user.companyname }}</a></span>
+                    </div>
+                    <div>
+                        <table id="table_id" class="vacanciestable">
+                            <thead>
+                                <tr>
+                                    <th class="lefttable">Datum</th>
+                                    <th>Vacature</th>
+                                    <th>Niveau</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for data in vacancies %}
+                                    <tr>
+                                        <td>{{ data.vacancydate|date("d/m/Y") }}</td>
+                                        <td><a href="/vacancy/show/{{vacancy.id}}" class="orangetext">{{ data.function}}</a></td>
+                                        <td>{{ data.level}}</td>
+                                    </tr> 
+                                {% endfor %}
+                            </tbody>
+                        </table><br><br>
+                    </div>
+                {% endif %}
             </div>
         </div>
     </div>   

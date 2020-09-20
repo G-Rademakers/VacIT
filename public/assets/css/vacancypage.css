@@ -70,6 +70,10 @@
     border-top: solid white 1px;
 }
 
+.vacanciestable thead th:nth-of-type(4){
+    text-align: center;
+}
+
 .vacanciestable tbody tr{
     background-color: white;
     font-family: Arial, Helvetica, sans-serif;
@@ -93,5 +97,9 @@
     visibility: hidden;
 }
 
+.centertable{
+    text-align: center;
+
+}
 
 

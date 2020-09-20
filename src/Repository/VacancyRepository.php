@@ -35,6 +35,7 @@ class VacancyRepository extends ServiceEntityRepository
 
         $user = $userRepository->find($params["user_id"]);
         $platform = $platformRepository->find($params["platform_id"]);
+        $date = date('Y-m-d', time());
 
         $vacancy->setUser($user);
         $vacancy->setPlatform($platform);
@@ -43,7 +44,7 @@ class VacancyRepository extends ServiceEntityRepository
         $vacancy->setLocation($params["location"]);
         $vacancy->setJobDescription($params["job_description"]);
         $vacancy->setLogo($params["logo"]);
-        $vacancy->setVacancyDate($params["vacancy_date"]);
+        $vacancy->setVacancyDate($date);
 
         $em->persist($vacancy);
         $em->flush();

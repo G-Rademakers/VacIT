@@ -18,9 +18,9 @@
         <tbody>
         {% for vacancy in vacancies %}
             <tr>
-                <td>{{ vacancy.vacancydate|date("d/m/Y") }}</td>
-                <td>{{ vacancy.function }}</td> 
-                <td>{{ vacancy.user.companyname}}</td>
+                <td>{{ vacancy.vacancydate|date("d-m-Y") }}</td>
+                <td><a href="/vacancy/show/{{vacancy.id}}" class="orangetext">{{ vacancy.function }}</a></td> 
+                <td><a href="/userprofile/show/{{vacancy.user.id}}" class="greytext">{{ vacancy.user.companyname}}</a></td>
                 <td>{{ vacancy.location}}</td>
                 <td>{{ vacancy.level }}</td>
                 <td>{{ vacancy.platform.name}}</td>

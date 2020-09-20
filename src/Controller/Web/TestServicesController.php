@@ -166,7 +166,7 @@ class TestServicesController extends AbstractController
     }
 
     /**
-     * @Route("/test/services/applications/save", name="test_services_SaveApplication")
+     * @Route("/test/services/applications/save/{id}", name="test_services_SaveApplication")
      */
     public function saveApplication(ApplicationService $as, $params)
     {   

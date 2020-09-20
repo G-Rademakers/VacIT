@@ -38,6 +38,7 @@ class VacancyController extends AbstractController
             {
                 $company = $vacancy->getUser();
                 $vacancies = $vs->getVacanciesByUser($company);
+                $applications = $as->getApplicationsByUser($user);
                 
                 return $this->render('vacancy/showvacancy.html.twig', [
                     'controller_name' => 'ShowVacancyController',
@@ -45,6 +46,7 @@ class VacancyController extends AbstractController
                     'vacancy' => $vacancy,
                     'company' => $company,
                     'vacancies' => $vacancies,
+                    'applications' => $applications,
                 ]);
             }
 
@@ -152,17 +154,7 @@ class VacancyController extends AbstractController
      */
     public function addVacancy(VacancyService $vs)
     {
-        $user = $this->getUser();  
-        // $params = array(
-        //     "user_id" => 26,
-        //     "platform_id" => 1,
-        //     "function" => "Scrum Master",
-        //     "level" => "Medior",
-        //     "location" => "Sittard",
-        //     "job_description" => "Speaks for itself",
-        //     "logo" => null,
-        //     "vacancy_date" => "2020-09-04"
-        // );
+        $user = $this->getUser();
 
         if($user)
         {

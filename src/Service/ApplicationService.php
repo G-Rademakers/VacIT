@@ -64,10 +64,10 @@ class ApplicationService
         return($result);
     }
 
-    public function getVacancyByApplication($id)
-    {   
+    public function getApplicationByUserAndVacancy($params)
+    {
         $application = $this->em->getRepository(Application::class);
-        $result = $application->getVacancyByApplication($id);
+        $result = $application->getApplicationByUserAndVacancy($params);
         return($result);
     }
 }

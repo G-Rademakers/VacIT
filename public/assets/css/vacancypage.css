@@ -46,7 +46,7 @@
     font-family: 'bebas_neueregular';
     font-size: 24px;
     color: black;
-    margin-left: 15px;
+    margin-left: 0px;
 }
 
 .company{
@@ -99,7 +99,18 @@
 
 .centertable{
     text-align: center;
-
 }
+
+.orangetext-apply{
+    color: #F15A24; 
+    font-size: 3rem;
+    font-family: 'bebas_neueregular';
+    margin-left: 10px;
+}
+
+.orangetext-apply:hover{
+    color: red;
+}
+
 
 

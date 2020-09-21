@@ -54,48 +54,34 @@
     </div>
           
     <div class="grid-x">
-        <div class="small-1 medium-1 large-1 ">
-            {% if is_granted('ROLE_CANDIDATE') and applications != NULL %}
-                <br><br><button type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" class="btn btn-succes; left" style="font-size: 3rem; color: #F15A24">
-                    <a href="" class="orangetext">
-                        <i class="fas fa-arrow-right"></i>
-                    </a>
-                </button>
+        <div class="small-10 medium-10 large-10 left">
+            {% if is_granted('ROLE_CANDIDATE') %}
+                {% if application is not null %}
+                    <br>
+                    <br>
+                    <button type="submit" id="_submit" name="_submit" class="btn btn-succes">
+                        <a href="/application/remove/{{vacancy.id}}" class="orangetext-apply">
+                        <i class="fas fa-arrow-right"></i>  Verwijder Sollicitatie </a>
+                    </button>
+                    
 
-            
-            {% elseif is_granted('ROLE_CANDIDATE') %}
-                <br><br><button type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" class="btn btn-succes; left" style="font-size: 3rem; color: #F15A24">
-                    <a href="/application/add/{{vacancy.id}}" class="orangetext">
-                        <i class="fas fa-arrow-right"></i>
-                    </a>
-                </button>
-
-            {% else %}
-                {% if is_granted('ROLE_EMPLOYER') and app.user == vacancy.user %}
-                    <br><br><button type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" class="btn btn-succes; left" style="font-size: 3rem; color: #F15A24">
-                        <i class="fas fa-arrow-right"></i>
+                {% else %}
+                    <br>
+                    <br>
+                    <button type="submit" id="_submit" name="_submit" class="btn btn-succes">
+                        <a href="/application/add/{{vacancy.id}}" class="orangetext-apply">
+                        <i class="fas fa-arrow-right"></i>  Solliciteer Direct </a>
                     </button>
                 {% endif %}
-            
-            {% endif %}        
-        </div>
- 
-        <div class="small-9 medium-9 large-9 left">
-            {% if is_granted('ROLE_CANDIDATE') and applications != NULL %}
-                <br><br><button type="submit" id="_submit" name="_submit" class="btn btn-succes; left" style="font-family: bebas_neueregular; font-size: 3rem; color: #F15A24">
-                    <a href="" class="orangetext">Verwijder Sollicitatie!</a>
+
+            {% else %}
+                <br>
+                <br>
+                <button type="submit" id="_submit" name="_submit" class="btn btn-succes">
+                    <a href="" class="orangetext-apply">
+                    <i class="fas fa-arrow-right"></i>  Sollicitatie Aanpassen</a>
                 </button>
 
-            {% elseif is_granted('ROLE_CANDIDATE') %}
-                <br><br><button type="submit" id="_submit" name="_submit" class="btn btn-succes; left" style="font-family: bebas_neueregular; font-size: 3rem; color: #F15A24">
-                    <a href="/application/add/{{vacancy.id}}" class="orangetext">Solliciteer Direct!</a>
-                </button>
-                
-            {% else %}
-                {% if is_granted('ROLE_EMPLOYER') and app.user == vacancy.user %}
-                    <br><br><button type="submit" id="_submit" name="_submit" class="btn btn-succes; left" style="font-family: bebas_neueregular; font-size: 3rem; color: #F15A24">Edit Vacancy</button>
-                {% endif %}
-  
             {% endif %}
         </div>
     </div>
@@ -107,7 +93,7 @@
                         <br><span class='vacanciesstyle'>Meer sollicitanten op deze <span class="company">functie</span></span>
                     </div>
                     <div>
-                        <table id="table_id" class="vacanciestable">
+                       <br><table id="table_id" class="vacanciestable">
                             <thead>
                                 <tr>
                                     <th>Sollicitatiedatum</th>
@@ -119,7 +105,7 @@
                             <tbody>
                                 {% for applicant in applicants %}
                                     <tr>
-                                        <td>{{ applicant.applicationdate|date("d/m/Y") }}</td>
+                                        <td>{{ applicant.applicationdate|date("d-m-Y") }}</td>
                                         <td><a href="/userprofile/show/{{applicant.user.id}}" class="orangetext">{{ applicant.user.lastname}}, {{ applicant.user.firstname}}</a></td>
                                         <td>{{ applicant.user.email }}</td>
                                         <td class="centertable">{% if applicant.invited == true %}
@@ -135,7 +121,7 @@
                         <br><span class='vacanciesstyle'>Meer Vacatures Van </span><a href="/userprofile/show/{{vacancy.user.id}}"><span class='company'>{{ vacancy.user.companyname }}</a></span>
                     </div>
                     <div>
-                        <table id="table_id" class="vacanciestable">
+                       <br><table id="table_id" class="vacanciestable">
                             <thead>
                                 <tr>
                                     <th class="lefttable">Datum</th>
@@ -144,11 +130,11 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                {% for data in vacancies %}
+                                {% for vacancy in vacancies %}
                                     <tr>
-                                        <td>{{ data.vacancydate|date("d/m/Y") }}</td>
-                                        <td><a href="/vacancy/show/{{vacancy.id}}" class="orangetext">{{ data.function}}</a></td>
-                                        <td>{{ data.level}}</td>
+                                        <td>{{ vacancy.vacancydate|date("d-m-Y") }}</td>
+                                        <td><a href="/vacancy/show/{{vacancy.id}}" class="orangetext">{{ vacancy.function}}</a></td>
+                                        <td>{{ vacancy.level}}</td>
                                     </tr> 
                                 {% endfor %}
                             </tbody>

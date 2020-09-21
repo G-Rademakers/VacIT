@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Vacature Toevoegen!{% endblock %}
+{% block title %}Vacature Aanpassen!{% endblock %}
 
 {% block logo %}
     <div class="grid-x">
@@ -13,5 +13,17 @@
 {% endblock %}
 
 {% block body %}
+    {# <div class="grid-x">
+        <div class="small-12 medium-12 large-12 profile-edit">
+            <br><h2 style="font-family:bebas_neueregular; color: #F15A24">Mijn vacature</h2>
 
+            {% if is_granted('ROLE_EMPLOYER') %}
+                <label>Functienaam</label> 
+                    <input type="text" id="function" name="function" value="{{ vacancy.function }}"/>
+
+                <br><label>Contactpersoon</label> 
+                    <input type="text" id="contactperson" name="contactperson" value="{{ user.lastname }}, {{ user.firstname}}"/>
+
+                <br><label>Email</label> 
+                    <input type="text" id="email" name="email" value="{{ user.email }}"/> #}
 {% endblock %}

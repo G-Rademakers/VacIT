@@ -96,20 +96,23 @@ class ApplicationController extends AbstractController
         return $this->redirect("/login");
     }
 
-    //  /**
-    //  * @Route("/application/remove/{id}", name="application_remove")
-    //  */
-    // public function removeApplication(ApplicationService $as, 
-    //                                   VacancyService $vs, $id)
-    // {
-    //     $keydata = array("user" => $this->getUser(),
-    //                      "vacancy" => $vs->getVacancyByID($id));       
-        
-    //     if($this->getUser())
-    //     {
-    //         $application = $as->removeApplication($keydata);
-    //         return $this->redirect("/myapplications");
-    //     }
-    //         return $this->redirect("/login");
-    // }
+     /**
+     * @Route("/application/remove/{id}", name="application_remove")
+     */
+    public function removeApplication(ApplicationService $as, 
+                                      VacancyService $vs, $id)
+    {
+        $keydata = array("user" => $this->getUser(),
+                         "vacancy" => $vs->getVacancyByID($id));
+    
+        $application = $as->getApplicationByUserAndVacancy($keydata);
+        $application_id = $application->getId();
+  
+        if($this->getUser())
+        {
+            $application = $as->removeApplication($application_id);
+            return $this->redirect("/myapplications");
+        }
+            return $this->redirect("/login");
+    }
 }

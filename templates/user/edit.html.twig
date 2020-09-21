@@ -18,6 +18,7 @@
 
 
 {% block content %}
+<form method="post" action="/userprofile/save/{{user.id}}">
     <div class="grid-x">
         <div class="small-12 medium-12 large-12 profile-edit">
             <br><h2 style="font-family:bebas_neueregular; color: #F15A24">Mijn Profiel</h2>
@@ -127,7 +128,7 @@
 
     <div class="grid-x">
         <div class="small-12 medium-12 large-12"> 
-            <br><h2 style="font-family:bebas_neueregular; color: #F15A24">Motivatie</h2>
+            <br><h2 style="font-family:bebas_neueregular; color: #F15A24">Omschrijving</h2>
             <span><textarea class="richtext" name="example">{{ profile.description }}</textarea></span> 
                 {# See: https://github.com/webfashionist/RichText/blob/master/examples/fontawesome5.html #}
 
@@ -136,11 +137,14 @@
                 <span style="font-size: 1rem; color: black">Upload CV</button></span>
             {% endif %}
 
-            <span><button type="submit" id="_submit" name="_submit" class="btn btn-succes, right" style="font-family: bebas_neueregular; font-size: 3rem; color: #F15A24">Opslaan</i></button>
-            <button type="submit" id="_submit" name="_submit" class="btn btn-succes; right" style="font-size: 3rem; color: #F15A24; "><i class="fas fa-arrow-right"></i></button></span>
+            <button type="submit" id="_submit" name="_submit" class="btn btn-succes, right">
+                <a href="/userprofile/save/{{user.id}}" class="orangetext-apply">
+                <i class="fas fa-arrow-right"></i> Opslaan</a>
+            </button>
         
         <br>
         <br>
         </div>
     </div>
+</form
 {% endblock %}

@@ -11,19 +11,6 @@ use App\Service\ApplicationService;
 
 class VacancyController extends AbstractController
 {
-    // /**
-    //  * @Route("/vacancy/{id}", name="vacancy")
-    //  */
-    // public function index(VacancyService $vs, $id)
-    // {
-    //     $vacancy = $vs->getVacancyByID($id);
-       
-    //     return $this->render('vacancy/index.html.twig', [
-    //         'controller_name' => 'VacancyController', 
-    //         'vacancy'=>$vacancy,
-    //     ]);
-    // }
-
     /**
      * @Route("/vacancy/show/{id}", name="vacancy")
      */
@@ -31,6 +18,8 @@ class VacancyController extends AbstractController
     {
         $user = $this->getUser();
         $vacancy = $vs->getVacancyByID($id);
+        $keydata = array("user" => $this->getUser(),
+                         "vacancy" => $vs->getVacancyByID($id));
 
         if($user)
         {
@@ -38,7 +27,9 @@ class VacancyController extends AbstractController
             {
                 $company = $vacancy->getUser();
                 $vacancies = $vs->getVacanciesByUser($company);
-                $applications = $as->getApplicationsByUser($user);
+                $application = $as->getApplicationByUserAndVacancy($keydata);
+                // dump($application);
+                // die();
                 
                 return $this->render('vacancy/showvacancy.html.twig', [
                     'controller_name' => 'ShowVacancyController',
@@ -46,13 +37,13 @@ class VacancyController extends AbstractController
                     'vacancy' => $vacancy,
                     'company' => $company,
                     'vacancies' => $vacancies,
-                    'applications' => $applications,
+                    'application' => $application,
                 ]);
             }
 
             else
             {
-                if($user == $vacancy->getUser() or in_array('ROLE_ADMIN', $user->getRoles()))
+                if(in_array('ROLE_EMPLOYER', $user->getRoles()) or in_array('ROLE_ADMIN', $user->getRoles()))
                 {
                     $applicants = $as->getApplicationsByVacancy($vacancy);
                     return $this->render('vacancy/showvacancy.html.twig', [

@@ -45,3 +45,20 @@
     font-size: 32px;
 }
 
+.input[type=submit] {
+    background-color: none;
+    border-top: white;
+    border-bottom: white;
+    border-left: white;
+    border-right: white;
+    color: #F15A24;
+    font-family: 'bebas_neueregular';
+    float: right;
+}
+
+.orangetext-profile{
+    color: #F15A24; 
+    font-family: 'bebas_neueregular';
+    float: right;
+    font-size: 3rem;
+}

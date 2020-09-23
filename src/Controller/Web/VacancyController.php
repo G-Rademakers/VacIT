@@ -28,9 +28,7 @@ class VacancyController extends AbstractController
                 $company = $vacancy->getUser();
                 $vacancies = $vs->getVacanciesByUser($company);
                 $application = $as->getApplicationByUserAndVacancy($keydata);
-                // dump($application);
-                // die();
-                
+ 
                 return $this->render('vacancy/showvacancy.html.twig', [
                     'controller_name' => 'ShowVacancyController',
                     'user' => $user,
@@ -68,23 +66,48 @@ class VacancyController extends AbstractController
         }
     }
 
-     /**
-     * @Route("/vacancy/edit/{id}", name="editvacancy")
+    /**
+     * @Route("/vacancy/edit/{id}", name="edit/vacancy")
      */
-    public function editVacancy(VacancyService $vs, $id)
+    public function editUserProfile(VacancyService $vs, $id)
     {
         $user = $this->getUser();
         $vacancy = $vs->getVacancyByID($id);
-        $params = array(
-            "id" => 21,
-            "user_id" => 9,
-            "platform_id" => 8,
-            "function" => "Werkt dit nog steeds?",
-            "level" => "Medior",
-            "location" => "Amstelveen",
-            "job_description" => "Tester",
-            "logo" => null,
-        );
+        
+        if($user == $vacancy->getUser() and in_array('ROLE_EMPLOYER', $user->getRoles()))
+        {
+                    return $this->render('vacancy/editvacancy.html.twig', [
+                'controller_name' => 'ShowVacancyController',
+                'user' => $user,
+                'vacancy' => $vacancy,
+            
+            ]);
+        }
+
+        else
+        {
+            return new response('You cannot edit this vacancy');
+        }
+    }
+           
+
+     /**
+     * @Route("/vacancy/save/{id}", name="savevacancy")
+     */
+    public function saveVacancy(VacancyService $vs, $id)
+    {
+        $user = $this->getUser();
+        $vacancy = $vs->getVacancyByID($id);
+        // $params = array(
+        //     "id" => 21,
+        //     "user_id" => 9,
+        //     "platform_id" => 8,
+        //     "function" => "Werkt dit nog steeds?",
+        //     "level" => "Medior",
+        //     "location" => "Amstelveen",
+        //     "job_description" => "Tester",
+        //     "logo" => null,
+        // );
 
         if($user == $vacancy->getUser() or in_array('ROLE_ADMIN', $user->getRoles()))
         {
@@ -92,7 +115,7 @@ class VacancyController extends AbstractController
             {
                 $editvacancy = $vs->saveVacancy($params);
                 
-                return $this->render('vacancy/editvacancy.html.twig', [
+                return $this->render('vacancy/vacancy.html.twig', [
                     'controller_name' => 'EditVacancyController',
                     'user' => $user,
                     'vacancy' => $vacancy,

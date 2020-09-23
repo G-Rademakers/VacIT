@@ -21,7 +21,6 @@ class UserService
         $this->em = $em;
         $this->um = $um;
         $this->encoder = $encoder;
-
     }
 
     public function saveUser($params)
@@ -30,19 +29,51 @@ class UserService
         
         if($user)
         {   
-            $user->setFirstName($params["first_name"]);
-            $user->setLastName($params["last_name"]);
-            $user->setCompanyName($params["company_name"]);
-            $user->setAddress($params["address"]);
-            $user->setZipcode($params["zipcode"]);
-            $user->setCity($params["city"]);
-            $user->setPhoneNumber($params["phone_number"]);
-            $user->setDateOfBirth($params["date_of_birth"]);
-            $user->setDescription($params["description"]);
-            $user->setProfilePictureURL($params["profile_picture_url"]);
-            $user->setCV($params["cv_url"]);
-            $user->setType($params["type"]);
+            if(isset($params["first_name"]))
+            {
+                $user->setFirstName($params["first_name"]);
+            }
 
+            if(isset($params["last_name"]))
+            {
+                $user->setLastName($params["last_name"]);
+            }
+            
+            if(isset($params["company_name"]))
+            {
+                $user->setCompanyName($params["company_name"]);
+            }
+            
+            if(isset($params["address"]))
+            {
+                $user->setAddress($params["address"]);
+            }
+            
+            if(isset($params["zipcode"]))
+            {
+                $user->setZipcode($params["zipcode"]);
+            }
+
+            if(isset($params["city"]))
+            {
+                $user->setCity($params["city"]);
+            }
+            
+            if(isset($params["phone_number"]))
+            {
+                $user->setPhoneNumber($params["phone_number"]);
+            }
+           
+            if(isset($params["date_of_birth"]))
+            {
+                $user->setDateOfBirth($params["date_of_birth"]);
+            }
+
+            if(isset($params["description"]))
+            {
+                $user->setDescription($params["description"]);
+            }
+          
             $this->um->UpdateUser($user);
 
             return($user);
@@ -73,9 +104,7 @@ class UserService
                 $user->setPhoneNumber($param["phone_number"]);
                 $user->setDescription($param["description"]);
                 $user->setProfilePictureURL($param["profile_picture_url"]);
-                $user->setType($param["type"]);
     
-
                 $this->um->updateUser($user);
             }
         }

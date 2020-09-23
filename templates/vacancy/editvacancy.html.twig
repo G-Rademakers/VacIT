@@ -1,20 +1,49 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello VacancyController!{% endblock %}
+{% block title %}{{ vacancy.function }}{% endblock %}
 
-{% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/glenn/VacIT/src/Controller/VacancyController.php'|file_link(0) }}">src/Controller/VacancyController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/glenn/VacIT/templates/vacancy/index.html.twig'|file_link(0) }}">templates/vacancy/index.html.twig</a></code></li>
-    </ul>
-</div>
+{% block logo %}
+    <div class="grid-x">
+        <div class="small-3 medium-3 large-3">
+        </div>
+        <div class="small-6 medium-6 large-6">
+           <br><a href="/userprofile/show/{{vacancy.user.id}}"><img class="sizedimg" src="{{ vacancy.user.profilepictureurl }}"></a>
+        </div>
+        <div class="small-3 medium-3 large-3">
+        </div>
+    </div>
 {% endblock %}
+
+            
+{% block content %}
+<form action="/vacancy/edit/{{ vacancy.id }}" method="POST">
+    <input type="hidden" name="id" value="{{ user.id }}">
+        <div class="grid-x">
+            <div class="small-12 medium-12 large-12 vacancy-edit">
+                <br><h2 style="font-family:bebas_neueregular; color: #F15A24">Mijn Vacature</h2>
+                    <label>Functienaam</label> 
+                    <input type="text" id="function" name="function" value="{{ vacancy.function }}"/>
+            </div>
+        </div>
+
+        <div class="grid-x">
+            <div class="small-6 medium-6 large-6 vacancy-edit" >
+                <label>Niveau</label> 
+                    <select id="level" name="level" value="{{ vacancy.level }}"/>
+                        <option value="Junior">Junior</option>
+                        <option value="Medior">Medior</option>
+                        <option value="Senior">Senior</option>
+                    </select>
+            </div>
+        </div>
+
+        <div class="grid-x">
+            <div class="small-6 medium-6 large-6 vacancy-edit">
+                <label>Locatie</label> 
+                    <input type="text" id="location" name="location" value="{{ vacancy.location }}"/>
+            </div>
+        </div>
+</form>
+
+{% endblock %}
+

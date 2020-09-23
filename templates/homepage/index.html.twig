@@ -14,7 +14,35 @@
                                 </div>
 
                                 <div class="medium-8 large-8">
+                                {# <script>
+$(document).ready( function(){
+    $('#vegas-HP').vegas({
+       delay: 5000,
+       timer: false,
+       shuffle: false,
+       firstTransition: 'fade',
+       firstTransitionDuration: 5000,
+       transition: 'slideDown2',
+       transitionDuration: 2000,
+       align: 'center',
+       cover: false,
+       slides: [
+       {% for data in vacancies %}
+           { src: "{{data.platform.afbeelding}}", 
+             text:"{{data.level}} "+"{{data.function}}",
+             text2: "{{data.user.voornaam}} "+"{{data.locatie}}" }, 
+       {% endfor %}
+       ],
+
+       walk: function (index, slideSettings) {
+           $('#vegas-titles').html(slideSettings.text);
+           $('#vegas-location').html(slideSettings.text2);
+       }
+    });
+});
+</script> #}
                                 </div>
+
 
                                 <div class="medium-2 large-2">
                                 </div>

@@ -5,6 +5,7 @@ namespace App\Controller\Web;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
 
 use App\Service\UserService;
 
@@ -67,39 +68,34 @@ class UserController extends AbstractController
                     'profile'=>$profile]);
             }
         }
+    return new response('Your Profile has been updated!');  
     }
 
      /**
      * @Route("/userprofile/save/{id}", name="save/userprofile")
      */
-    public function saveUserProfile(UserService $us, $id)
+    public function saveUserProfile(Request $request, UserService $us, $id)
     {
         $user = $this->getUser();
         $user_confirmation = $us->findUserByID($id);
-        $params[] = array();
-        //     "id" => $id,
-        //     "first_name" => "Glenn",
-        //     "last_name" => "Rademakers",
-        //     "company_name" => "",
-        //     "address" => "Beekstraat 2",
-        //     "zipcode" => "6451CC",
-        //     "city" => "Schinveld",
-        //     "phone_number" => "0654617099",
-        //     "date_of_birth" => "1991-08-02",
-        //     "description" => "Hier komt wederom een lang verhaal over ideeen, dromen en toekomst",
-        //     "profile_picture_url" => "",
-        //     "cv_url" => "",
-        //     "type" => "A"
-        // );
-     
+
+        $params["id"] = $id;
+        $params["first_name"] = $request->request->get("first_name");
+        $params["last_name"] = $request->request->get("last_name");
+        $params["company_name"] = $request->request->get("company_name");
+        $params["address"] = $request->request->get("address");
+        $params["zipcode"] = $request->request->get("zipcode");
+        $params["city"] = $request->request->get("city");
+        $params["phone_number"] = $request->request->get("phone_number");
+        $params["description"] = $request->request->get("description");
+        $params["date_of_birth"] = $request->request->get("date_of_birth");
+        
         if($user == $user_confirmation or in_array('ROLE_ADMIN', $user->getRoles()))
         {
             if($id == $params['id'])
             {
                 $result = $us->saveUser($params);
-                return $this->render('user/save.html.twig', [
-                    'controller_name' => 'ApplicantController', 
-                    'user'=>$user]);
+                return $this->redirect("/login/");
             }
         }
         

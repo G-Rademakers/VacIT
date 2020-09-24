@@ -41,32 +41,34 @@
     </head>
     
     <body>
-        <div class="header">
-            <div class="grid-x">
-                <div class="small-12 medium-12 large-12"> 
-                    <div id="header">
-                        {% include('global/header.html.twig') %}
+        <div class="wrapper">
+            <div class="header">
+                <div class="grid-x">
+                    <div class="small-12 medium-12 large-12"> 
+                        <div id="header">
+                            {% include('global/header.html.twig') %}
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div class="layout">
-            <div class="grid-x orangebackground">
-                <div class="small-11 medium-11 large-11">
-                    {% block content %}
-                    {% endblock %}
-                </div>
-                <div class="small-1 medium-1 large-1">
+            <div class="layout">
+                <div class="grid-x orangebackground">
+                    <div class="small-11 medium-11 large-11">
+                        {% block content %}
+                        {% endblock %}
+                    </div>
+                    <div class="small-1 medium-1 large-1">
+                    </div>
                 </div>
             </div>
-        </div>
-       
-        <div class="footer-home">
-            <div class="grid-x">
-                <div class="small-12 medium-12 large-12"> 
-                    <div id="footer">
-                        {% include('global/footer.html.twig') %}
+        
+            <div class="footer">
+                <div class="grid-x">
+                    <div class="small-12 medium-12 large-12"> 
+                        <div id="footer">
+                            {% include('global/footer.html.twig') %}
+                        </div>
                     </div>
                 </div>
             </div>

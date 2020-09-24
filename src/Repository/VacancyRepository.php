@@ -33,8 +33,8 @@ class VacancyRepository extends ServiceEntityRepository
         $userRepository = $em->getRepository(User::class);
         $platformRepository = $em->getRepository(Platform::class);
 
-        $user = $userRepository->find($params["user_id"]);
-        $platform = $platformRepository->find($params["platform_id"]);
+        $user = $userRepository->find($params["user"]);
+        $platform = $platformRepository->find($params["platform"]);
         $date = date('Y-m-d', time());
 
         $vacancy->setUser($user);

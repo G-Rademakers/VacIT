@@ -7,8 +7,8 @@
         <div class="small-3 medium-3 large-3">
         </div>
         <div class="small-6 medium-6 large-6">
-            <br><div class="hexagon">
-                <img src="{{ vacancy.platform.iconurl }}">
+            <br><div class="hexagonplatforms">
+                <img class="hexagonplatforms-img" src="{{ vacancy.platform.iconurl }}">
             </div>
         </div>
         <div class="small-3 medium-3 large-3">
@@ -18,7 +18,7 @@
         <div class="small-3 medium-3 large-3">
         </div>
         <div class="small-6 medium-6 large-6">
-           <br><a href="/userprofile/show/{{vacancy.user.id}}"><img class="sizedimg" src="{{ vacancy.user.profilepictureurl }}"></a>
+           <br><br><a href="/userprofile/show/{{vacancy.user.id}}"><img class="companyimg" src="{{ vacancy.user.profilepictureurl }}"></a>
         </div>
         <div class="small-3 medium-3 large-3">
         </div>
@@ -29,7 +29,7 @@
 {% block content %}
     <div class="grid-x">
         <div class="small-12 medium-12 large-12">
-            <br><br><span class="datestyle">{{ vacancy.vacancydate|date("d/m/Y") }}</span>
+            <br><span class="datestyle">{{ vacancy.vacancydate|date("d/m/Y") }}</span>
             <span><h2>{{ vacancy.function }} voor {{ vacancy.user.companyname }}</h2></span>
         </div>
     </div>
@@ -74,13 +74,22 @@
                     </button>
                 {% endif %}
 
-            {% else %}
+            {% elseif app.user == vacancy.user %}
                 <br>
                 <br>
                 <button type="submit" id="_submit" name="_submit" class="btn btn-succes">
-                    <a href="" class="orangetext-apply">
+                    <a href="/vacancy/edit/{{ vacancy.id }}" class="orangetext-apply-employer">
                     <i class="fas fa-arrow-right"></i>  Vacature Aanpassen</a>
                 </button>
+
+                <br>
+                <br>
+                <button type="submit" id="_submit" name="_submit" class="btn btn-succes">
+                    <a href="/vacancy/remove/{{ vacancy.id }}" class="orangetext-apply-employer">
+                    <i class="fas fa-arrow-right"></i>  Vacature Verwijderen</a>
+                </button>
+
+            {% else %}
 
             {% endif %}
         </div>
@@ -90,10 +99,10 @@
             <div class="small-12 medium-12 large-12">
                 {% if is_granted('ROLE_EMPLOYER') and app.user == vacancy.user %}
                     <div>
-                        <br><span class='vacanciesstyle'>Meer sollicitanten op deze <span class="company">functie</span></span>
+                        <br><br><span class='vacanciesstyle'>Sollicitanten op deze <span class="company">functie</span></span>
                     </div>
                     <div>
-                       <br><table id="table_id" class="vacanciestable">
+                        <table id="table_id" class="vacanciestable">
                             <thead>
                                 <tr>
                                     <th>Sollicitatiedatum</th>

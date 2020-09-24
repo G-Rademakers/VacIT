@@ -103,12 +103,23 @@
 
 .orangetext-apply{
     color: #F15A24; 
-    font-size: 3rem;
+    font-size: 2rem;
     font-family: 'bebas_neueregular';
-    margin-left: 10px;
+    margin-left: 27px;
 }
 
 .orangetext-apply:hover{
+    color: red;
+}
+
+.orangetext-apply-employer{
+    color: #F15A24; 
+    font-size: 2rem;
+    font-family: 'bebas_neueregular';
+    margin-left: 30px;
+}
+
+.orangetext-apply-employer:hover{
     color: red;
 }
 
@@ -120,4 +131,58 @@
     border: none;
     border-bottom : 2px solid #F15A24;
 }
+
+.custom-select-vacancy {
+    position: relative;
+    font-family: 'robotocondensed';
+    font-size: 24px;
+   
+}
+
+.custom-options-vacancy {
+    font-family: 'robotocondensed';
+    font-size: 20px;
+}
+
+.orangetext-vacancysave{
+    color: #F15A24; 
+    font-size: 3rem;
+    font-family: 'bebas_neueregular';
+    float: right;
+}
+
+.myvacanciestable{
+    color: black;
+    border: transparent none; 
+    margin-left: 100px;
+}
+
+.myvacanciestable thead tr{
+    font-family: 'bebas_neueregular';
+    font-size: 20px;
+    background-color: white;
+    border-left: solid white 1px;
+    border-right: solid white 1px;
+    border-top: solid white 1px;
+}
+
+.myvacanciestable tbody tr{
+    background-color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    font-weight: bold;
+    border-bottom: solid #333333 2px;
+    border-left: solid white 1px;
+    border-right: solid white 1px;
+    border-top: solid white 1px;
+}
+
+.myvacanciestable tbody td:nth-of-type(odd){
+    color: grey;
+}
+
+.myvacanciestable tbody td:nth-of-type(even){
+    color: #F15A24;
+}
+
 

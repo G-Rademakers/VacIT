@@ -42,34 +42,36 @@
 
     </head>
     <body>
-        <div class="header">
-            <div class="grid-x grid-padding-x">
-                <div class="small-12 medium-12 large-12"> 
-                    <div id="header">
-                        {% include('global/header.html.twig') %}
+        <div class="wrapper">
+            <div class="header">
+                <div class="grid-x grid-padding-x">
+                    <div class="small-12 medium-12 large-12"> 
+                        <div id="header">
+                            {% include('global/header.html.twig') %}
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div class="layout">
-            <div class="grid-x body-white">
-                <div class="small-1 medium-1 large-1">
-                </div>
-                <div class="small-10 medium-10 large-10">
-                    {% block content %}
-                    {% endblock %}
-                </div>
-                <div class="small-1 medium-1 large-1">
+            <div class="layout">
+                <div class="grid-x body-white">
+                    <div class="small-1 medium-1 large-1">
+                    </div>
+                    <div class="small-10 medium-10 large-10">
+                        {% block content %}
+                        {% endblock %}
+                    </div>
+                    <div class="small-1 medium-1 large-1">
+                    </div>
                 </div>
             </div>
-        </div>
-       
-        <div class="footer">
-            <div class="grid-x grid-padding-x">
-                <div class="small-12 medium-12 large-12"> 
-                    <div id="footer">
-                        {% include('global/footer.html.twig') %}
+        
+            <div class="footer">
+                <div class="grid-x grid-padding-x">
+                    <div class="small-12 medium-12 large-12"> 
+                        <div id="footer">
+                            {% include('global/footer.html.twig') %}
+                        </div>
                     </div>
                 </div>
             </div>

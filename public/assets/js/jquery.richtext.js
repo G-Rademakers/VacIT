@@ -33,23 +33,23 @@
             // text formatting
             bold: true,
             italic: true,
-            underline: true,
+            underline: false,
 
             // text alignment
-            leftAlign: true,
-            centerAlign: true,
-            rightAlign: true,
+            leftAlign: false,
+            centerAlign: false,
+            rightAlign: false,
             justify: true,
 
             // lists
-            ol: true,
-            ul: true,
+            ol: false,
+            ul: false,
 
             // title
-            heading: true,
+            heading: false,
 
             // fonts
-            fonts: true,
+            fonts: false,
             fontList: ["Arial",
                 "Arial Black",
                 "Comic Sans MS",
@@ -63,25 +63,25 @@
                 "Times New Roman",
                 "Verdana"
             ],
-            fontColor: true,
-            fontSize: true,
+            fontColor: false,
+            fontSize: false,
 
             // uploads
-            imageUpload: true,
-            fileUpload: true,
+            imageUpload: false,
+            fileUpload: false,
 
             // media
-            videoEmbed: true,
+            videoEmbed: false,
 
             // link
-            urls: true,
+            urls: false,
 
             // tables
-            table: true,
+            table: false,
 
             // code
-            removeStyles: true,
-            code: true,
+            removeStyles: false,
+            code: false,
 
             // colors
             colors: [],

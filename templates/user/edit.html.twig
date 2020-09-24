@@ -7,8 +7,8 @@
         <div class="small-3 medium-3 large-3">
         </div>
         <div class="small-6 medium-6 large-6">
-            <br><div class="hexagon">
-                <img src="{{ user.profilepictureurl }}">
+            <br><div class="hexagonprofile">
+                <img class="hexagonprofile-img" src="{{ user.profilepictureurl }}">
             </div>
         </div>
         <div class="small-3 medium-3 large-3">
@@ -138,12 +138,13 @@
                 <input type="text" id="city" name="city" value="{{ user.city }}"/>
             </div>
         </div>
+    </div>
         {% endif %}
 
         <div class="grid-x">
             <div class="small-12 medium-12 large-12"> 
                 <br><h2 style="font-family:bebas_neueregular; color: #F15A24">Omschrijving</h2>
-                <span><textarea class="richtext" id="description" name="description">{{ user.description }}</textarea></span> 
+                <span><textarea class="content" id="description" name="description">{{ user.description }}</textarea></span> 
                     {# See: https://github.com/webfashionist/RichText/blob/master/examples/fontawesome5.html #}
 
                 {% if is_granted('ROLE_CANDIDATE') %}
@@ -151,7 +152,7 @@
                     <span style="font-size: 1rem; color: black">Upload CV</button></span>
                 {% endif %}
 
-                <br><button type="submit" id="_submit" name="_submit" class="btn btn-succes, orangetext-profile">
+                <button type="submit" id="_submit" name="_submit" class="btn btn-succes, orangetext-profile">
                 <i class="fas fa-arrow-right"></i> 
                 <input class="orangetext-profile" type="submit" value="Opslaan" style="border: none; background: none"/>
                 </button>

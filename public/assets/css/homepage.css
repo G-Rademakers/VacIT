@@ -6,7 +6,7 @@
 
 .vacancydatetext{
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 14px;
+    font-size: 15px;
     font-weight: bold;
     margin-left: -40px;
 }
@@ -43,22 +43,33 @@
 
 .descriptiontext{
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 16px;
+    font-size: 17px;
     font-style: italic; 
-    font-weight: bold;
+    /* font-weight: bold; */
     margin-left: -40px;
 }
 
 .hexagon-homepage{
     clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
-    width: 150px;
-    height: 150px;
-    background-color: white;
+    background-color:black;
+    width: 175px;
+    height: 175px;
+    display: flex; 
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: -1;
 }
+
+/* http://jsfiddle.net/Lt8bct5x/ */
+/* https://stackoverflow.com/questions/11978231/vertically-center-two-elements-within-a-div/31977476#31977476 */
 
 .icon-home{
     width: 150px;
     height: 150px;
+    display: block;
+    margin: auto;
+    background-color: white;
 }
 
 .triangle-homepage {
@@ -74,33 +85,4 @@
     background: rgb(241,90,36);
     background: linear-gradient(359.5deg, rgba(241,90,36,1) 0%, rgba(241,90,36,1) 50%, rgba(171,65,27,1) 51%, rgba(241,90,36,1) 61%, rgba(241,90,36,1) 100%);
 
-}
-
-.footer-home{
-    background-color: #333333;
-    color: white;
-    height: 20%;
-    width: 100%;
-    font-family: 'bebas_neueregular';
-    position: relative;
-    bottom: 0px;
-}
-
-.logo-footer-home{
-    background-color: #333333;
-    width: 50%;
-    height: auto;
-}
-
-.footer-header-home{
-    font-family: 'bebas_neueregular';
-    color: white;
-    font-weight: bold;
-    font-size: 25px; 
-}
-
-.footer-text-home{
-    font-family: Arial, Helvetica, sans-serif;
-    color: white;
-    font-style: italic;  
 }

@@ -10,82 +10,23 @@
         {% if app.user is defined and app.user != NULL %}
             <li><a href="/userprofile/edit/{{app.user.id}}" class="menu-colors">Mijn Profiel</a></li>
                 {% if is_granted('ROLE_CANDIDATE') %}
-                    <li><a href="/myapplications" class="menu-colors">Mijn sollicitaties</a></li>
-                {% elseif is_granted('ROLE_EMPLOYER') %}    
-                    <li><a href="/myapplications" class="menu-colors">Mijn sollicitanten</a></li>
+                    <li><a href="/myapplications/" class="menu-colors">Mijn sollicitaties</a></li>
+                {% elseif is_granted('ROLE_EMPLOYER') %}  
+                    <li><a href="/myvacancies/" class="menu-colors">Mijn vacatures</a></li>  
+                    <li><a href="/myapplications/" class="menu-colors">Mijn sollicitanten</a></li>
                 {% endif %}
                     <li><a href="{{ path('fos_user_security_logout') }}" class="menu-colors">Uitloggen</a></li>
         {% else %}
-            <li><a href="/register" class="menu-colors">Registreren</a></li>
-            <li><a href="/login" class="menu-colors">Login</a></li>
+            <li><a href="/vacancies/" class="menu-colors">Alle Vacatures</a></li>
+            <li><a href="/register/" class="menu-colors">Registreren</a></li>
+            <li><a href="/login/" class="menu-colors">Login</a></li>
         {% endif %}
         </ul>
     </div>
 </div>
 
-{# <div class="title-bar" data-responsive-toggle="example-menu" data-hide-for="medium">
-  <button class="menu-icon" type="button" data-toggle="example-menu"></button>
-  <div class="title-bar-title">Menu</div>
-</div>
-
-<div class="top-bar" id="example-menu">
-  <div class="top-bar-left">
-    <ul class="dropdown menu" data-dropdown-menu>
-      <li class="menu-text">Site Title</li>
-      <li>
-        <a href="#">One</a>
-        <ul class="menu vertical">
-          <li><a href="#">One</a></li>
-          <li><a href="#">Two</a></li>
-          <li><a href="#">Three</a></li>
-        </ul>
-      </li>
-      <li><a href="#">Two</a></li>
-      <li><a href="#">Three</a></li>
-    </ul>
-  </div>
-  <div class="top-bar-right">
-    <ul class="menu">
-      <li><input type="search" placeholder="Search"></li>
-      <li><button type="button" class="button">Search</button></li>
-    </ul>
+<div class="small-12 medium-12 large-12">
+  <div class="triangle triangle-homepage">
   </div>
 </div>
- #}
-
-    {# <div class="grid-x">
-        <div class="small-6 medium-3 large-3">
-            <a href="/"><img src="{{ asset('assets/logo/vacit-logo-white.png')}}" class="headerlogo"></a>  
-        </div>
-            
-        <div class="small-6 medium-9 large-9 header">
-            <ul class="vertical large-horizontal menu">
-                {% if app.user is defined and app.user != NULL %}
-                    <li><a href="/userprofile/edit/{{app.user}}">Mijn Profiel</a></li>
-                        {% if is_granted('ROLE_CANDIDATE') %}
-                            <li><a href="/myapplications">Mijn sollicitaties</a></li>
-                        {% elseif is_granted('ROLE_EMPLOYER') %}    
-                            <li><a href="/myapplications">Mijn sollicitanten</a></li>
-                        {% endif %}
-                    <li><a href="{{ path('fos_user_security_logout') }}">Uitloggen</a></li>
-             
-                {% else %}
-                    <li><a href="/register">Registreren</a></li>
-                    <li><a href="/login">Login</a></li>
-                {% endif %}
-            </ul>
-                <div data-responsive-toggle="responsive-menu" data-hide-for="medium large">
-                    <button class="menu-icon" type="button" data-toggle="responsive-menu"></button>
-                </div>
-
-                <div class="top-bar" id="responsive-menu">
-                <div class="top-bar-right">
-                <ul class="dropdown menu" data-dropdown-menu>
-        </div>
-    </div> #}
-
-    <div class="small-12 medium-12 large-12">
-        <div class="triangle triangle-homepage">
-        </div>
-    </div>
 {% endblock %}

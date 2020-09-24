@@ -18,6 +18,15 @@
             <div class="small-9 medium-9 large-9 inputstyle">
                 <h2 style="font-family:bebas_neueregular; color: #F15A24">Login</h2>
 
+
+                {% for message in app.flashes() %}
+                    <div class="alert alert-warning">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+
+
+
                 <label>Email
                     <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" autocomplete="username" />
                 </label>

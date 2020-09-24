@@ -14,35 +14,7 @@
                                 </div>
 
                                 <div class="medium-8 large-8">
-                                {# <script>
-$(document).ready( function(){
-    $('#vegas-HP').vegas({
-       delay: 5000,
-       timer: false,
-       shuffle: false,
-       firstTransition: 'fade',
-       firstTransitionDuration: 5000,
-       transition: 'slideDown2',
-       transitionDuration: 2000,
-       align: 'center',
-       cover: false,
-       slides: [
-       {% for data in vacancies %}
-           { src: "{{data.platform.afbeelding}}", 
-             text:"{{data.level}} "+"{{data.function}}",
-             text2: "{{data.user.voornaam}} "+"{{data.locatie}}" }, 
-       {% endfor %}
-       ],
-
-       walk: function (index, slideSettings) {
-           $('#vegas-titles').html(slideSettings.text);
-           $('#vegas-location').html(slideSettings.text2);
-       }
-    });
-});
-</script> #}
                                 </div>
-
 
                                 <div class="medium-2 large-2">
                                 </div>
@@ -57,8 +29,8 @@ $(document).ready( function(){
                                         </div>
 
                                         <div class="small-6 medium-6 large-6">
-                                            <br><br><br><div class="hexagon-homepage">
-                                                <img src="{{ vacancy.platform.iconurl }}"/>
+                                            <br><div class="hexagon-homepage">
+                                                <img class="icon-home" src="{{ vacancy.platform.iconurl }}" />
                                             </div>
                                         </div>
 
@@ -68,7 +40,7 @@ $(document).ready( function(){
                                 </div>
 
                                 <div class="small-8 medium-8 large-8">
-                                    <br><br><div class="vacancydatetext">{{ vacancy.vacancydate }}</div>
+                                    <br><div class="vacancydatetext">{{ vacancy.vacancydate }}</div>
                                     <a href="/vacancy/show/{{vacancy.id}}" class="functiontext">{{vacancy.function}} voor {{vacancy.user.companyname}}</a>
                                     <div class="descriptiontext">{{ vacancy.jobdescription |striptags|length > 340 ? vacancy.jobdescription|striptags|slice(0, 340) ~ '...' : vacancy.jobdescription|striptags }}</div>
                                 </div>

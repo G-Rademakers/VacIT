@@ -29,6 +29,11 @@
         <script src="{{ asset('assets/js/vendor.js')}}"></script>
         <script src="{{ asset('assets/js/all.js')}}"></script>
         <script src="{{ asset('assets/js/jquery.richtext.js')}}"></script>
+        <script>
+            $(document).ready(function() {
+                $('.content').richText();
+            });
+        </script>
         <script type="text/javascript" src="https://cdn.datatables.net/v/zf/dt-1.10.21/datatables.min.js"></script>
         <script>$(document).ready(function(){$('#table_id').DataTable(
             {
@@ -44,37 +49,40 @@
 
 
     </head>
-    <body>
-        <div class="header">
-            <div class="grid-x grid-padding-x">
-                <div class="small-12 medium-12 large-12"> 
-                    <div id="header">
-                        {% include('global/header.html.twig') %}
+    <body>        
+        <div class="wrapper">
+            <div class="header">
+                <div class="grid-x grid-padding-x">
+                    <div class="small-12 medium-12 large-12"> 
+                        <div id="header">
+                            {% include('global/header.html.twig') %}
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div class="layout">
-            <div class="grid-x body-white">
-                <div class="small-2 medium-2 large-2">
-                    {% block logo %}
-                    {% endblock %}
-                </div>
-                <div class="small-9 medium-9 large-9">
-                    {% block content %}
-                    {% endblock %}
-                </div>
-                <div class="small-1 medium-1 large-1">
+            <div class="layout">
+                <div class="grid-x body-white">
+                    <div class="small-2 medium-2 large-2">
+                        {% block logo %}
+                        {% endblock %}
+                    </div>
+                    <div class="small-9 medium-9 large-9">
+          
+                        {% block content %}
+                        {% endblock %}
+                    </div>
+                    <div class="small-1 medium-1 large-1">
+                    </div>
                 </div>
             </div>
-        </div>
-       
-        <div class="footer">
-            <div class="grid-x grid-padding-x">
-                <div class="small-12 medium-12 large-12"> 
-                    <div id="footer">
-                        {% include('global/footer.html.twig') %}
+        
+            <div class="footer">
+                <div class="grid-x grid-padding-x">
+                    <div class="small-12 medium-12 large-12"> 
+                        <div id="footer">
+                            {% include('global/footer.html.twig') %}
+                        </div>
                     </div>
                 </div>
             </div>

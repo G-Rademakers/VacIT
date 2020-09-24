@@ -1,29 +1,78 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Vacature Aanpassen!{% endblock %}
+{% block title %}Vacature Toevoegen{% endblock %}
 
 {% block logo %}
     <div class="grid-x">
-        <div class="small-3 medium-3 large-3"></div>
-        <div class="small-6 medium-6 large-6">
-           <br><a href="/userprofile/show/{{vacancy.user.id}}"><img class="sizedimg" src="{{ vacancy.user.profilepictureurl }}"></a>
+        <div class="small-3 medium-3 large-3">
         </div>
-        <div class="small-3 medium-3 large-3"></div>
+        <div class="small-6 medium-6 large-6">
+           <br><a href="/userprofile/show/{{user.id}}"><img class="sizedimg" src="{{ user.profilepictureurl }}"></a>
+        </div>
+        <div class="small-3 medium-3 large-3">
+        </div>
     </div>
 {% endblock %}
 
-{% block body %}
-    {# <div class="grid-x">
-        <div class="small-12 medium-12 large-12 profile-edit">
-            <br><h2 style="font-family:bebas_neueregular; color: #F15A24">Mijn vacature</h2>
+            
+{% block content %}
+    <form action="/vacancy/save/" method="POST">
+        <input type="hidden" name="id" value="{{ user.id }}">
+            <div class="grid-x">
+                <div class="small-12 medium-12 large-12 vacancy-edit">
+                    <br><h2 style="font-family:bebas_neueregular; color: #F15A24">Mijn Vacature</h2>
+                        <label>Functienaam</label> 
+                        <input type="text" id="function" name="function" placeholder="Voeg naam van de functie toe" value=""/>
+                </div>
+            </div>
 
-            {% if is_granted('ROLE_EMPLOYER') %}
-                <label>Functienaam</label> 
-                    <input type="text" id="function" name="function" value="{{ vacancy.function }}"/>
+            <div class="grid-x">
+                <div class="small-12 medium-12 large-12 custom-select-vacancy" >
+                    <br><label>Niveau</label> 
+                        <select class="custom-select-vacancy" id="level" name="level" value=""/>
+                            <option lass="custom-options-vacancy" value="" disabled selected>-Kies gewenst niveau-</option>
+                            <option class="custom-options-vacancy" value="Junior">Junior</option>
+                            <option class="custom-options-vacancy" value="Medior">Medior</option>
+                            <option class="custom-options-vacancy" value="Senior">Senior</option>
+                        </select>
+                </div>
+            </div>
 
-                <br><label>Contactpersoon</label> 
-                    <input type="text" id="contactperson" name="contactperson" value="{{ user.lastname }}, {{ user.firstname}}"/>
+            <div class="grid-x">
+                <div class="small-12 medium-12 large-12 custom-select-vacancy" >
+                    <br><label>Platform</label> 
+                        <select class="custom-select-vacancy" id="platform" name="platform" placeholder="Kies gewenst platform" value=""/>
+                            <option lass="custom-options-vacancy" value="" disabled selected>-Kies gewenst platform-</option>
+                            {% for platform in platforms %}
+                            <option class="custom-options-vacancy" value={{ platform.id }}>{{ platform.name }}</option>
+                            {% endfor %}
+                        </select>
+                </div>
+            </div>
 
-                <br><label>Email</label> 
-                    <input type="text" id="email" name="email" value="{{ user.email }}"/> #}
+            <div class="grid-x">
+                <div class="small-12 medium-12 large-12 vacancy-edit">
+                    <br><label>Locatie</label> 
+                    <input type="text" id="location" name="location" placeholder="Kies locatie" value=""/>
+                </div>
+            </div>
+
+            <div class="grid-x">
+                <div class="small-12 medium-12 large-12 vacancy-edit">
+                    <br><h2 style="font-family:bebas_neueregular; color: #F15A24">Omschrijving</h2>
+                    <span><textarea class="content" id="job_description" name="job_description"></textarea></span> 
+                        {# See: https://github.com/webfashionist/RichText/blob/master/examples/fontawesome5.html #}
+                </div>
+            </div>
+            
+            <div class="grid-x">
+                <div class="small-12 medium-12 large-12 orangetext-vacancysave">
+                    <br><button type="submit" id="_submit" name="_submit" class="btn btn-succes, orangetext-vacancysave">
+                    <i class="fas fa-arrow-right"></i> 
+                    <input class="orangetext-vacancysave" type="submit" value="Opslaan" style="border: none; background: none"/>
+                    </button>
+                </div>
+            </div>
+    </form>
 {% endblock %}
+

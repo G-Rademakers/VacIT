@@ -11,6 +11,7 @@
             <li><a href="/userprofile/edit/{{app.user.id}}" class="menu-colors">Mijn Profiel</a></li>
                 {% if is_granted('ROLE_CANDIDATE') %}
                     <li><a href="/myapplications/" class="menu-colors">Mijn sollicitaties</a></li>
+                    <li><a href="/vacancies/" class="menu-colors">Alle Vacatures</a></li>
                 {% elseif is_granted('ROLE_EMPLOYER') %}  
                     <li><a href="/myvacancies/" class="menu-colors">Mijn vacatures</a></li>  
                     <li><a href="/myapplications/" class="menu-colors">Mijn sollicitanten</a></li>

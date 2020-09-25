@@ -37,7 +37,39 @@
                 });
                 });
         </script>
-        <script src="{{ asset('assets/vegas/vegas.js')}}"></script>              
+        <script src="{{ asset('assets/vegas/vegas.js')}}"></script>
+            <script>
+                $(document).ready( function(){
+                $('#hexagon-slideshow').vegas({
+                    var MySlides: [
+                        {% for vacancy in vacancies %}
+                            { src: "{{ vacancy.platform.iconurl }}",
+                              title: "{{ vacancy.level }}" "{{ vacancy.function }}",
+                              subtitle: "{{ vacancy.user.companyname}}" "{{ vacancy.location }}",
+                            }
+                        {% endfor %}
+                    ]
+
+                    timer: false,
+                    autoplay: true,
+                    loop: true,
+                    delay: 7500,
+                    cover: true,
+                    align: center,
+                    valign: center,
+                    transition: slideDown,
+                    transitionDuration: 1500,
+                    firstTransition: zoomOut,
+                    firstTransitionDuration: 1500,
+                    slides: mySlides,
+
+                    walk: function (index, slideSettings) {
+                        $(".mainheader").html(mySlides[index].title);
+                        $(".subheader").html(mySlides[index].subtitle);
+                    }
+                });
+            });
+            </script>              
     </head>
     
     <body>

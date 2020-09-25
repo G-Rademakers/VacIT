@@ -123,6 +123,18 @@
     color: red;
 }
 
+.orangetext-addvacancy{
+    color: #F15A24; 
+    font-size: 2rem;
+    font-family: 'bebas_neueregular';
+    margin-left: 0px;
+}
+
+.orangetext-addvacancy:hover{
+    color: red;
+}
+
+
 .vacancy-edit input{
     width: 100%;
     font-family: 'robotocondensed';

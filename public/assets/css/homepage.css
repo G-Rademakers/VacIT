@@ -36,11 +36,6 @@
     opacity: 1.0;
 }
 
-.functiontext:hover > .arrowstyle{
-    color: white;
-    opacity: 1.0;
-}
-
 .descriptiontext{
     font-family: Arial, Helvetica, sans-serif;
     font-size: 17px;
@@ -84,14 +79,52 @@
     height: 30px;
     background: rgb(241,90,36);
     background: linear-gradient(359.5deg, rgba(241,90,36,1) 0%, rgba(241,90,36,1) 50%, rgba(171,65,27,1) 51%, rgba(241,90,36,1) 61%, rgba(241,90,36,1) 100%);
-
 }
 
-.hexagon-slideshow{
+.box{
+    display: flex;
+    justify-content: center;
+}
+
+.hexagon-homepage-vegas{
     clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
     background-color:black;
-    width: 175px;
-    height: 175px;
-  
+    margin-top: 100px;
+    width: 350px;
+    height: 350px;
+    color: white;
 }
 
+.vegas-icon{
+    width: 300px;
+    height: 300px;
+    margin: auto;
+    background-color: white;
+}
+
+.mainheader{
+    background-color: black;
+    width: 400px;
+    height: 55px;
+    color: white;
+    font-family: 'bebas_neueregular';
+    font-size: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    transform: rotate(-10deg);
+    margin-top: -40px;
+}
+
+.subheader{
+    background-color: black;
+    width: 200px;
+    height: 35px;
+    color: white;
+    font-family: 'bebas_neueregular';
+    font-size: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    transform: rotate(-10deg);
+}

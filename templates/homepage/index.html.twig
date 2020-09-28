@@ -2,76 +2,47 @@
 
 {% block title %}Welcome to VacIT!{% endblock %}
 
-{% block content %}
-    <div class="orangebackground">
-        <div class="grid-x">
-            <div class="small-12 medium-12 large-12">
-                    <div class="grid-x">
-                        <div class="medium-4 large-4">
-                            <div class="grid-x">
-                                <div class="medium-2 large-2">
-                                </div>
-
-                                <div class="medium-8 large-8">
-                                    <div class="hexagon-slideshow">
-                                        <div class="mainheader">
-                                        </div>
-                                        <div class="subheader">
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="medium-2 large-2">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    {% for vacancy in vacancies %}
-                    <div class="grid-x">
-                        <div class="small-12 medium-7 large-7">  
-                            <div class="grid-x">
-                                <div class="small-4 medium-4 large-4">
-                                    <div class="grid-x">
-                                        <div class="small-3 medium-3 large-3">
-                                        </div>
-
-                                        <div class="small-6 medium-6 large-6">
-                                            <br><div class="hexagon-homepage">
-                                                <img class="icon-home" src="{{ vacancy.platform.iconurl }}" />
-                                            </div>
-                                        </div>
-
-                                         <div class="small-3 medium-3 large-3">
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="small-8 medium-8 large-8">
-                                    <br><br><div class="vacancydatetext">{{ vacancy.vacancydate }}</div>
-                                    <a href="/vacancy/show/{{vacancy.id}}" class="functiontext">{{vacancy.function}} voor {{vacancy.user.companyname}}</a>
-                                    <div class="descriptiontext">{{ vacancy.jobdescription |striptags|length > 340 ? vacancy.jobdescription|striptags|slice(0, 340) ~ '...' : vacancy.jobdescription|striptags }}</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="small-12 medium-1 large-1">
-                             <div class="grid-x">
-                                <div class="small-4 medium-8 large-8">
-                                </div>
-
-                                <div class="small-4 medium-2 large-2">
-                                    <br><br><br><a href="/vacancy/show/{{vacancy.id}}" class="arrowstyle"><i  class="fas fa-arrow-right"></i></a>
-                                </div>
-
-                                <div class="small-4 medium-1 large-1">
-                                </div>
-                            </div>
-                        </div>
-                        {% endfor %}
-                    </div>
+{% block vegas %}
+    <div class="grid-x">
+        <div class="small-12 medium-12 large-12">
+            <div class="box">
+                <div class="hexagon-homepage-vegas">
+                    <a id="vegas-link" href=""><div id="hexagon-slideshow" class="vegas-icon"></div></a> 
+                </div>
             </div>
+            <div class="box">
+                 <a id="vegas-link2" href=""><span id="mainheader" class="mainheader"></span></a>                                   
+            </div>
+            <div class="box">
+                 <a id="vegas-link3" href=""><span id="subheader" class="subheader"></span></a>                                   
+            </div>      
         </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="grid-x">  
+        {% for vacancy in vacancies %}
+            <div class="small-12 medium-12 large-12"> 
+                <div class="grid-x">
+                    <div class="small-3 medium-3 large-3">
+                        <br><br>
+                        <div class="hexagon-homepage">
+                            <img class="icon-home" src="{{ vacancy.platform.iconurl }}" />
+                        </div>
+                    </div>
+                    <div class="small-7 medium-7 large-7">
+                        <br><br>
+                        <div class="vacancydatetext">{{ vacancy.vacancydate }}</div>
+                            <a href="/vacancy/show/{{ vacancy.id }}" class="functiontext">{{vacancy.function}} voor {{vacancy.user.companyname}}</a>
+                        <div class="descriptiontext">{{ vacancy.jobdescription |striptags|length > 300 ? vacancy.jobdescription|striptags|slice(0, 300) ~ '...' : vacancy.jobdescription|striptags }}</div>
+                    </div>
+                    <div class="small-2 medium-2 large-2 box">
+                        <br><br><br><a href="/vacancy/show/{{vacancy.id}}" class="arrowstyle"><i  class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
     </div>
     <br>
 {% endblock %}

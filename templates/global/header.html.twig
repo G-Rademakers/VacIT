@@ -1,5 +1,24 @@
 {% block header %}
-<div class="top-bar header" id="responsive-menu">
+<div class="top-bar">
+    <div class="top-bar-title">
+        <span data-responsive-toggle="responsive-menu" data-hide-for="medium">
+            <button class="menu-icon" type="button" style="float: right" data-toggle></button>
+        </span>
+        <a href="/"><img src="{{ asset('assets/logo/vacit-logo-white.png')}}" class="headerlogo"></a>  
+    </div>
+    <div id="responsive-menu">
+        <div class="top-bar-right">
+            <ul class="accordion vertical medium-horizontal menu" data-accordion-menu>
+                <li><a href="#">Mijn Profiel</a></li>
+                <li><a href="#">Mijn Sollicitaties</a></li>
+                <li><a href="#">Logout</a></li>
+            </ul>
+        </div>
+    </div>
+</div>    
+
+
+{# <div class="top-bar header" id="responsive-menu">
     <div class="top-bar-left">
     <ul class="dropdown menu" data-dropdown-menu>
       <a href="/"><img src="{{ asset('assets/logo/vacit-logo-white.png')}}" class="headerlogo"></a>  
@@ -24,7 +43,7 @@
         {% endif %}
         </ul>
     </div>
-</div>
+</div> #}
 
 <div class="small-12 medium-12 large-12">
   <div class="triangle triangle-homepage">

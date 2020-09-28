@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>{% block title %}{% endblock %}</title>
+        
         {% block stylesheets %}
         
         <link rel="stylesheet" href="{{ asset('assets/css/foundation.css')}}">
@@ -18,16 +19,21 @@
         
         {% endblock %}
     
-        <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+        <script
+            src="https://code.jquery.com/jquery-3.5.1.js"
+            integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+            crossorigin="anonymous">
+        </script>
+        <script src="{{ asset('assets/js/vendor.js')}}"></script>
+        <script src="{{ asset('assets/js/all.js')}}"></script>
+        <script src="{{ asset('assets/js/jquery.richtext.js')}}"></script>
         
         <script src="{{ asset('assets/js/foundation.js')}}"></script>
         <script>$(document).ready(function(){
                 $(document).foundation();
                 });
         </script>
-        <script src="{{ asset('assets/js/vendor.js')}}"></script>
-        <script src="{{ asset('assets/js/all.js')}}"></script>
-        <script src="{{ asset('assets/js/jquery.richtext.js')}}"></script>
+        
         <script type="text/javascript" src="https://cdn.datatables.net/v/zf/dt-1.10.21/datatables.min.js"></script>
         <script>$(document).ready(function(){$('#table_id').DataTable({
                 "paging": false,
@@ -37,44 +43,46 @@
                 });
                 });
         </script>
-        <script src="{{ asset('assets/vegas/vegas.js')}}"></script>
-            <script>
-                $(document).ready( function(){
-                $('#hexagon-slideshow').vegas({
-                    var MySlides: [
-                        {% for vacancy in vacancies %}
-                            { src: "{{ vacancy.platform.iconurl }}",
-                              title: "{{ vacancy.level }}" "{{ vacancy.function }}",
-                              subtitle: "{{ vacancy.user.companyname}}" "{{ vacancy.location }}",
-                            }
-                        {% endfor %}
-                    ]
+        <script src="{{ asset('assets/vegas/vegas.min.js')}}"></script>
+        <script>
+            $(document).ready( function(){
+            $('#hexagon-slideshow').vegas({
+                timer: false,
+                autoplay: true,
+                loop: true,
+                delay: 5000,
+                cover: true,
+                align: 'center',
+                valign: 'center',
+                transition: 'slideDown',
+                transitionDuration: 1000,
+                firstTransitionDuration: 0,
+                slides: [
+                    {% for vacancy in vacancies %}
+                        { src: "{{ vacancy.platform.iconurl }}",
+                          text1: "{{ vacancy.level }}" + " - " + "{{ vacancy.function }}",
+                          url: "{{ path('vacancy', { 'id': vacancy.id })}}",
+                          text2: "{{ vacancy.user.companyname}}" + " - " + "{{ vacancy.location }}",
+                          
+                        },
+                    {% endfor %}
+                ],
 
-                    timer: false,
-                    autoplay: true,
-                    loop: true,
-                    delay: 7500,
-                    cover: true,
-                    align: center,
-                    valign: center,
-                    transition: slideDown,
-                    transitionDuration: 1500,
-                    firstTransition: zoomOut,
-                    firstTransitionDuration: 1500,
-                    slides: mySlides,
-
-                    walk: function (index, slideSettings) {
-                        $(".mainheader").html(mySlides[index].title);
-                        $(".subheader").html(mySlides[index].subtitle);
-                    }
-                });
+                walk: function (index, slideSettings) {
+                    $("#mainheader").html(slideSettings.text1);
+                    $("#subheader").html(slideSettings.text2);
+                    $('#vegas-link').attr('href', slideSettings.url);
+                    $('#vegas-link2').attr('href', slideSettings.url);
+                    $('#vegas-link3').attr('href', slideSettings.url);
+                }
             });
-            </script>              
+        });
+        </script>  
     </head>
     
     <body>
         <div class="wrapper">
-            <div class="header">
+            {# <div class="header"> #}
                 <div class="grid-x">
                     <div class="small-12 medium-12 large-12"> 
                         <div id="header">
@@ -82,15 +90,17 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            {# </div> #}
 
-            <div class="layout">
-                <div class="grid-x orangebackground">
-                    <div class="small-11 medium-11 large-11">
-                        {% block content %}
+            <div class="orangebackground">
+                <div class="grid-x">
+                    <div class="small-4 medium-4 large-4 box">
+                        {% block vegas %}
                         {% endblock %}
                     </div>
-                    <div class="small-1 medium-1 large-1">
+                    <div class="small-8 medium-8 large-8 box">
+                        {% block content %}
+                        {% endblock %}
                     </div>
                 </div>
             </div>

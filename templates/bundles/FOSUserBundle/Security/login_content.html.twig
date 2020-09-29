@@ -10,22 +10,22 @@
     {% endif %}
         <br>
         <br>
-        <div class="grid-x">
-            <div class="small-3 medium-3 large-3">
-                <br>
-                <img src="{{ asset('assets/logo/warning-sign.png')}}">
+        <div class="grid-x grid-padding-x">
+            <div class="large-4 cell hide-for-small-only hide-for-medium-only">
+                <div class="box">
+                    <br>
+                    <img src="{{ asset('assets/logo/warning-sign.png')}}">
+                </div>
             </div>
-            <div class="small-9 medium-9 large-9 inputstyle">
-                <h2 style="font-family:bebas_neueregular; color: #F15A24">Login</h2>
 
+            <div class="small-12 medium-12 large-8 cell inputstyle">
+                <h2 style="font-family:bebas_neueregular; color: #F15A24">Login</h2>
 
                 {% for message in app.flashes() %}
                     <div class="alert alert-warning">
                         {{ message }}
                     </div>
                 {% endfor %}
-
-
 
                 <label>Email
                     <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" autocomplete="username" />

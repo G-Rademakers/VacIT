@@ -4,29 +4,31 @@
 
 
 {% block logo %}
-    <div class="grid-x">
-        <div class="small-3 medium-3 large-3"></div>
-        <div class="small-6 medium-6 large-6">
-            <br>
-                <div class="hexagonprofile">
-                    <a href="/userprofile/show/{{user.id}}"><img class="hexagonimages" src="{{ user.profilepictureurl }}"></a>
+    <div class="grid-x grid-padding-x hide-for-small-only hide-for-medium-only">
+        <div class="medium-12 large-12">
+            <div class="box">
+                <div class="medium-8 large-8">
+                    <br>
+                        <div class="hexagonprofile">
+                            <a href="/userprofile/show/{{user.id}}"><img class="hexagonimages" src="{{ user.profilepictureurl }}"></a>
+                        </div>
+                    </br>
                 </div>
-            </br>
+                <div class="small-3 medium-3 large-3"></div>
+            </div>
         </div>
-        <div class="small-3 medium-3 large-3"></div>
     </div>
 {% endblock %}
 
 
 {% block content %}
-    <div class="grid-x">
-        <div class="small-12 medium-12 large-12">
+    <div class="grid-x grid-padding-x">
+        <div class="small-12 medium-12 large-12 cell">
             <br>
-                <div class="titlestyle">Mijn Sollicitaties</div>
-            </br>
+            <div><h2 style="font-family:bebas_neueregular; color: #F15A24">Mijn Sollicitaties</h2></div>
         </div>
 
-        <div class="small-12 medium-12 large-12">
+        <div class="small-12 medium-12 large-12 cell">
             <table id="table_id" class="myapplicationstable">
                 <thead>
                     <tr>

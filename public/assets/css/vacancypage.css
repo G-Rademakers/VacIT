@@ -1,6 +1,7 @@
 .datestyle{
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 16px;
+    font-size: 20px;
+    font-family: 'bebas_neueregular';
 }
 
 .leveltitle{
@@ -25,21 +26,6 @@
 .descriptionstyle{
     font-family: Arial, Helvetica, sans-serif;
     font-size: 4;
-}
-
-.right{
-    float: right;
-    margin-right: 10px;    
-}
-
-.left{
-    float:left;
-    margin-left: -60px;
-}
-
-.lefttable{
-    float:left;
-    margin-left: 5px;
 }
 
 .vacanciesstyle{
@@ -103,9 +89,8 @@
 
 .orangetext-apply{
     color: #F15A24; 
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-family: 'bebas_neueregular';
-    margin-left: 27px;
 }
 
 .orangetext-apply:hover{
@@ -114,9 +99,8 @@
 
 .orangetext-apply-employer{
     color: #F15A24; 
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-family: 'bebas_neueregular';
-    margin-left: 30px;
 }
 
 .orangetext-apply-employer:hover{
@@ -125,7 +109,7 @@
 
 .orangetext-addvacancy{
     color: #F15A24; 
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-family: 'bebas_neueregular';
     margin-left: 0px;
 }
@@ -133,7 +117,6 @@
 .orangetext-addvacancy:hover{
     color: red;
 }
-
 
 .vacancy-edit input{
     width: 100%;
@@ -147,8 +130,7 @@
 .custom-select-vacancy {
     position: relative;
     font-family: 'robotocondensed';
-    font-size: 24px;
-   
+    font-size: 20px;
 }
 
 .custom-options-vacancy {
@@ -197,4 +179,12 @@
     color: #F15A24;
 }
 
+.input[type=text] {
+    width: 100%;
+    font-family: 'robotocondensed';
+    font-size: 20px;
+    box-shadow: none;
+    border: none;
+    border-bottom : 2px solid #F15A24;
+}
 

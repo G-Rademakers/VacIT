@@ -3,26 +3,29 @@
 {% block title %}My Applicants{% endblock %}
 
 {% block logo %}
-    <div class="grid-x">
-        <div class="small-3 medium-3 large-3"></div>
-        <div class="small-6 medium-6 large-6">
-            <br><div class="hexagon">
-                 <a href="/userprofile/show/{{user.id}}"><img src="{{ user.profilepictureurl }}"></a>
+    <div class="grid-x grid-padding-x hide-for-small-only hide-for-medium-only">
+        <div class="medium-12 large-12 cell">
+            <div class="box">
+                <div class="small-6 medium-6 large-6">
+                    <br><div class="hexagon">
+                        <a href="/userprofile/show/{{user.id}}"><img class="companyimg" src="{{ user.profilepictureurl }}"></a>
+                    </div>
+                </div>
+                <div class="small-3 medium-3 large-3"></div>
             </div>
         </div>
-        <div class="small-3 medium-3 large-3"></div>
     </div>
 {% endblock %}
 
 {% block content %}
-    <div class="grid-x">
-        <div class="small-12 medium-12 large-12">
+    <div class="grid-x grid-padding-x">
+        <div class="small-12 medium-12 large-12 cell">
             <br>
-                <div class="titlestyle">Mijn Sollicitanten</div>
+                <div><h2 style="font-family:bebas_neueregular; color: #F15A24">Mijn Sollicitanten</h2></div>
             </br>
         </div>
         
-        <div class="small-12 medium-12 large-12">            
+        <div class="small-12 medium-12 large-12 cell">            
             <table id="table_id" class="myapplicationstable">
                 <thead>
                     <tr>

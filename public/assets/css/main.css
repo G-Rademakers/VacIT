@@ -10,7 +10,7 @@
 }
 
 .header{
-    background-color: #333333;
+    background-color: #333333;   
 }
 
 .headerlogo{
@@ -46,13 +46,11 @@
     background: linear-gradient(359.5deg, rgba(241,90,36,1) 0%, rgba(241,90,36,1) 50%, rgba(171,65,27,1) 51%, rgba(255,255,255,1) 60%, rgba(255,255,255,1) 100%);
 }
 
-
 /* BODY FEATURES */
 
 .body-white{
     position: relative;
 }
-
 
 /* FOOTER FEATURES */
 
@@ -112,7 +110,6 @@
     z-index: -1;
 }
 
-
 .hexagonprofile-img{
     width: 150px;
     height: 150px;
@@ -131,4 +128,7 @@
     z-index: -1;
 }
 
-
+.box{
+    display: flex;
+    justify-content: center;
+}

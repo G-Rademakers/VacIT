@@ -21,28 +21,32 @@
 {% endblock %}
 
 {% block content %}
-    <div class="grid-x">  
-        {% for vacancy in vacancies %}
-            <div class="small-12 medium-12 large-12"> 
-                <div class="grid-x">
-                    <div class="small-3 medium-3 large-3">
-                        <br><br>
-                        <div class="hexagon-homepage">
-                            <img class="icon-home" src="{{ vacancy.platform.iconurl }}" />
-                        </div>
-                    </div>
-                    <div class="small-7 medium-7 large-7">
-                        <br><br>
-                        <div class="vacancydatetext">{{ vacancy.vacancydate }}</div>
-                            <a href="/vacancy/show/{{ vacancy.id }}" class="functiontext">{{vacancy.function}} voor {{vacancy.user.companyname}}</a>
-                        <div class="descriptiontext">{{ vacancy.jobdescription |striptags|length > 300 ? vacancy.jobdescription|striptags|slice(0, 300) ~ '...' : vacancy.jobdescription|striptags }}</div>
-                    </div>
-                    <div class="small-2 medium-2 large-2 box">
-                        <br><br><br><a href="/vacancy/show/{{vacancy.id}}" class="arrowstyle"><i  class="fas fa-arrow-right"></i></a>
+<div class="grid-x">  
+    {% for vacancy in vacancies %}
+        <div class="cell small-12 medium-12 large-12"> 
+            <div class="grid-x">
+                <div class="small-3 medium-3 large-3">
+                    <br><br>
+                    <div class="hexagon-homepage">
+                        <img class="icon-home" src="{{ vacancy.platform.iconurl }}" />
                     </div>
                 </div>
+                <div class="small-7 medium-7 large-7">
+                    <br><br>
+                    <div class="vacancydatetext">{{ vacancy.vacancydate }}</div>
+                        <a href="/vacancy/show/{{ vacancy.id }}" class="functiontext">{{vacancy.function}} voor {{vacancy.user.companyname}}</a>
+                    <div class="descriptiontext">{{ vacancy.jobdescription |striptags|length > 300 ? vacancy.jobdescription|striptags|slice(0, 300) ~ '...' : vacancy.jobdescription|striptags }}</div>
+                </div>
+                <div class="small-2 medium-2 large-2 box">
+                    <a href="/vacancy/show/{{vacancy.id}}" class="arrowstyle"><i  class="fas fa-arrow-right"></i></a>
+                </div>
             </div>
-        {% endfor %}
-    </div>
+        </div>
+    {% endfor %}
+</div>
     <br>
-{% endblock %}
+{% endblock %}    
+
+
+
+

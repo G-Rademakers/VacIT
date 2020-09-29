@@ -17,8 +17,19 @@
    
         {% endblock %}
     
-        <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-        <script src="{{ asset('assets/js/foundation.js')}}"></script>
+        <script
+            src="https://code.jquery.com/jquery-3.5.1.js"
+            integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+            crossorigin="anonymous">
+        </script>
+        <script src="{{ asset('assets/js/foundation.js')}}"></script>  
+            <script>
+                Foundation.addToJquery($);
+                  $(document).foundation();
+                  $(document).ready(function(){
+              
+                });
+        </script>
         <script src="{{ asset('assets/js/vendor.js')}}"></script>
         <script src="{{ asset('assets/js/all.js')}}"></script>
         <script type="text/javascript" src="https://cdn.datatables.net/v/zf/dt-1.10.21/datatables.min.js"></script>
@@ -32,11 +43,7 @@
             });
         </script>
 
-        <script>
-            $(document).ready(function(){
-                $(document).foundation();
-            });
-        </script>
+      
     
 
 

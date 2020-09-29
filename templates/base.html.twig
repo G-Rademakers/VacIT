@@ -20,10 +20,17 @@
         
         {% endblock %}
     
-        <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+        <script
+            src="https://code.jquery.com/jquery-3.5.1.js"
+            integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+            crossorigin="anonymous">
+        </script>
         <script src="{{ asset('assets/js/foundation.js')}}"></script>  
-        <script>$(document).ready(function(){
-                $(document).foundation();
+        <script>
+                Foundation.addToJquery($);
+                  $(document).foundation();
+                  $(document).ready(function(){
+              
                 });
         </script>
         <script src="{{ asset('assets/js/vendor.js')}}"></script>
@@ -62,13 +69,12 @@
             </div>
 
             <div class="layout">
-                <div class="grid-x body-white">
-                    <div class="small-2 medium-2 large-2">
+                <div class="grid-x grid-padding-x">
+                    <div class="small-1 medium-1 large-2">
                         {% block logo %}
                         {% endblock %}
                     </div>
-                    <div class="small-9 medium-9 large-9">
-          
+                    <div class="small-10 medium-10 large-9">
                         {% block content %}
                         {% endblock %}
                     </div>

@@ -3,23 +3,25 @@
 {% block title %}{{ profile.companyname }}{% endblock %}
 
 {% block logo %}
-    <div class="grid-x">
-        <div class="small-3 medium-3 large-3">
-        </div>
-        <div class="small-6 medium-6 large-6">
-            <br><div>
-                <img class="companyimg" src="{{ profile.profilepictureurl }}">
+    <div class="grid-x grid-padding-x hide-for-small-only hide-for-medium-only">
+        <div class=" medium-12 large-12">
+            <div class="box">
+                <div class="medium-1 large-1"></div>
+                <div class="medium-7 large-7"></div>
+                <div>
+                    <br><img class="companyimg" src="{{ profile.profilepictureurl }}">
+                </div>
+                <div class="medium-4 large-4">
+                </div>
             </div>
-        </div>
-        <div class="small-3 medium-3 large-3">
         </div>
     </div>
 {% endblock %}
 
 
 {% block content %}
-    <div class="grid-x">
-        <div class="small-12 medium-12 large-12">
+    <div class="grid-x grid-padding-x">
+        <div class="small-12 medium-12 large-12 cell">
             <br><h2 style="font-family:bebas_neueregular; color: #F15A24">Profiel</h2>
 
             <label>Company Name</label> 
@@ -33,38 +35,32 @@
         </div>
     </div>  
     
-    <div class="grid-x">
-        <div class="small-5 medium-5 large-5"> 
+    <div class="grid-x grid-padding-x">
+        <div class="small-12 medium-6 large-6 cell"> 
             <br><label>Adres</label> 
                 <span class="display">{{ profile.address }}</span>
         </div>
 
-        <div class="small-1 medium-1 large-1">
-        </div>
-
-        <div class="small-6 medium-6 large-6"> 
+        <div class="small-12 medium-6 large-6 cell"> 
             <br><label>Telefoonnummer</label>
             <span class="display">{{ profile.phonenumber }}</span>
         </div>
     </div>
 
-    <div class="grid-x">
-        <div class="small-5 medium-5 large-5"> 
+    <div class="grid-x grid-padding-x">
+        <div class="small-12 medium-6 large-6 cell"> 
             <br><label>Postcode</label> 
             <span class="display">{{ profile.zipcode }}</span>
         </div>
 
-        <div class="small-1 medium-1 large-1">
-        </div>
-
-        <div class="small-6 medium-6 large-6"> 
+        <div class="small-12 medium-6 large-6 cell"> 
             <br><label>Plaats</label>
             <span class="display">{{ profile.city }}</span>
         </div>
     </div>
 
-    <div class="grid-x">
-        <div class="small-12 medium-12 large-12"> 
+    <div class="grid-x grid-padding-x">
+        <div class="small-12 medium-12 large-12 cell"> 
             <br><h2 style="font-family:bebas_neueregular; color: #F15A24">Motivatie</h2>
             <span class="motivation">{{ profile.description }}</span><br><br><br>
         </div>

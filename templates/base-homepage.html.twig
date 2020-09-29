@@ -29,17 +29,19 @@
         <script src="{{ asset('assets/js/jquery.richtext.js')}}"></script>
         
         <script src="{{ asset('assets/js/foundation.js')}}"></script>
-        <script>$(document).ready(function(){
-                $(document).foundation();
+            <script>
+                Foundation.addToJquery($);
+                  $(document).foundation();
+                  $(document).ready(function(){
+              
                 });
         </script>
-        
         <script type="text/javascript" src="https://cdn.datatables.net/v/zf/dt-1.10.21/datatables.min.js"></script>
         <script>$(document).ready(function(){$('#table_id').DataTable({
                 "paging": false,
                 "searching": false,
                 "info": false,
-                "ordering": false
+                "ordering": false,
                 });
                 });
         </script>
@@ -82,7 +84,7 @@
     
     <body>
         <div class="wrapper">
-            {# <div class="header"> #}
+            <div class="header">
                 <div class="grid-x">
                     <div class="small-12 medium-12 large-12"> 
                         <div id="header">
@@ -90,15 +92,15 @@
                         </div>
                     </div>
                 </div>
-            {# </div> #}
-
+            </div>
+      
             <div class="orangebackground">
                 <div class="grid-x">
-                    <div class="small-4 medium-4 large-4 box">
+                    <div class="large-4 box hide-for-small-only hide-for-medium-only">
                         {% block vegas %}
                         {% endblock %}
                     </div>
-                    <div class="small-8 medium-8 large-8 box">
+                    <div class="small-12 medium-12 large-8 box">
                         {% block content %}
                         {% endblock %}
                     </div>

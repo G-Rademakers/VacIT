@@ -1,24 +1,45 @@
 {% block header %}
 {# <div class="top-bar">
-    <div class="top-bar-title">
-        <span data-responsive-toggle="responsive-menu" data-hide-for="large">
+    <div clas="top-bar-title">
+        <span data-responsive-toggle="responsive-menu" data-hide-for="medium">
             <button class="menu-icon" type="button" data-toggle></button>
         </span>
-        <a href="/"><img src="{{ asset('assets/logo/vacit-logo-white.png')}}" class="headerlogo"></a>  
+        <strong>Site Title</strong>
     </div>
- 
-        <div id="responsive-menu">
-            <div class="top-bar-right">   
-                    <ul class="dropdown vertical medium-horizontal menu" data-dropdown-menu>
-                        <li><a href="#" class="menu-colors">Mijn Profiel</a></li>
-                        <li><a href="#" class="menu-colors">Mijn Sollicitaties</a></li>
-                        <li><a href="#" class="menu-colors">Logout</a></li>
-                    </ul>
-            </div>
+    <div id="responsive-menu">
+        <div class="top-bar-left">
+            <ul class="dropdown menu" data-dropdown-menu>
+                <li><a href="#">One</a></li>
+                <li><a href="#">Two</a></li>
+                <li><a href="#">Three</a></li>
+            </ul>
         </div>
-     
-</div>  #}
+        <div class="top-bar-right">
+            <ul class="menu">
+                <li><input type="search" placeholder="Search"></li>
+                <li><button type="button" class="button">Search</button></li>
+            </ul>
+        </div>
+    </div>
+</div> #}
 
+{# <div class="top-bar">
+    <div class="top-bar-left">     
+        <a href="/"><img src="{{ asset('assets/logo/vacit-logo-white.png')}}" class="headerlogo"></a>  
+    </div>   
+    <div class="top-bar-right">
+        <span data-responsive-toggle="responsive-menu" data-hide-for="medium">
+            <button class="menu-icon" type="button" data-toggle></button>
+        </span>  
+        <div id="responsive-menu">
+            <ul class="vertical medium-horizontal dropdown menu" data-dropdown-menu>
+                <li><a href="#" class="menu-colors">Mijn Profiel</a></li>
+                <li><a href="#" class="menu-colors">Mijn Sollicitaties</a></li>
+                <li><a href="#" class="menu-colors">Logout</a></li>
+            </ul>
+        </div>
+    </div>
+</div>  #}
 
 <div class="top-bar header" id="responsive-menu">
     <div class="top-bar-left">
@@ -27,25 +48,26 @@
     </ul>
     </div>
     <div class="top-bar-right">
-        <ul class="vertical medium-horizontal menu" data-responsive-menu="drilldown">
+        <ul class="vertical medium-horizontal menu" data-responsive-menu="dropdown">
         {% if app.user is defined and app.user != NULL %}
-            <li><a href="/userprofile/edit/{{app.user.id}}" class="menu-colors">Mijn Profiel</a></li>
-                {% if is_granted('ROLE_CANDIDATE') %}
-                    <li><a href="/myapplications/" class="menu-colors">Mijn sollicitaties</a></li>
-                    <li><a href="/vacancies/" class="menu-colors">Alle Vacatures</a></li>
-                {% elseif is_granted('ROLE_EMPLOYER') %}  
-                    <li><a href="/myvacancies/" class="menu-colors">Mijn vacatures</a></li>  
-                    <li><a href="/myapplications/" class="menu-colors">Mijn sollicitanten</a></li>
-                {% endif %}
-                    <li><a href="{{ path('fos_user_security_logout') }}" class="menu-colors">Uitloggen</a></li>
-        {% else %}
-            <li><a href="/vacancies/" class="menu-colors">Alle Vacatures</a></li>
-            <li><a href="/register/" class="menu-colors">Registreren</a></li>
-            <li><a href="/login/" class="menu-colors">Login</a></li>
+                <li><a href="/userprofile/edit/{{app.user.id}}" class="menu-colors">Mijn Profiel</a></li>
+                    {% if is_granted('ROLE_CANDIDATE') %}
+                        <li><a href="/myapplications/" class="menu-colors">Mijn sollicitaties</a></li>
+                        <li><a href="/vacancies/" class="menu-colors">Alle Vacatures</a></li>
+                    {% elseif is_granted('ROLE_EMPLOYER') %}  
+                        <li><a href="/myvacancies/" class="menu-colors">Mijn vacatures</a></li>  
+                        <li><a href="/myapplications/" class="menu-colors">Mijn sollicitanten</a></li>
+                    {% endif %}
+                        <li><a href="{{ path('fos_user_security_logout') }}" class="menu-colors">Uitloggen</a></li>
+            {% else %}
+                <li><a href="/vacancies/" class="menu-colors">Alle Vacatures</a></li>
+                <li><a href="/register/" class="menu-colors">Registreren</a></li>
+                <li><a href="/login/" class="menu-colors">Login</a></li>
         {% endif %}
         </ul>
     </div>
 </div>
+
 
 <div class="small-12 medium-12 large-12">
   <div class="triangle triangle-homepage">

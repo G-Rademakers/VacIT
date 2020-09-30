@@ -9,9 +9,6 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 
-/**
- * @Route("/upload")
- */
 class UploadController extends AbstractController
 {
    
@@ -19,7 +16,7 @@ class UploadController extends AbstractController
     ///// Deze altijd in combinatie met SimpleUploader gebruiken!
 
     /**
-     * @Route("/", name="upload_file")
+     * @Route("/upload", name="upload_file")
      */
     public function uploadFile(Request $request) {
 

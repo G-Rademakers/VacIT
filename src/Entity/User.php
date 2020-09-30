@@ -94,7 +94,6 @@ class User extends BaseUser
      * @ORM\Column(type="string", length=5, nullable=true)
      */
     private $type;
-    
 
     public function __construct()
     {
@@ -315,4 +314,3 @@ class User extends BaseUser
         return $this;
     }
 }
-

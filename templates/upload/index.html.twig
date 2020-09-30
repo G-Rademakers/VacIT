@@ -1,14 +1,13 @@
-<html>
-<head>
+{# 
     <!-- LET OP JQUERY UITERAARD OOK KOPPELEN!!!!! -->
-    <script src="{{ asset('assets/simpleuploader/SimpleAjaxUploader.js') }}"></script>  
+    <script src="{{ asset('assets/js/SimpleAjaxUploader.js') }}"></script>  
 
     <script>
  $(document).ready(function() {
 
             let uploader = new ss.SimpleUpload({
-                button: "uploadeer",
-                url: "{{ path('upload_file') }}",
+                button: "upload",
+                url: "{{ path('upload') }}",
                 name: 'file', // upload parameter name die gebruikt wordt in de controller
                 responseType: 'json',
                 allowedExtensions: ['png', 'jpg', 'jpeg', 'pdf'],
@@ -36,10 +35,9 @@
                     if(response.success === false) {
                         alert(response.errors);
                     } else {
-
-                        /// Doe iets met response.file_id (path naar de geuploade file) --> Dus hier komt ietts wat dan aangeeft dat alles goed is gegaan!
-                        
-                        
+                    
+                        $("uploaded-file").val(response.file_id);
+                        $("uploaded-image").attr("src", response.file_id);
                     }
                 }
             });
@@ -51,4 +49,4 @@
     <div id="upload"
          style="width: 200px; height: 200px; background-color: #F00; cursor: pointer">
     </div>
-</body>
+</body> #}

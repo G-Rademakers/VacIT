@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>{% block title %}{% endblock %}</title>
+        
         {% block stylesheets %}
         
         <link rel="stylesheet" href="{{ asset('assets/css/foundation.css')}}">
@@ -51,9 +52,49 @@
             });
             });
         </script>
+        <script src="{{ asset('assets/js/SimpleAjaxUploader.js') }}"></script>
+        <script>
+        $(document).ready(function() {
 
-      
+                    let uploader = new ss.SimpleUpload({
+                        button: "upload",
+                        url: "{{ path('upload_file') }}",
+                        name: 'file', // upload parameter name die gebruikt wordt in de controller
+                        responseType: 'json',
+                        allowedExtensions: ['png', 'jpg', 'jpeg', 'pdf'],
+                        hoverClass: 'hover-class-upload',
+                        focusClass: 'hover-class-upload',
+                        multiple: false,
+                        disabledClass: 'ui-state-disabled',
+                        autoSubmit: true,
 
+                        onSizeError: function() {
+                            alert('File may not exceed 100MB');
+                        },
+
+                        onExtError: function() {
+                            alert('Invalid file type. Please use a PNG, JPG or JPEG or PDF file');
+                        },
+
+                        onSubmit: function( filename, extension, uploadBtn, fileSize ) {
+                            /// Bijvoorbeeld een overlay of een spinner starten...
+                            return(true);
+                        },
+
+                        onComplete: function (filename, response) {
+
+                            if(response.success === false) {
+                                alert(response.errors);
+                            } else {
+
+                                    /// Doe iets met response.file_id (path naar de geuploade file) --> Dus hier komt ietts wat dan aangeeft dat alles goed is gegaan!
+                                    $("#uploaded-file").val(response.file_id);
+                                    $("#uploaded-image").attr("src", response.file_id);
+                            }
+                        }
+                    });
+                });
+        </script>  
 
     </head>
     <body>        

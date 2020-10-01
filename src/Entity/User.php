@@ -99,6 +99,7 @@ class User extends BaseUser
     {
         parent::__construct();
         // your own logic
+        $this->roles = array( 'ROLE_CANDIDATE');
         $this->vacancies = new ArrayCollection();
         $this->applications = new ArrayCollection();
     }

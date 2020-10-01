@@ -89,6 +89,8 @@ class UserController extends AbstractController
         $params["phone_number"] = $request->request->get("phone_number");
         $params["description"] = $request->request->get("description");
         $params["date_of_birth"] = $request->request->get("date_of_birth");
+        $params["profile_picture_url"] = $request->request->get("profile_picture_url");
+        $params["cv_url"] = $request->request->get("cv_url");
         
         if($user == $user_confirmation or in_array('ROLE_ADMIN', $user->getRoles()))
         {
@@ -130,4 +132,44 @@ class UserController extends AbstractController
             return new response('No permission to delete this account');
         }
     }
+
+    // /**
+    //  * @Route("/upload/", name="uploadpage/")
+    //  */
+    // public function showUploadPage(Request $request, UserService $us)
+    // {
+    //     $user = $this->getUser();
+    
+    //     return $this->render('upload/uploadpage.html.twig', [
+    //         'controller_name' => 'UploadPageController', 
+    //         'user'=>$user,]);
+    // }
+
+    // /**
+    //  * @Route("/profilepicture/", name="profilepicture/")
+    //  */
+    // public function saveProfilePicture(Request $request, UserService $us)
+    // {
+    //     $user = $this->getUser();
+    
+    //     $params["id"] =  $request->request->get("id");
+    //     $params["profile_picture_url"] = $request->request->get("profile_picture_url");
+               
+    //     $result = $us->saveProfilePicture($params);
+    //     return $this->redirect("/login/");
+    // }
+
+    // /**
+    //  * @Route("/cv/", name="cv/")
+    //  */
+    // public function saveCV(Request $request, UserService $us)
+    // {
+    //     $user = $this->getUser();
+    
+    //     $params["id"] =  $request->request->get("id");
+    //     $params["cv_url"] = $request->request->get("cv_url");
+               
+    //     $result = $us->saveCV($params);
+    //     return $this->redirect("/login/");
+    // }
 }

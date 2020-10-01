@@ -43,7 +43,4 @@ class UploadController extends AbstractController
         $response->headers->set('Content-Type','application/json');
         return($response);
     }
-
-    
-
 }

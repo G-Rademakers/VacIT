@@ -114,7 +114,13 @@
     height: 150px;
     display: block;
     margin: auto;
-    background-color: white;
+    background-color:black;
+    border: white;
+    border-top: white;
+    border-bottom: white;
+    border-left: white;
+    border-right: white;
+    box-shadow: white;;
 }
 
 .companyimg{
@@ -130,4 +136,15 @@
 .box{
     display: flex;
     justify-content: center;
+}
+
+.cv-imgbox{
+    width: 75px;
+    height: 75px;
+    background-color:white;
+    color: #F15A24;
+}
+
+.cv-img{
+    color: #F15A24;
 }

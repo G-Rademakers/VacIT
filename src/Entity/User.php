@@ -78,7 +78,7 @@ class User extends BaseUser
     /**
     * @ORM\Column(type="string", length=255, nullable=true)
     */
-    private $cv_url;
+    private $cv;
 
     /**
      * @ORM\OneToMany(targetEntity=Vacancy::class, mappedBy="user", orphanRemoval=true)
@@ -99,7 +99,7 @@ class User extends BaseUser
     {
         parent::__construct();
         // your own logic
-        $this->roles = array( 'ROLE_CANDIDATE');
+        $this->roles = array('ROLE_CANDIDATE');
         $this->vacancies = new ArrayCollection();
         $this->applications = new ArrayCollection();
     }
@@ -231,12 +231,12 @@ class User extends BaseUser
 
     public function getCV(): ?string 
     {
-        return $this->cv_url;
+        return $this->cv;
     }
 
     public function setCV(string $cv_url): self
     {
-        $this->cv_url = $cv_url;
+        $this->cv = $cv;
         
         return $this;
     }

@@ -9,14 +9,18 @@
                 <div class=" medium-1 large-1">
                 </div>
                 <div class="medium-7 large-7">
-
-                    <img id="upload" style="width: 200px; height: 200px; background-color: blue; cursor: pointer"></img>
-                        <form action="" method="POST"> 
-                            <input type=" hidden text" style="width: 100px"; name="bestand" id="uploaded-file">
-                        </form>
-                    <img id="uploaded-image" style="width: 300px; height: 300px"></img>
-
-                </div>
+                    <br><div class="hexagonprofile">
+                        <img class="hexagonprofile-img" src="{{ asset( user.profilepictureurl ) }}" id="upload" style="cursor: pointer;"></img>
+                    </div> 
+                     <div class="box">
+                        <span>Click to upload image</span>
+                    </div>
+                    <br><div class="hexagonprofile">
+                        <img class="hexagonprofile-img" id="uploaded-image" style="border: none"></img>
+                    </div>
+                    <div class="box">
+                        <span>Preview Image</span>
+                    </div>
                 </div>
                 <div class="medium-4 large-4">
                 </div>
@@ -26,129 +30,139 @@
 {% endblock %}
 
 {% block content %}
-<form action="/userprofile/save/{{user.id}}" method="POST">
-    <input type="hidden" name="id" value="{{ user.id }}">
-        <div class="grid-x grid-padding-x">
-            <div class="small-12 medium-12 large-12 cell">
-                <br><h2 style="font-family:bebas_neueregular; color: #F15A24">Mijn Profiel</h2>
+<form action="{{ path('save/userprofile', { "id": user.id } ) }}" method="POST">
+    <input type="hidden" name="id" value="{{ user.id }}">  
+        <input type="hidden" style="width: 100px" name="profile_picture_url" id="uploaded-file"> 
+            <div class="grid-x grid-padding-x">
+                <div class="small-12 medium-12 large-12 cell">
+                    <br><h2 style="font-family:bebas_neueregular; color: #F15A24">Mijn Profiel</h2>
 
-                {% if is_granted('ROLE_EMPLOYER') %}
-                    <label>Bedrijfsnaam</label> 
-                        <input type="text" id="company_name" name="company_name" value="{{ user.companyname }}" class="input"/>
-                
-                <div class="grid-x grid-padding-x">
-                    <div class="small-12 medium-6 large-6 cell">
-                        <br><label>Voornaam</label> 
-                            <input type="text" id="first_name" name="first_name" value="{{ user.firstname }}" class="input"/>
+                    {% if is_granted('ROLE_EMPLOYER') %}
+                        <label>Bedrijfsnaam</label> 
+                            <input type="text" id="company_name" name="company_name" value="{{ user.companyname }}" class="input"/>
+                    
+                    <div class="grid-x grid-padding-x">
+                        <div class="small-12 medium-6 large-6 cell">
+                            <br><label>Voornaam</label> 
+                                <input type="text" id="first_name" name="first_name" value="{{ user.firstname }}" class="input"/>
+                        </div>
+
+                        <div class="small-12 medium-6 large-6 cell">
+                            <br><label>Achternaam</label> 
+                                <input type="text" id="last_name" name="last_name" value="{{ user.lastname }}" class="input"/>
+                        </div>
                     </div>
+                            
+                        <br><label>Email</label> 
+                            <input type="text" id="email" name="email" value="{{ user.email }}" class="input"/>
+                </div>
+            </div>
 
-                    <div class="small-12 medium-6 large-6 cell">
-                        <br><label>Achternaam</label> 
-                            <input type="text" id="last_name" name="last_name" value="{{ user.lastname }}" class="input"/>
+            <div class="grid-x grid-padding-x">
+                <div class="small-12 medium-6 large-6 cell"> 
+                    <br><label>Adres</label> 
+                    <input type="text" id="address" name="address" value="{{ user.address }}" class="input"/>
+                </div>
+
+                <div class="small-12 medium-6 large-6 cell"> 
+                    <br><label>Telefoonnummer</label>
+                    <input type="text" id="phone_number" name="phone_number" value="{{ user.phonenumber }}" class="input"/>
+                </div>
+            </div>
+
+            <div class="grid-x grid-padding-x">
+                <div class="small-12 medium-6 large-6 cell"> 
+                    <br><label>Postcode</label> 
+                    <input type="text" id="zipcode" name="zipcode" value="{{ user.zipcode }}" class="input"/>
+                </div>
+
+                <div class="small-12 medium-6 large-6 cell"> 
+                    <br><label>Plaats</label>
+                    <input type="text" id="city" name="city" value="{{ user.city }}" class="input"/>
+                </div>
+            </div>
+
+            {% else %}
+            <div class="grid-x grid-padding-x">
+                <div class="small-12 medium-6 large-6 cell"> 
+                    <br><label>Voornaam</label> 
+                    <input type="text" id="first_name" name="first_name" value="{{ user.firstname }}" class="input"/>
+                </div>
+
+                <div class="small-12 medium-6 large-6 cell"> 
+                    <br><label>Achternaam</label>
+                    <input type="text" id="last_name" name="last_name" value="{{ user.lastname }}" class="input"/>
+                </div>
+            </div>
+        
+            <div class="grid-x grid-padding-x">
+                <div class="small-12 medium-12 large-12 cell"> 
+                    <br><label>Email</label>
+                    <input type="text" id="email" name="email" value="{{ user.email }}" class="input"/>
+                </div>
+            </div>
+
+            <div class="grid-x grid-padding-x">
+                <div class="small-12 medium-6 large-6 cell"> 
+                    <br><label>Geboortedatum</label> 
+                    <input type="text" id="date_of_birth" name="date_of_birth" value="{{ user.dateofbirth|date('d-m-Y') }}" class="input"/>
+                </div>
+
+                <div class="small-12 medium-6 large-6 cell"> 
+                    <br><label>Telefoonnummer</label>
+                    <input type="text" id="phone_number" name="phone_number" value="{{ user.phonenumber }}" class="input"/>
+                </div>
+            </div>
+
+            <div class="grid-x grid-padding-x">
+                <div class="small-12 medium-12 large-12 cell"> 
+                    <br><label>Adres</label>
+                    <input type="text" id="address" name="address" value="{{ user.address }}" class="input"/>
+                </div>
+            </div>
+
+            <div class="grid-x grid-padding-x">
+                <div class="small-12 medium-6 large-6 cell"> 
+                    <br><label>Postcode</label> 
+                    <input type="text" id="zipcode" name="zipcode" value="{{ user.zipcode }}" class="input"/>
+                </div>
+
+                <div class="small-12 medium-6 large-6 cell"> 
+                    <br><label>Woonplaats</label>
+                    <input type="text" id="city" name="city" value="{{ user.city }}" class="input"/>
+                </div>
+            </div>
+        </div>
+            {% endif %}
+
+            <div class="grid-x grid-padding-x">
+                <div class="small-12 medium-12 large-12 cell"> 
+                    <br><h2 style="font-family:bebas_neueregular; color: #F15A24">Omschrijving</h2>
+                    <span><textarea class="content" id="description" name="description">{{ user.description }}</textarea></span> 
+                        {# See: https://github.com/webfashionist/RichText/blob/master/examples/fontawesome5.html #}
+                </div>
+            </div>
+
+            <div class="grid-x grid-padding-x">
+                <div class="small-12 medium-6 large-6 cell"> 
+                    {% if is_granted('ROLE_CANDIDATE') %}
+                        <br><br><div class="cv-imgbox" id="uploadcv" style="cursor: pointer;">
+                            <i class="fas fa-file-pdf" style="color: #F15A24; width: 75px; height: 75px;"></i>
+                            <input type="hidden" style="width: 150px" name="cv" id="uploaded-cvfile"> 
+                        </div>
+                    {% endif %}
+                </div>
+
+                <div class="small-12 medium-6 large-6 cell"> 
+                    <div>
+                        <br><button type="submit" id="_submit" name="_submit" class="btn btn-succes, orangetext-profile">
+                        <i class="fas fa-arrow-right"></i> 
+                        <input class="orangetext-profile" type="submit" value="Opslaan" style="border: none; background: none"/>
+                        </button>
                     </div>
                 </div>
-                        
-                    <br><label>Email</label> 
-                        <input type="text" id="email" name="email" value="{{ user.email }}" class="input"/>
-            </div>
-        </div>
-
-        <div class="grid-x grid-padding-x">
-            <div class="small-12 medium-6 large-6 cell"> 
-                <br><label>Adres</label> 
-                <input type="text" id="address" name="address" value="{{ user.address }}" class="input"/>
-            </div>
-
-            <div class="small-12 medium-6 large-6 cell"> 
-                <br><label>Telefoonnummer</label>
-                <input type="text" id="phone_number" name="phone_number" value="{{ user.phonenumber }}" class="input"/>
-            </div>
-        </div>
-
-        <div class="grid-x grid-padding-x">
-            <div class="small-12 medium-6 large-6 cell"> 
-                <br><label>Postcode</label> 
-                <input type="text" id="zipcode" name="zipcode" value="{{ user.zipcode }}" class="input"/>
-            </div>
-
-            <div class="small-12 medium-6 large-6 cell"> 
-                <br><label>Plaats</label>
-                <input type="text" id="city" name="city" value="{{ user.city }}" class="input"/>
-            </div>
-        </div>
-
-        {% else %}
-        <div class="grid-x grid-padding-x">
-            <div class="small-12 medium-6 large-6 cell"> 
-                <br><label>Voornaam</label> 
-                <input type="text" id="first_name" name="first_name" value="{{ user.firstname }}" class="input"/>
-            </div>
-
-            <div class="small-12 medium-6 large-6 cell"> 
-                <br><label>Achternaam</label>
-                <input type="text" id="last_name" name="last_name" value="{{ user.lastname }}" class="input"/>
-            </div>
-        </div>
-    
-        <div class="grid-x grid-padding-x">
-            <div class="small-12 medium-12 large-12 cell"> 
-                <br><label>Email</label>
-                <input type="text" id="email" name="email" value="{{ user.email }}" class="input"/>
-            </div>
-        </div>
-
-        <div class="grid-x grid-padding-x">
-            <div class="small-12 medium-6 large-6 cell"> 
-                <br><label>Geboortedatum</label> 
-                <input type="text" id="date_of_birth" name="date_of_birth" value="{{ user.dateofbirth|date('d-m-Y') }}" class="input"/>
-            </div>
-
-            <div class="small-12 medium-6 large-6 cell"> 
-                <br><label>Telefoonnummer</label>
-                <input type="text" id="phone_number" name="phone_number" value="{{ user.phonenumber }}" class="input"/>
-            </div>
-        </div>
-
-        <div class="grid-x grid-padding-x">
-            <div class="small-12 medium-12 large-12 cell"> 
-                <br><label>Adres</label>
-                <input type="text" id="address" name="address" value="{{ user.address }}" class="input"/>
-            </div>
-        </div>
-
-        <div class="grid-x grid-padding-x">
-            <div class="small-12 medium-6 large-6 cell"> 
-                <br><label>Postcode</label> 
-                <input type="text" id="zipcode" name="zipcode" value="{{ user.zipcode }}" class="input"/>
-            </div>
-
-            <div class="small-12 medium-6 large-6 cell"> 
-                <br><label>Woonplaats</label>
-                <input type="text" id="city" name="city" value="{{ user.city }}" class="input"/>
             </div>
         </div>
     </div>
-        {% endif %}
-
-        <div class="grid-x">
-            <div class="small-12 medium-12 large-12 cell"> 
-                <br><h2 style="font-family:bebas_neueregular; color: #F15A24">Omschrijving</h2>
-                <span><textarea class="content" id="description" name="description">{{ user.description }}</textarea></span> 
-                    {# See: https://github.com/webfashionist/RichText/blob/master/examples/fontawesome5.html #}
-
-                {% if is_granted('ROLE_CANDIDATE') %}
-                    <br><span><button type="submit" id="_submit" name="_submit" class="btn btn-succes" style="font-size: 2.5rem; color: #F15A24"><i class="fas fa-file-pdf"></i></span>
-                    <span style="font-size: 1rem; color: black">Upload CV</button></span>
-                {% endif %}
-
-                <br><button type="submit" id="_submit" name="_submit" class="btn btn-succes, orangetext-profile">
-                <i class="fas fa-arrow-right"></i> 
-                <input class="orangetext-profile" type="submit" value="Opslaan" style="border: none; background: none"/>
-                </button>
-    
-            <br>
-            <br>
-            </div>
-        </div>
 </form>
 {% endblock %}

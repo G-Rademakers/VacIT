@@ -76,12 +76,12 @@ class UserService
 
             if(isset($params["profile_picture_url"]))
             {
-                $user->setDescription($params["profile_picture_url"]);
+                $user->setProfilePictureURL($params["profile_picture_url"]);
             }
           
-            if(isset($params["cv_url"]))
+            if(isset($params["cv"]))
             {
-                $user->setDescription($params["cv_url"]);
+                $user->setCV($params["cv"]);
             }
           
             $this->um->UpdateUser($user);

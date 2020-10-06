@@ -65,4 +65,15 @@
             <span class="motivation">{{ profile.description }}</span><br><br><br>
         </div>
     </div>
+
+    <div class="grid-x grid-padding-x">
+        <div class="small-12 medium-12 large-12 cell"> 
+            {% if is_granted("ROLE_ADMIN") %}
+                <button type="submit" id="_submit" name="_submit" class="btn btn-succes"  style="float: right" >
+                    <a href={{ path('remove/userprofile', {"id": profile.id }) }} class="orangetext-remove-admin">
+                    <i class="fas fa-arrow-right"></i>  Gebruiker Verwijderen</a>
+                </button><br>
+            {% endif %}
+        </div>
+    </di>
 {% endblock %}

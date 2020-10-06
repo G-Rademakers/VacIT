@@ -1,0 +1,35 @@
+{% extends 'base-admin.html.twig' %}
+
+{% block title %}Alle Sollicitaties{% endblock %}
+
+{% block content %}
+    <div class="grid-x grid-padding-x">
+        <div class="small-12 medium-12 large-12 cell">
+            <br>
+                <div><h2 style="font-family:bebas_neueregular; color: #F15A24">Sollicitaties</h2></div>
+        </div>
+        
+        <div class="small-12 medium-12 large-12 cell">            
+            <table id="table_id" class="admintable">
+                <thead>
+                    <tr>
+                        <th>Datum</th>  
+                        <th>Vacature</th>
+                        <th>Bedrijf</th>
+                        <th>Sollicitant</th> 
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for application in applications|sort((a, b) => a.applicationdate <=> b.applicationdate) %}
+                        <tr>
+                            <td>{{ application.applicationdate|date("d-m-Y") }}</td>
+                            <td><a href={{ path('show/vacancy', { "id": application.vacancy.id } ) }} class="orangetext">{{ application.vacancy.function }}</a></td>
+                            <td><a href={{ path('show/userprofile', { "id": application.vacancy.user.id }) }} class="greytext">{{application.vacancy.user.companyname }}</a></td>
+                            <td><a href={{ path('show/userprofile', { "id": application.user.id }) }} class="orangetext">{{ application.user.lastname }}, {{ application.user.firstname}}</a></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>                           
+{% endblock %}

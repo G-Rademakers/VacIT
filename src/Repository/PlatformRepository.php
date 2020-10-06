@@ -19,7 +19,6 @@ class PlatformRepository extends ServiceEntityRepository
         if(isset($params["id"]))
         {
             $platform = $this->find($params["id"]);
-            return("Data already exists");
         } 
 
         else

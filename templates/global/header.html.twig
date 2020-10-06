@@ -1,4 +1,42 @@
 {% block header %}
+<div class="top-bar header" id="responsive-menu">
+    <div class="top-bar-left">
+    <ul class="dropdown menu" data-dropdown-menu>
+      <a href="/"><img src="{{ asset('assets/logo/vacit-logo-white.png')}}" class="headerlogo"></a>  
+    </ul>
+    </div>
+    <div class="top-bar-right">
+        <ul class="vertical medium-horizontal menu" data-responsive-menu="dropdown">
+        {% if app.user is defined and app.user != NULL %}
+                <li><a href="/userprofile/edit/{{app.user.id}}" class="menu-colors">Mijn Profiel</a></li>
+                    {% if is_granted('ROLE_CANDIDATE') %}
+                        <li><a href={{ path('myapplications') }} class="menu-colors">Mijn sollicitaties</a></li>
+                        <li><a href={{ path('althomepage_vacancies') }} class="menu-colors">Alle Vacatures</a></li>
+                    {% elseif is_granted('ROLE_EMPLOYER') %}  
+                        <li><a href={{ path('myvacancies') }} class="menu-colors">Mijn vacatures</a></li>  
+                        <li><a href={{ path('myapplications') }} class="menu-colors">Mijn sollicitanten</a></li>
+                    {% else %}
+                        <li><a href={{ path('admin/users') }}  class="menu-colors">Gebruikers</a></li>
+                        <li><a href={{ path('admin/vacancies') }}  class="menu-colors">Vacatures</a></li>
+                        <li><a href={{ path('admin/applications') }} class="menu-colors">Sollicitaties</a></li>
+                        <li><a href="/" class="menu-colors">Platforms</a></li>
+                    {% endif %}
+                        <li><a href={{ path('fos_user_security_logout') }} class="menu-colors">Uitloggen</a></li>
+            {% else %}
+                <li><a href={{ path('althomepage_vacancies') }} class="menu-colors">Alle Vacatures</a></li>
+                <li><a href={{ path('fos_user_registration_register') }} class="menu-colors">Registreren</a></li>
+                <li><a href={{ path('fos_user_security_login') }} class="menu-colors">Login</a></li>
+        {% endif %}
+        </ul>
+    </div>
+</div>
+
+<div class="small-12 medium-12 large-12">
+  <div class="triangle triangle-homepage">
+  </div>
+</div>
+{% endblock %}
+
 {# <div class="top-bar">
     <div clas="top-bar-title">
         <span data-responsive-toggle="responsive-menu" data-hide-for="medium">
@@ -40,38 +78,3 @@
         </div>
     </div>
 </div>  #}
-
-<div class="top-bar header" id="responsive-menu">
-    <div class="top-bar-left">
-    <ul class="dropdown menu" data-dropdown-menu>
-      <a href="/"><img src="{{ asset('assets/logo/vacit-logo-white.png')}}" class="headerlogo"></a>  
-    </ul>
-    </div>
-    <div class="top-bar-right">
-        <ul class="vertical medium-horizontal menu" data-responsive-menu="dropdown">
-        {% if app.user is defined and app.user != NULL %}
-                <li><a href="/userprofile/edit/{{app.user.id}}" class="menu-colors">Mijn Profiel</a></li>
-                    {% if is_granted('ROLE_CANDIDATE') %}
-                        <li><a href={{ path('myapplications') }} class="menu-colors">Mijn sollicitaties</a></li>
-                        <li><a href={{ path('althomepage_vacancies') }} class="menu-colors">Alle Vacatures</a></li>
-                    {% elseif is_granted('ROLE_EMPLOYER') %}  
-                        <li><a href={{ path('myvacancies') }} class="menu-colors">Mijn vacatures</a></li>  
-                        <li><a href={{ path('myapplications') }} class="menu-colors">Mijn sollicitanten</a></li>
-                    {% endif %}
-                        <li><a href={{ path('fos_user_security_logout') }} class="menu-colors">Uitloggen</a></li>
-            {% else %}
-                <li><a href={{ path('althomepage_vacancies') }} class="menu-colors">Alle Vacatures</a></li>
-                <li><a href={{ path('fos_user_registration_register') }} class="menu-colors">Registreren</a></li>
-                <li><a href={{ path('fos_user_security_login') }} class="menu-colors">Login</a></li>
-        {% endif %}
-        </ul>
-    </div>
-</div>
-
-
-<div class="small-12 medium-12 large-12">
-  <div class="triangle triangle-homepage">
-  </div>
-</div>
-{% endblock %}
-

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %}{% endblock %}</title>
+        {% block stylesheets %}
+        
+        <link rel="stylesheet" href="{{ asset('assets/css/foundation.css')}}">
+        <link rel="stylesheet" href="{{ asset('assets/css/all.css')}}">
+        <link rel="stylesheet" href="{{ asset('assets/css/stylesheetBBN.css')}}">
+        <link rel="stylesheet" href="{{ asset('assets/css/stylesheetRC.css')}}">
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/zf/dt-1.10.21/datatables.min.css"/>                
+        <link rel="stylesheet" href="{{ asset('assets/css/main.css')}}">
+        <link rel="stylesheet" href="{{ asset('assets/css/loginregistration.css')}}">
+        <link rel="stylesheet" href="{{ asset('assets/css/vacancypage.css')}}">
+        <link rel="stylesheet" href="{{ asset('assets/css/myapplicationspage.css')}}">
+        <link rel="stylesheet" href="{{ asset('assets/css/profile.css')}}">
+        <link rel="stylesheet" href="{{ asset('assets/css/admin.css')}}">
+   
+        {% endblock %}
+    
+        <script
+            src="https://code.jquery.com/jquery-3.5.1.js"
+            integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+            crossorigin="anonymous">
+        </script>
+        <script src="{{ asset('assets/js/foundation.js')}}"></script>  
+            <script>
+                Foundation.addToJquery($);
+                  $(document).foundation();
+                  $(document).ready(function(){
+              
+                });
+        </script>
+        <script src="{{ asset('assets/js/vendor.js')}}"></script>
+        <script src="{{ asset('assets/js/all.js')}}"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/v/zf/dt-1.10.21/datatables.min.js"></script>
+        <script>$(document).ready(function(){$('#table_id').DataTable(
+            {
+                "paging": false,
+                "searching": false,
+                "info": false,
+                "ordering": false
+            });
+            });
+        </script>
+
+    </head>
+    <body>
+        <div class="wrapper">
+            <div class="header">
+                <div class="grid-x grid-padding-x">
+                    <div class="small-12 medium-12 large-12"> 
+                        <div id="header">
+                            {% include('global/header.html.twig') %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="layout">
+                <div class="grid-x body-white">
+                    <div class="small-1 medium-1 large-1">
+                    </div>
+                    <div class="small-10 medium-10 large-10">
+                        {% block content %}
+                        {% endblock %}
+                    </div>
+                    <div class="small-1 medium-1 large-1">
+                    </div>
+                </div>
+            </div>
+        
+            <div class="footer">
+                <div class="grid-x grid-padding-x">
+                    <div class="small-12 medium-12 large-12"> 
+                        <div id="footer">
+                            {% include('global/footer.html.twig') %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>  
+</html>

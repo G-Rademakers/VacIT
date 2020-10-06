@@ -1,0 +1,37 @@
+{% extends 'base-admin.html.twig' %}
+
+{% block title %}Alle Vacatures{% endblock %}
+
+{% block content %}
+    <div class="grid-x grid-padding-x">
+        <div class="small-12 medium-12 large-12 cell">
+            <br>
+                <div><h2 style="font-family:bebas_neueregular; color: #F15A24">Vacatures</h2></div>
+        </div>
+        
+        <div class="small-12 medium-12 large-12 cell">            
+            <table id="table_id" class="admintable">
+                <thead>
+                    <tr>
+                        <th>Datum</th>  
+                        <th>Vacature</th>
+                        <th>Bedrijf</th>
+                        <th>Plaats</th> 
+                        <th>Niveau</th> 
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for vacancy in vacancies|sort((a, b) => a.vacancydate <=> b.vacancydate) %}
+                        <tr>
+                            <td>{{ vacancy.vacancydate|date("d-m-Y") }}</td>
+                            <td><a href={{ path('show/vacancy', { "id": vacancy.id } ) }} class="orangetext">{{ vacancy.function }}</a></td>
+                            <td><a href={{ path('show/userprofile', { "id": vacancy.user.id }) }} class="greytext">{{ vacancy.user.companyname }}</a></td>
+                            <td>{{ vacancy.location }}</td>
+                            <td>{{ vacancy.level }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>                           
+{% endblock %}

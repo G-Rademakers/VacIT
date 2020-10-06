@@ -14,9 +14,9 @@
         <link rel="stylesheet" href="{{ asset('assets/css/richtext.min.css')}}">
         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/zf/dt-1.10.21/datatables.min.css"/>                
         <link rel="stylesheet" href="{{ asset('assets/css/main.css')}}">
-        <link rel="stylesheet" href="{{ asset('assets/css/homepage.css')}}">
         <link rel="stylesheet" href="{{ asset('assets/vegas/vegas.min.css')}}">
-        
+        <link rel="stylesheet" href="{{ asset('assets/css/homepage.css')}}">
+
         {% endblock %}
     
         <script
@@ -85,8 +85,8 @@
     <body>
         <div class="wrapper">
             <div class="header">
-                <div class="grid-x">
-                    <div class="small-12 medium-12 large-12"> 
+                <div class="grid-x ">
+                    <div class="small-12 medium-12 large-12 cell"> 
                         <div id="header">
                             {% include('global/header.html.twig') %}
                         </div>
@@ -96,11 +96,11 @@
       
             <div class="orangebackground">
                 <div class="grid-x">
-                    <div class="large-4 box hide-for-small-only hide-for-medium-only">
+                    <div class="large-4 cell box hide-for-small-only hide-for-medium-only">
                         {% block vegas %}
                         {% endblock %}
                     </div>
-                    <div class="small-12 medium-12 large-8 box">
+                    <div class="small-12 medium-12 large-8 cell box">
                         {% block content %}
                         {% endblock %}
                     </div>
@@ -108,8 +108,8 @@
             </div>
         
             <div class="footer">
-                <div class="grid-x">
-                    <div class="small-12 medium-12 large-12"> 
+                <div class="grid-x ">
+                    <div class="small-12 medium-12 large-12 cell"> 
                         <div id="footer">
                             {% include('global/footer.html.twig') %}
                         </div>

@@ -66,7 +66,7 @@
                     <br>
                     <br>
                     <button type="submit" id="_submit" name="_submit" class="btn btn-succes">
-                        <a href="/application/remove/{{vacancy.id}}" class="orangetext-apply">
+                        <a href={{ path('remove/application', {"id": vacancy.id }) }} class="orangetext-apply">
                         <i class="fas fa-arrow-right"></i>  Verwijder Sollicitatie </a>
                     </button>
                     
@@ -75,7 +75,7 @@
                     <br>
                     <br>
                     <button type="submit" id="_submit" name="_submit" class="btn btn-succes">
-                        <a href="/application/add/{{vacancy.id}}" class="orangetext-apply">
+                        <a href={{ path('add/application', {"id": vacancy.id }) }} class="orangetext-apply">
                         <i class="fas fa-arrow-right"></i>  Solliciteer Direct </a>
                     </button>
                 {% endif %}
@@ -84,18 +84,24 @@
                 <br>
                 <br>
                 <button type="submit" id="_submit" name="_submit" class="btn btn-succes">
-                    <a href="/vacancy/edit/{{ vacancy.id }}" class="orangetext-apply-employer">
+                    <a href={{ path('edit/vacancy', {"id": vacancy.id }) }} class="orangetext-apply-employer">
                     <i class="fas fa-arrow-right"></i>  Vacature Aanpassen</a>
                 </button>
 
                 <br>
                 <br>
                 <button type="submit" id="_submit" name="_submit" class="btn btn-succes">
-                    <a href="/vacancy/remove/{{ vacancy.id }}" class="orangetext-apply-employer">
+                    <a href={{ path('remove/vacancy', {"id": vacancy.id }) }} class="orangetext-apply-employer">
                     <i class="fas fa-arrow-right"></i>  Vacature Verwijderen</a>
                 </button>
 
             {% else %}
+                <br>
+                <br>
+                <button type="submit" id="_submit" name="_submit" class="btn btn-succes">
+                    <a href={{ path('remove/vacancy', {"id": vacancy.id }) }} class="orangetext-apply-employer">
+                    <i class="fas fa-arrow-right"></i>  Vacature Verwijderen</a>
+                </button>
 
             {% endif %}
         </div>
@@ -148,7 +154,7 @@
                                 {% for vacancy in vacancies %}
                                     <tr>
                                         <td>{{ vacancy.vacancydate|date("d-m-Y") }}</td>
-                                        <td><a href="/vacancy/show/{{vacancy.id}}" class="orangetext">{{ vacancy.function}}</a></td>
+                                        <td><a href={{ path('show/vacancy', {"id": vacancy.id }) }} class="orangetext">{{ vacancy.function}}</a></td>
                                         <td>{{ vacancy.level}}</td>
                                     </tr> 
                                 {% endfor %}

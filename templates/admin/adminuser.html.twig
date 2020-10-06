@@ -1,0 +1,58 @@
+{% extends 'base-admin.html.twig' %}
+
+{% block title %}Alle Gebruikers{% endblock %}
+
+{% block content %}
+    <div class="grid-x grid-padding-x">
+        <div class="small-12 medium-12 large-12 cell">
+            <br>
+                <div><h2 style="font-family:bebas_neueregular; color: #F15A24">Gebruikers</h2></div>
+        </div>
+        
+        <div class="small-12 medium-12 large-12 cell">            
+            <table id="table_id" class="admininvertedtable">
+                <thead>
+                    <tr>
+                        <th>Naam</th>
+                        <th>Gebruikersnaam</th>
+                        <th>Email</th>
+                        <th>Rol</th>
+                        <th>Bedrijf</th>
+                        <th>Laatst Ingelogd</th> 
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for user in users %}
+                        <tr>
+                            <td><a href={{ path('show/userprofile', { "id": user.id }) }} class="orangetext">{{ user.firstname }} {{ user.lastname }}</a></td>
+                            <td><a href={{ path('show/userprofile', { "id": user.id }) }} class="greytext">{{ user.username }}</a></td>
+                            <td>{{ user.email }}</td>
+                            <td>
+                                {% for role in user.roles %}
+                                    {% if role == "ROLE_USER" %}
+
+                                    {% else %}
+
+                                        {% if role == 'ROLE_ADMIN'%}
+                                            {{ 'Administrator' }} 
+
+                                        {% elseif role == "ROLE_EMPLOYER" %}
+                                            {{ 'Werkgever' }}
+
+                                        {% else %}
+                                            {{ 'Werkzoekend' }}
+                                        
+                                        {% endif %}
+
+                                    {% endif %}
+                                {% endfor %}
+                            </td>
+                            <td><a href={{ path('show/userprofile', { "id": user.id }) }} class="orangetext">{{ user.companyname }}</a></td>
+                            <td>{{ user.lastLogin|date('d-m-Y') }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>                           
+{% endblock %}

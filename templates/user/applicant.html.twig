@@ -85,7 +85,13 @@
 
     <div class="grid-x grid-padding-x">
         <div class="small-6 medium-6 large-6 cell"> 
-            Hier komt het pdf symbool + bestandsnaam!
+            {% if profile.cv != null %}
+                <a href="{{ asset( profile.cv ) }}"
+                <i class="fas fa-file-pdf" style="color: #F15A24; width: 75px; height: 75px;"></i>
+                </a>
+
+            {% else %}
+            {% endif %}
         </div>
 
         <div class="small-6 medium-6 large-6 cell">

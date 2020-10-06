@@ -25,7 +25,7 @@ class HomepageController extends AbstractController
     }
 
      /**
-     * @Route("/vacancies", name="Homepage_AllVacancies")
+     * @Route("/vacancies", name="althomepage_vacancies")
      */
     public function showAllVacancies(VacancyService $vs)
     {

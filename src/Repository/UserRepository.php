@@ -36,7 +36,7 @@ class UserRepository extends ServiceEntityRepository
         $user->setDateOfBirth($params["date_of_birth"]);
         $user->setDescription($params["description"]);
         $user->setProfilePictureURL($params["profile_picture_url"]);
-        $user->setCV($params["cv_url"]);
+        $user->setCV($params["cv"]);
         $user->setType($params["type"]);
 
         $em = $this->getEntityManager();

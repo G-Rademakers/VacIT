@@ -52,17 +52,17 @@
         {% if app.user is defined and app.user != NULL %}
                 <li><a href="/userprofile/edit/{{app.user.id}}" class="menu-colors">Mijn Profiel</a></li>
                     {% if is_granted('ROLE_CANDIDATE') %}
-                        <li><a href="/myapplications/" class="menu-colors">Mijn sollicitaties</a></li>
-                        <li><a href="/vacancies/" class="menu-colors">Alle Vacatures</a></li>
+                        <li><a href={{ path('myapplications') }} class="menu-colors">Mijn sollicitaties</a></li>
+                        <li><a href={{ path('althomepage_vacancies') }} class="menu-colors">Alle Vacatures</a></li>
                     {% elseif is_granted('ROLE_EMPLOYER') %}  
-                        <li><a href="/myvacancies/" class="menu-colors">Mijn vacatures</a></li>  
-                        <li><a href="/myapplications/" class="menu-colors">Mijn sollicitanten</a></li>
+                        <li><a href={{ path('myvacancies') }} class="menu-colors">Mijn vacatures</a></li>  
+                        <li><a href={{ path('myapplications') }} class="menu-colors">Mijn sollicitanten</a></li>
                     {% endif %}
-                        <li><a href="{{ path('fos_user_security_logout') }}" class="menu-colors">Uitloggen</a></li>
+                        <li><a href={{ path('fos_user_security_logout') }} class="menu-colors">Uitloggen</a></li>
             {% else %}
-                <li><a href="/vacancies/" class="menu-colors">Alle Vacatures</a></li>
-                <li><a href="/register/" class="menu-colors">Registreren</a></li>
-                <li><a href="/login/" class="menu-colors">Login</a></li>
+                <li><a href={{ path('althomepage_vacancies') }} class="menu-colors">Alle Vacatures</a></li>
+                <li><a href={{ path('fos_user_registration_register') }} class="menu-colors">Registreren</a></li>
+                <li><a href={{ path('fos_user_security_login') }} class="menu-colors">Login</a></li>
         {% endif %}
         </ul>
     </div>
@@ -74,3 +74,4 @@
   </div>
 </div>
 {% endblock %}
+

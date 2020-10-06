@@ -25,7 +25,7 @@ class ApplicationController extends AbstractController
     }
 
      /**
-     * @Route("/myapplications", name="application")
+     * @Route("/myapplications", name="myapplications")
      */
     public function showApplications(ApplicationService $as, 
                                      VacancyService $vs, 
@@ -80,7 +80,7 @@ class ApplicationController extends AbstractController
     }
 
      /**
-     * @Route("/application/add/{id}", name="application_add")
+     * @Route("/application/add/{id}", name="add/application")
      */
     public function addApplication(ApplicationService $as, 
                                    VacancyService $vs, $id)
@@ -97,7 +97,7 @@ class ApplicationController extends AbstractController
     }
 
      /**
-     * @Route("/application/remove/{id}", name="application_remove")
+     * @Route("/application/remove/{id}", name="remove/application")
      */
     public function removeApplication(ApplicationService $as, 
                                       VacancyService $vs, $id)

@@ -63,7 +63,7 @@
                     {% for vacancy in vacancies %}
                         { src: "{{ vacancy.platform.iconurl }}",
                           text1: "{{ vacancy.level }}" + " - " + "{{ vacancy.function }}",
-                          url: "{{ path('vacancy', { 'id': vacancy.id })}}",
+                          url: "{{ path('show/vacancy', { 'id': vacancy.id })}}",
                           text2: "{{ vacancy.user.companyname}}" + " - " + "{{ vacancy.location }}",
                           
                         },

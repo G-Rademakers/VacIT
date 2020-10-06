@@ -33,6 +33,7 @@
 <form action="{{ path('save/userprofile', { "id": user.id } ) }}" method="POST">
     <input type="hidden" name="id" value="{{ user.id }}">  
         <input type="hidden" style="width: 100px" name="profile_picture_url" id="uploaded-file"> 
+        <input type="hidden" style="width: 150px" name="cv" id="uploaded-cvfile"> 
             <div class="grid-x grid-padding-x">
                 <div class="small-12 medium-12 large-12 cell">
                     <br><h2 style="font-family:bebas_neueregular; color: #F15A24">Mijn Profiel</h2>
@@ -140,25 +141,38 @@
                     <br><h2 style="font-family:bebas_neueregular; color: #F15A24">Omschrijving</h2>
                     <span><textarea class="content" id="description" name="description">{{ user.description }}</textarea></span> 
                         {# See: https://github.com/webfashionist/RichText/blob/master/examples/fontawesome5.html #}
-                </div>
-            </div>
+
 
             <div class="grid-x grid-padding-x">
-                <div class="small-12 medium-6 large-6 cell"> 
-                    {% if is_granted('ROLE_CANDIDATE') %}
-                        <br><br><div class="cv-imgbox" id="uploadcv" style="cursor: pointer;">
-                            <i class="fas fa-file-pdf" style="color: #F15A24; width: 75px; height: 75px;"></i>
-                            <input type="hidden" style="width: 150px" name="cv" id="uploaded-cvfile"> 
-                        </div>
-                    {% endif %}
-                </div>
+                <div class="small-12 medium-12 large-12 cell"> 
+                    <div class="grid-x grid-padding-x">
+                        <div class="small-2 medium-2 large-2 cell"> 
+                    {% if is_granted('ROLE_CANDIDATE') and user.cv != null %}
+                            <br><br>
+                            <div class="cv-imgbox" id="uploadcv" style="cursor: pointer;">
+                                <i class="fas fa-file-pdf" style="color: #F15A24; width: 75px; height: 75px;"></i>
+                            </div>
+                            <span style="color: #F15A24">Update CV</span>
+                       
+                    {% elseif is_granted('ROLE_CANDIDATE') and user.cv == null %}
+                            <br><br>
+                            <div class="cv-imgbox" id="uploadcv" style="cursor: pointer;">
+                                <i class="fas fa-file-pdf" style="color: #F15A24; width: 75px; height: 75px;"></i>
+                            </div>
+                            <span style="color: #F15A24">Upload CV</span>
 
-                <div class="small-12 medium-6 large-6 cell"> 
-                    <div>
-                        <br><button type="submit" id="_submit" name="_submit" class="btn btn-succes, orangetext-profile">
-                        <i class="fas fa-arrow-right"></i> 
-                        <input class="orangetext-profile" type="submit" value="Opslaan" style="border: none; background: none"/>
-                        </button>
+                    {% else %}
+
+                    {% endif %}
+                        
+                        </div>
+                        <div class="small-19 medium-10 large-10 cell"> 
+                            <br><br><br>
+                            <button type="submit" id="_submit" name="_submit" class="btn btn-succes, orangetext-profile">
+                                <span class="float: right"><i class="fas fa-arrow-right"></i> 
+                                <input class="orangetext-profile" type="submit" value="Opslaan" style="border: none; background: none"/></span>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>

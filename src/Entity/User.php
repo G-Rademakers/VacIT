@@ -234,7 +234,7 @@ class User extends BaseUser
         return $this->cv;
     }
 
-    public function setCV(string $cv_url): self
+    public function setCV(string $cv): self
     {
         $this->cv = $cv;
         

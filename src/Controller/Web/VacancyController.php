@@ -14,7 +14,7 @@ use App\Service\PlatformService;
 class VacancyController extends AbstractController
 {
     /**
-     * @Route("/vacancy/show/{id}", name="vacancy")
+     * @Route("/vacancy/show/{id}", name="show/vacancy")
      */
     public function showVacancy(Request $request, VacancyService $vs, ApplicationService $as, $id)
     {
@@ -87,7 +87,7 @@ class VacancyController extends AbstractController
     }
            
      /**
-     * @Route("/vacancy/update/{id}", name="updatevacancy")
+     * @Route("/vacancy/update/{id}", name="update/vacancy")
      */
     public function UpdateVacancy(Request $request, VacancyService $vs, $id)
     {
@@ -124,7 +124,7 @@ class VacancyController extends AbstractController
     }
 
     /**
-     * @Route("/vacancy/remove/{id}", name="removevacancy")
+     * @Route("/vacancy/remove/{id}", name="remove/vacancy")
      */
     public function removeVacancy(VacancyService $vs, $id)
     {
@@ -145,7 +145,7 @@ class VacancyController extends AbstractController
     }
 
     /**
-     * @Route("/vacancy/add/", name="addvacancy")
+     * @Route("/vacancy/add/", name="add/vacancy")
      */
     public function addVacancy(VacancyService $vs, PlatformService $ps)
     {
@@ -171,7 +171,7 @@ class VacancyController extends AbstractController
     }
 
      /**
-     * @Route("/vacancy/save/", name="savevacancy")
+     * @Route("/vacancy/save/", name="save/vacancy")
      */
     public function saveVacancy(Request $request, VacancyService $vs, PlatformService $ps)
     {

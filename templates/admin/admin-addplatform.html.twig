@@ -1,0 +1,33 @@
+{% extends 'base-admin.html.twig' %}
+
+{% block title %}Platform Toevoegen{% endblock %}
+
+{% block content %}
+    <form action="{{ path('admin/saveplatform' ) }}" method="POST">
+        <div class="grid-x grid-padding-x">
+            <div class="small-12 medium-12 large-12 cell">
+                <br><h2 style="font-family:bebas_neueregular; color: #F15A24">Platform Toevoegen</h2>
+                    <label>Naam Platform</label> 
+                        <input class="input" type="text" id="name" name="name" placeholder="Vul naam van platform in"/>
+            </div>
+        </div>  
+
+        <div class="grid-x grid-padding-x">
+            <div class="small-12 medium-12 large-12 cell">
+                <label>URL Platform</label> 
+                    <input class="input" type="text" id="icon_url" name="icon_url" placeholder="Vul URL-link van platform in"/>
+
+                    <p>Platform logo's en bijpassende URL kan gevonden worden via https://flaticon.com</p>  
+            </div>
+        </div>
+
+        <div class="grid-x grid-padding-x">
+            <div class="small-12 medium-12 large-12 cell">
+                <br><button type="submit" id="_submit" name="_submit" class="btn btn-succes, orangetext-vacancysave">
+                    <i class="fas fa-arrow-right"></i> 
+                    <input class="orangetext-vacancysave" type="submit" value="Opslaan" style="border: none; background: none"/>
+                </button>
+            </div>
+        </div>
+    </form>
+{% endblock %}

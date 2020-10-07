@@ -25,13 +25,13 @@
     {% for vacancy in vacancies %}
         <div class="cell small-12 medium-12 large-12"> 
             <div class="grid-x grid-padding-x">
-                <div class="small-2 medium-2 large-2 cell" style="background-color: blue">
+                <div class="small-2 medium-2 large-3 cell">
                     <br><br>
                     <div class="hexagon-homepage hide-for-small-only hide-for-medium-only">
                         <img class="icon-home" src="{{ vacancy.platform.iconurl }}" />
                     </div>
                 </div>
-                <div class="small-8 medium-8 large-8 cell" style="background-color: green">
+                <div class="small-8 medium-8 large-7 cell">
                     <br><br>
                     <div class="vacancydatetext">{{ vacancy.vacancydate }}</div>
                         <a href={{ path('show/vacancy', { "id": vacancy.id } ) }} class="functiontext">{{vacancy.function}} voor {{vacancy.user.companyname}}</a>

@@ -8,7 +8,7 @@
     font-family: Arial, Helvetica, sans-serif;
     font-size: 15px;
     font-weight: bold;
-    margin-left: -40px;
+    margin-left: 0px;
 }
 
 .arrowstyle{
@@ -28,7 +28,7 @@
     font-size: 30px;
     color: white;
     opacity: 0.8;
-    margin-left: -40px;
+    margin-left: 0px;
 }
 
 .functiontext:hover{
@@ -41,7 +41,7 @@
     font-size: 17px;
     font-style: italic; 
     /* font-weight: bold; */
-    margin-left: -40px;
+    margin-left: 0px;
 }
 
 .hexagon-homepage{

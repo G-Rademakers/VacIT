@@ -25,7 +25,7 @@ class PlatformRepository extends ServiceEntityRepository
         {
             $platform = new Platform();
         } 
-
+        
         $platform->setName($params["name"]);
         $platform->setIconURL($params["icon_url"]);
 

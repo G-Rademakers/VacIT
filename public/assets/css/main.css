@@ -80,8 +80,8 @@
 .hexagonplatforms{
     clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
     background-color: black;
-    width: 150px;
-    height: 150px;
+    width: 100%;
+    height: auto;
     display: flex; 
     flex-direction: column;
     justify-content: center;
@@ -90,8 +90,8 @@
 }
 
 .hexagonplatforms-img{
-    width: 125px;
-    height: 125px;
+    width: 100%;
+    height: auto;
     display: block;
     margin: auto;
     background-color: white;
@@ -100,8 +100,8 @@
 .hexagonprofile{
     clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
     background-color: white;
-    width: 150px;
-    height: 150px;
+    width: 100%;
+    height: auto;
     display: flex; 
     flex-direction: column;
     justify-content: center;
@@ -110,8 +110,8 @@
 }
 
 .hexagonprofile-img{
-    width: 150px;
-    height: 150px;
+    width: 100%;
+    height: auto;
     display: block;
     margin: auto;
     background-color:black;
@@ -124,7 +124,7 @@
 }
 
 .companyimg{
-    width: 150px;
+    width: 80%;
     height: auto;
     display: flex; 
     flex-direction: column;
@@ -134,7 +134,7 @@
 }
 
 .box{
-   
+    display: flex;
     justify-content: center;
 }
 

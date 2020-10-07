@@ -1,0 +1,50 @@
+{% extends 'base-admin.html.twig' %}
+
+{% block title %}Alle Platforms{% endblock %}
+
+{% block content %}
+    <div class="grid-x grid-padding-x">
+        <div class="small-12 medium-12 large-12 cell">
+            <br>
+                <div><h2 style="font-family:bebas_neueregular; color: #F15A24">Beschikbare platforms</h2></div>
+        </div>
+        
+        <div class="small-12 medium-12 large-12 cell">            
+            <table id="table_id" class="admintable">
+                <thead>
+                    <tr>
+                        <th>Platforms</th>  
+                        <th>Logo Linked</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for platform in platforms %}
+                        <tr>
+                            <td>{{ platform.name }}</td>
+                            <td>{% if platform.iconurl == null %}
+                                    {{ 'No' }}
+                                    
+                                {% else %}
+                                    {{ 'Yes' }}
+
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+    <br>
+
+    <div class="grid-x grid-padding-x">
+        <div class="small-12 medium-12 large-12 cell">
+            <button type="submit" id="_submit" name="_submit" class="btn btn-succes">
+                <a href={{ path('admin/addplatform') }} class="orangetext-apply-employer">
+                <i class="fas fa-arrow-right"></i>  Platform Toevoegen</a>
+            </button>
+        </div>
+    </div>
+
+{% endblock %}

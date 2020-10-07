@@ -5,10 +5,12 @@ namespace App\Controller\Web;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
 
 use App\Service\ApplicationService;
 use App\Service\UserService;
 use App\Service\VacancyService;
+use App\Service\PlatformService;
 
 class AdminController extends AbstractController
 {
@@ -81,4 +83,65 @@ class AdminController extends AbstractController
 
         return new response('Access denied, you are not an admin');
     }
+
+    /**
+     * @Route("/admin/platforms/", name="admin/platforms")
+     */
+    public function showAllPlatforms(PlatformService $ps)
+    {
+        $user = $this->getUser();
+
+        if(in_array("ROLE_ADMIN", $user->getRoles()))
+        {
+            $platforms = $ps->getAllPlatforms();
+
+            return $this->render('admin/adminplatform.html.twig', [
+                'controller_name' => 'AdminPlatformsController',
+                'user' => $user,
+                'platforms' => $platforms,]);
+        }
+
+        return new response('Access denied, you are not an admin');
+    }
+
+     /**
+     * @Route("/admin/platform/save", name="admin/saveplatform")
+     */
+    public function savePlatform(Request $request, PlatformService $ps)
+    {
+        $user = $this->getUser();
+        
+        $params["id"] = $request->request->get("id");
+        $params["name"] = $request->request->get("name");
+        $params["icon_url"] = $request->request->get("icon_url");
+
+        if(in_array("ROLE_ADMIN", $user->getRoles()))
+        {
+            $platforms = $ps->savePlatform($params);
+            return $this->redirect("/admin/platforms/");
+        }
+
+        return new response('Access denied, you are not an admin');
+    }
+
+     /**
+     * @Route("/admin/platforms/add", name="admin/addplatform")
+     */
+    public function addPlatform(PlatformService $ps)
+    {
+        $user = $this->getUser();
+
+        if(in_array("ROLE_ADMIN", $user->getRoles()))
+        {
+            $platforms = $ps->getAllPlatforms();
+
+            return $this->render('admin/admin-addplatform.html.twig', [
+                'controller_name' => 'AdminPlatformsController',
+                'user' => $user,
+                'platforms' => $platforms,]);
+        }
+
+        return new response('Access denied, you are not an admin');
+    }
+
 }

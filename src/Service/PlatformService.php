@@ -32,7 +32,7 @@ class PlatformService
     public function savePlatform($params)
     {
         $platform = $this->em->getRepository(Platform::class);
-        $result = $platform->savePlatformbyID($params);
+        $result = $platform->savePlatform($params);
         return($result);
     }
 

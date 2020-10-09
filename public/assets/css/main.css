@@ -15,14 +15,15 @@
 
 .headerlogo{
     background-color: #333333;
-    width: 50%;
+    width: 30%;
     height: auto;
+    float: left;
 }
 
 .menu-colors{
     color: white;
     font-family: 'bebas_neueregular';
-    font-size: 18px;
+    font-size: 20px;
     opacity: 0.8;
 }
 
@@ -60,7 +61,7 @@
 
 .logo-footer{
     background-color: #333333;
-    width: 50%;
+    width: 30%;
     height: auto;
 }
 

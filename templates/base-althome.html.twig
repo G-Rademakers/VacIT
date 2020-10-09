@@ -22,14 +22,15 @@
             integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
             crossorigin="anonymous">
         </script>
+        <script src="{{ asset('assets/js/vendor.js')}}"></script>
+        <script src="{{ asset('assets/js/all.js')}}"></script>
         <script src="{{ asset('assets/js/foundation.js')}}"></script>  
         <script>
             $(document).ready(function(){
                 $(document).foundation();
             });
         </script>
-        <script src="{{ asset('assets/js/vendor.js')}}"></script>
-        <script src="{{ asset('assets/js/all.js')}}"></script>
+        
         <script type="text/javascript" src="https://cdn.datatables.net/v/zf/dt-1.10.21/datatables.min.js"></script>
         <script>$(document).ready(function(){$('#table_id').DataTable(
             {

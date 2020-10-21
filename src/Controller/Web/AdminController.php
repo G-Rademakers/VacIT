@@ -26,11 +26,6 @@ use App\Service\PlatformService;
             ]);
         }
 
-    // Function to render the Admin-User HTML-Twig file which will display table of all users (candidate and employer) registrered with VacIT
-        // The first line of the function ($user = $this->getUser();) indicates that the variable $user is looking at the logged-in user
-        // If(in_array) looks for the data within the array and in this case, a specific role is required for the logged-in user to initiate the function within the if-statement
-            //  Within the if-statement: two main functions are called: 1) the access to a service function, and 2) the rendering of a specific html.twig file
-            //  If the if-statement is not called (depending on whether role-requirement is correct), response is given to 
  
         /**
          * @Route("/admin/users/", name="admin/users")

@@ -25,6 +25,9 @@ class ImportSpreadsheetCommand extends Command
 
     protected function configure()
     {
+
+    // Information of the name of function, description, and the input values needed 
+
         $this
             ->setName('app:import-spreadsheet')
             ->setDescription('Import Excel Spreadsheet containing employer data')
@@ -38,6 +41,8 @@ class ImportSpreadsheetCommand extends Command
         $inputFileName = $input->getArgument('file');
         $spreadsheet = IOFactory::load($inputFileName); 
        
+
+        // Setting values for variables based on the cells of the spreadsheet by getting values based on column.row
         
         for($row = 2; $row < 6 ; $row++)
         {   
@@ -56,7 +61,9 @@ class ImportSpreadsheetCommand extends Command
             $description = $s->getCell('L' . $row)->getValue();
             $profilepicture = $s->getCell('M' . $row)->getValue();
             $type = $s->getCell('N' . $row)->getValue();
-                           
+       
+        // Input values within array
+
             $params[] = array(
                 "username" => $username,
                 "email" => $email,
@@ -74,6 +81,9 @@ class ImportSpreadsheetCommand extends Command
                 "type" => $type
             );   
         }
+
+        // Pass values to the createUser function (see UserService)
+        
         $users = $this->us->createUser($params);      
     }   
 }

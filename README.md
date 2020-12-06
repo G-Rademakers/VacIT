@@ -1,4 +1,4 @@
-<img src="VacIT/public/assets/logo/Github_Image.png"/>
+<img src="public/assets/logo/Github_Image.png"/>
 
 
 

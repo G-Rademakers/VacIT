@@ -1,3 +1,7 @@
+<img src="VacIT/public/assets/logo/Github_Image.png"/>
+
+
+
 # VacIT
 
 VacIT is a project aimed at the development of a (small) vacancy site.

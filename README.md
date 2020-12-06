@@ -1,18 +1,32 @@
 <img src="public/assets/logo/Github_Image.png"/>
 
+# VacIT - Vacancy Website for IT
+
+The goal of the VacIT project is to develop an IT-focused vacancy website which is easily accessible for both applicants as well as employers. 
+The VacIT project is part of the Educom educational programme, which promotes the hands-on learning of coding/programming skills for junior software developers. 
+
+## Possibilities for applicants  
+
+* Check the five most recent vacancies on the homepage (which is also displayed using Vegas JS)  
+* Possibility to check all available vacancies on an alternative homepage  
+* Create and edit profile  
+* Apply directly using the 'Apply Direct' button which is found under each vacancy  
+* Check all current applications 
+
+## Possibilities for employers
+
+* Create and edit profile  
+* Create and edit new vacancies  
+* Check profiles of potential candidates  
+* Invite applicants using the 'Invite' button on the overview page of all applicants  
+
+## Additional notes
+
+* Applicants can register using the login/registration tool as found on the corresponding page
+* Employers have to registrer via the administrator
+* Administrator (Admin) has access to all data displayed on the webpage
 
 
-# VacIT
-
-VacIT is a project aimed at the development of a (small) vacancy site.
-
-The site is mainly composed of two sections: the applicant section and the employer section. Applicants will have the opportunity to check for all available vacancies, create and edit their own profile and directly apply for the
-vacancies using the 'Apply Direct' button present under each vacancy. The site also provides an overview for the applicants of all the vacancies for which they have applied. Employers can add and/or edit vacancies, edit their own profile page,
-and check the profiles of the potential candidates. Using the 'Invite' button, the employer can invite applicants for a job interview. 
-
-Applicants can registrer using the login/registration tool found on the corresponding page while employers will have to registrer via the administrator. The administrator can manage the entire site who access to all entered data. 
-
-VacIT is part of the Educom educational programme, which promotes the hands-on learning of coding/progamming skills for junior software developers. 
 
 Framework: 	Symfony 4.33.9
 

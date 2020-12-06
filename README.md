@@ -14,7 +14,7 @@ The VacIT project is part of the Educom educational programme, which promotes th
 * Apply directly using the 'Apply Direct' button which is found under each vacancy  
 * Check all current applications 
 
-<img src="public/assets/screenshots/Group 1.png"/>
+<img src="public/assets/screenshots/Group1.png"/>
 
 ## Possibilities for employers
 
@@ -23,7 +23,7 @@ The VacIT project is part of the Educom educational programme, which promotes th
 * Check profiles of potential candidates  
 * Invite applicants using the 'Invite' button on the overview page of all applicants  
 
-<img src="public/assets/screenshots/Group 2.png"/>
+<img src="public/assets/screenshots/Group2.png"/>
 
 ## Additional notes
 
